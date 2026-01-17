@@ -23,7 +23,6 @@ import { useState, useEffect } from 'react'
 
 const systemIcons = {
   'card-services': CreditCard,
-  'credit-cards': CreditCard,
   'item-processing': FileCheck,
   'digital': Smartphone,
   'lending': Landmark,
@@ -35,7 +34,6 @@ const systemIcons = {
 
 const systemColors = {
   'card-services': 'bg-blue-500',
-  'credit-cards': 'bg-cyan-500',
   'item-processing': 'bg-emerald-500',
   'digital': 'bg-violet-500',
   'lending': 'bg-amber-500',

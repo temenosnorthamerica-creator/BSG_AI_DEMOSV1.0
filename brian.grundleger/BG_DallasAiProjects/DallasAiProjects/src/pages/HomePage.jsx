@@ -21,7 +21,6 @@ import { clsx } from 'clsx'
 
 const systemIcons = {
   'card-services': CreditCard,
-  'credit-cards': CreditCard,
   'item-processing': FileCheck,
   'digital': Smartphone,
   'lending': Landmark,
@@ -36,7 +35,6 @@ const systemIcons = {
 
 const systemColors = {
   'card-services': { bg: 'bg-blue-500', gradient: 'from-blue-500 to-blue-600', hover: 'hover:border-blue-400/50', ring: 'ring-blue-500/20' },
-  'credit-cards': { bg: 'bg-cyan-500', gradient: 'from-cyan-500 to-cyan-600', hover: 'hover:border-cyan-400/50', ring: 'ring-cyan-500/20' },
   'item-processing': { bg: 'bg-emerald-500', gradient: 'from-emerald-500 to-emerald-600', hover: 'hover:border-emerald-400/50', ring: 'ring-emerald-500/20' },
   'digital': { bg: 'bg-violet-500', gradient: 'from-violet-500 to-violet-600', hover: 'hover:border-violet-400/50', ring: 'ring-violet-500/20' },
   'lending': { bg: 'bg-amber-500', gradient: 'from-amber-500 to-amber-600', hover: 'hover:border-amber-400/50', ring: 'ring-amber-500/20' },
@@ -230,7 +228,7 @@ export function HomePage({ systems, teamDemos = [], onSelectSystem, activeFilter
       </div>
 
       {/* Systems Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {systems.map((system) => {
           const Icon = systemIcons[system.icon] || CreditCard
           const colors = systemColors[system.icon] || systemColors['card-services']

@@ -57,18 +57,6 @@
       "backendPort": 8005,
       "url": "http://localhost:3005",
       "type": "fullstack"
-    },
-    {
-      "id": "credit-cards-demo",
-      "name": "Credit Cards Demo",
-      "description": "Credit card management demo with rewards programs, credit limits, and statement processing",
-      "icon": "credit-cards",
-      "color": "#06B6D4",
-      "owner": "brian.grundleger@temenos.com",
-      "port": 3006,
-      "backendPort": 8006,
-      "url": "http://localhost:3006",
-      "type": "fullstack"
     }
   ],
   "systems": [
