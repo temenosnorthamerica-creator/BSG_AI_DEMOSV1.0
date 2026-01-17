@@ -1,0 +1,87 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  background: $dark-bg;
+  color: $text-light;
+  padding: $spacing-12 0 $spacing-6;
+  margin-top: auto;
+}
+
+.container {
+  @include container;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-8;
+  padding-bottom: $spacing-8;
+  border-bottom: 1px solid rgba($white, 0.1);
+
+  @include tablet-up {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.branding {
+  max-width: 400px;
+}
+
+.title {
+  color: $white;
+  font-size: $font-size-xl;
+  margin-bottom: $spacing-3;
+}
+
+.description {
+  color: $gray-400;
+  font-size: $font-size-sm;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.links {
+  @include tablet-up {
+    text-align: right;
+  }
+}
+
+.linksTitle {
+  color: $white;
+  font-size: $font-size-base;
+  font-weight: 600;
+  margin-bottom: $spacing-4;
+}
+
+.linksList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin-bottom: $spacing-2;
+  }
+
+  a {
+    color: $gray-400;
+    text-decoration: none;
+    font-size: $font-size-sm;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+.copyright {
+  padding-top: $spacing-6;
+  text-align: center;
+
+  p {
+    font-size: $font-size-sm;
+    color: $gray-500;
+    margin: 0;
+  }
+}

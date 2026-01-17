@@ -1,0 +1,37 @@
+{
+  "specversion": "1.0",
+  "id": "9f1c2b7e-3e44-4c3a-9c7e-5c8e6d7f12ab",
+  "type": "com.bank.customer.created",
+  "source": "/core-banking/customer-service",
+  "subject": "customer/123456789",
+  "time": "2026-01-15T14:32:10Z",
+  "datacontenttype": "application/json",
+  "data": {
+    "customerId": "123456789",
+    "customerType": "INDIVIDUAL",
+    "status": "ACTIVE",
+    "createdAt": "2026-01-15T14:31:55Z",
+    "personalDetails": {
+      "firstName": "Mahaboob",
+      "lastName": "Hussain",
+      "dateOfBirth": "1990-05-10",
+      "nationality": "IN"
+    },
+    "contactDetails": {
+      "email": "mahaboob.hussain@example.com",
+      "mobile": "+91-9876543210"
+    },
+    "kyc": {
+      "kycStatus": "VERIFIED",
+      "kycLevel": "FULL"
+    },
+    "addresses": [
+      {
+        "type": "RESIDENTIAL",
+        "country": "India",
+        "city": "Bangalore",
+        "postalCode": "560001"
+      }
+    ]
+  }
+}

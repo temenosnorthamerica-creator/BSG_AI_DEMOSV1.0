@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffffff;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        .title-label {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: bold;
+            font-size: 18px;
+            color: #000;
+            z-index: 1000;
+        }
+        
+        .container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            padding: 80px 40px 40px 40px;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        
+        .left-section {
+            flex: 0 0 35%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            font-size: 16pt;
+        }
+        
+        .right-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .explanation-box {
+            background: #f0f0f0;
+            border: 2px solid #333;
+            border-radius: 5px;
+            padding: 12px 15px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #000;
+            position: relative;
+        }
+        
+        .arrow-line {
+            position: absolute;
+            right: -30px;
+            width: 30px;
+            height: 2px;
+            background: #000;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .arrow-head {
+            position: absolute;
+            right: -35px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid #000;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+        }
+        
+        .form-container {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #333;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            background: #e0e0e0;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .tab.active {
+            background: #fff;
+            border-bottom: 2px solid #fff;
+            margin-bottom: -2px;
+        }
+        
+        .tab-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            background: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .form-label {
+            min-width: 140px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .form-input {
+            flex: 1;
+            padding: 6px 10px;
+            border: 1px solid #999;
+            border-radius: 3px;
+            font-size: 13px;
+        }
+        
+        .form-input-small {
+            width: 100px;
+            padding: 6px 10px;
+            border: 1px solid #999;
+            border-radius: 3px;
+            font-size: 13px;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .dropdown {
+            padding: 6px 10px;
+            border: 1px solid #999;
+            border-radius: 3px;
+            font-size: 13px;
+            background: white;
+        }
+        
+        .icon-button {
+            width: 24px;
+            height: 24px;
+            border: 1px solid #999;
+            border-radius: 3px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 10px;
+            margin-top: 15px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="title-label">User Management main points</div>
+    <div class="container">
+        <!-- Left Section: Explanatory Text Boxes -->
+        <div class="left-section">
+            <!-- Explanation Box 1: User Identification -->
+            <div class="explanation-box" style="margin-top: 60px; background: #00BFFF;">
+                <div>Sign-on name</div>
+                <div>Is the user a bank employee (e.g., internal)</div>
+                <div>Language</div>
+                <div>Company the user can access</div>
+                <div class="arrow-line"></div>
+                <div class="arrow-head"></div>
+            </div>
+            
+            <!-- Explanation Box 2: User Validity Period -->
+            <div class="explanation-box" style="margin-top: 140px; background: #C9D9E2;">
+                <div>Validity of the User</div>
+                <div class="arrow-line"></div>
+                <div class="arrow-head"></div>
+            </div>
+            
+            <!-- Explanation Box 3: Daily Work Duration -->
+            <div class="explanation-box" style="margin-top: 60px; background: #CCFF00;">
+                <div>Duration for which the user can work in CBS (e.g., or all 7 days)</div>
+                <div class="arrow-line"></div>
+                <div class="arrow-head"></div>
+            </div>
+            
+            <!-- Explanation Box 4: Application and Function Access -->
+            <div class="explanation-box" style="margin-top: 100px; background: #F4C430;">
+                <div>Give access to applications, company wise</div>
+                <div>and operations allowed (e.g., authorize)</div>
+                <div class="arrow-line"></div>
+                <div class="arrow-head"></div>
+            </div>
+            
+            <!-- Explanation Box 5: Specific Day and Time Access -->
+            <div class="explanation-box" style="margin-top: 100px; background: #f0f8ff;">
+                <div>Specific time of access for certain days</div>
+                <div>1 – Mon , 2 – Tue and so on</div>
+                <div class="arrow-line"></div>
+                <div class="arrow-head"></div>
+            </div>
+        </div>
+        
+        <!-- Right Section: Form -->
+        <div class="right-section">
+            <div class="form-container">
+                <!-- Tabs -->
+                <div class="tabs">
+                    <div class="tab active">USER</div>
+                    <div class="tab">INPUTTER</div>
+                </div>
+                
+                <!-- Tab Header with Check Icon -->
+                <div class="tab-header">
+                    <div></div>
+                    <div class="check-icon">✓</div>
+                </div>
+                
+                <!-- Form Fields -->
+                <!-- User Identification Section -->
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="form-label">User Name</div>
+                        <input type="text" class="form-input" value="INPUTTER">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-label">Sign On Name</div>
+                        <input type="text" class="form-input" value="INPUTT">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-label">Classification</div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" name="classification" id="ext" value="Ext">
+                                <label for="ext">Ext</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="classification" id="int" value="Int" checked>
+                                <label for="int">Int</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-label">Language</div>
+                        <input type="text" class="form-input-small" value="1">
+                        <select class="dropdown">
+                            <option>English</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-label">Company.1</div>
+                        <input type="text" class="form-input" value="GB0010001">
+                        <div style="margin-left: 10px;">Model Bank</div>
+                        <div class="icon-button">+</div>
+                    </div>
+                </div>
+                
+                <!-- User Validity Period Section -->
+                <div class="section-title">User Validity Period</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="form-label">Start Date</div>
+                        <input type="text" class="form-input" value="09 OCT 2018">
+                        <div class="icon-button">📅</div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-label">End Date</div>
+                        <input type="text" class="form-input" value="31 DEC 2099">
+                        <div class="icon-button">📅</div>
+                    </div>
+                </div>
+                
+                <!-- Daily Work Duration Section -->
+                <div class="section-title">Daily Work Duration</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="form-label">Start Time.1</div>
+                        <input type="text" class="form-input-small" value="0">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-label">End Time.1</div>
+                        <input type="text" class="form-input-small" value="2400">
+                    </div>
+                </div>
+                
+                <!-- Application and Function Access Section -->
+                <div class="section-title">Application and Function Access</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="form-label">Company Restr.1</div>
+                        <input type="text" class="form-input" value="ALL">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-label">User Group.1</div>
+                        <input type="text" class="form-input" value="ALL.PG">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-label">Version.1</div>
+                        <input type="text" class="form-input" value="">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-label">Function Allowed.1</div>
+                        <input type="text" class="form-input" value="A2BCDEFHILPRSV">
+                    </div>
+                </div>
+                
+                <!-- Specific Day and Time Access Section -->
+                <div class="section-title">Specific Day and Time Access</div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="form-label">Allowed Days.1</div>
+                        <input type="text" class="form-input-small" value="1">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-label">Day St Time.1</div>
+                        <input type="text" class="form-input-small" value="1000">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-label">Day End Time.1</div>
+                        <input type="text" class="form-input-small" value="2000">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

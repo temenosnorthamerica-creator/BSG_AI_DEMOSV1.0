@@ -1,0 +1,647 @@
+{
+  "info": {
+    "_postman_id": "crm-banking-simulator-2024",
+    "name": "CRM Banking Simulator - Temenos Integration",
+    "description": "Postman collection for CRM Banking APIs that integrate with Temenos Core Banking System. This collection includes the three main CRM functions: Lead Management, Contact Management, and Opportunity Management.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.crm.bank.com/v1",
+      "type": "string"
+    },
+    {
+      "key": "authToken",
+      "value": "{{your_bearer_token}}",
+      "type": "string"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{authToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "1. Lead Management",
+      "description": "APIs for managing customer leads and prospects in the CRM system",
+      "item": [
+        {
+          "name": "Create Lead",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@email.com\",\n  \"phone\": \"+1-555-123-4567\",\n  \"source\": \"WEBSITE\",\n  \"productInterest\": \"SAVINGS_ACCOUNT\",\n  \"metadata\": {\n    \"campaignId\": \"SUMMER_2024\",\n    \"referralCode\": \"REF001\",\n    \"preferredBranch\": \"NYC_MAIN\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/leads",
+              "host": ["{{baseUrl}}"],
+              "path": ["leads"]
+            },
+            "description": "Create a new lead/prospect in the CRM system. This API maps to T24.CUSTOMER.PROSPECT in Temenos Core Banking."
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@email.com\",\n  \"phone\": \"+1-555-123-4567\",\n  \"source\": \"WEBSITE\",\n  \"productInterest\": \"SAVINGS_ACCOUNT\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/leads",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["leads"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"leadId\": \"LEAD-2024-001234\",\n    \"status\": \"NEW\",\n    \"createdAt\": \"2024-01-15T10:30:00Z\",\n    \"assignedTo\": \"REP-NYC-001\",\n    \"temenosRef\": \"T24-PROSPECT-001234\"\n  },\n  \"metadata\": {\n    \"requestId\": \"req-abc123\",\n    \"processingTime\": \"125ms\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Lead by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/leads/:leadId",
+              "host": ["{{baseUrl}}"],
+              "path": ["leads", ":leadId"],
+              "variable": [
+                {
+                  "key": "leadId",
+                  "value": "LEAD-2024-001234"
+                }
+              ]
+            },
+            "description": "Retrieve lead details by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Lead Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"QUALIFIED\",\n  \"qualificationNotes\": \"Customer interested in premium savings account with $50k initial deposit\",\n  \"nextAction\": \"SCHEDULE_CALL\",\n  \"nextActionDate\": \"2024-01-20\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/leads/:leadId",
+              "host": ["{{baseUrl}}"],
+              "path": ["leads", ":leadId"],
+              "variable": [
+                {
+                  "key": "leadId",
+                  "value": "LEAD-2024-001234"
+                }
+              ]
+            },
+            "description": "Update lead status and qualification information"
+          },
+          "response": []
+        },
+        {
+          "name": "Initiate KYC for Lead",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documentType\": \"PASSPORT\",\n  \"documentNumber\": \"AB1234567\",\n  \"issuingCountry\": \"US\",\n  \"expiryDate\": \"2028-12-31\",\n  \"additionalDocuments\": [\n    {\n      \"type\": \"UTILITY_BILL\",\n      \"issueDate\": \"2024-01-01\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/leads/:leadId/kyc",
+              "host": ["{{baseUrl}}"],
+              "path": ["leads", ":leadId", "kyc"],
+              "variable": [
+                {
+                  "key": "leadId",
+                  "value": "LEAD-2024-001234"
+                }
+              ]
+            },
+            "description": "Initiate KYC verification process for a lead. Maps to T24.KYC.DOCUMENT in Temenos."
+          },
+          "response": []
+        },
+        {
+          "name": "Convert Lead to Customer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountType\": \"SAVINGS\",\n  \"accountSubType\": \"PREMIUM\",\n  \"initialDeposit\": 50000,\n  \"currency\": \"USD\",\n  \"branchCode\": \"NYC_MAIN\",\n  \"relationshipManager\": \"RM-001\",\n  \"products\": [\n    {\n      \"productCode\": \"SAV_PREMIUM_001\",\n      \"features\": [\"ONLINE_BANKING\", \"MOBILE_APP\", \"DEBIT_CARD\"]\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/leads/:leadId/convert",
+              "host": ["{{baseUrl}}"],
+              "path": ["leads", ":leadId", "convert"],
+              "variable": [
+                {
+                  "key": "leadId",
+                  "value": "LEAD-2024-001234"
+                }
+              ]
+            },
+            "description": "Convert a qualified lead to a customer account. Creates customer record in T24.CUSTOMER in Temenos Core Banking."
+          },
+          "response": [
+            {
+              "name": "Conversion Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/leads/:leadId/convert",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["leads", ":leadId", "convert"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"customerId\": \"CUST-2024-005678\",\n    \"accountNumber\": \"1234567890\",\n    \"accountType\": \"SAVINGS\",\n    \"status\": \"ACTIVE\",\n    \"temenosCustomerId\": \"T24-CUST-005678\",\n    \"temenosAccountId\": \"T24-ACC-1234567890\",\n    \"createdAt\": \"2024-01-15T14:30:00Z\"\n  }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "2. Contact Management",
+      "description": "APIs for managing customer contact information and preferences",
+      "item": [
+        {
+          "name": "Create Contact",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"CUST-2024-005678\",\n  \"contactType\": \"PRIMARY\",\n  \"email\": \"john.doe@email.com\",\n  \"phone\": \"+1-555-123-4567\",\n  \"mobilePhone\": \"+1-555-987-6543\",\n  \"address\": {\n    \"street\": \"123 Main Street\",\n    \"apartment\": \"Apt 4B\",\n    \"city\": \"New York\",\n    \"state\": \"NY\",\n    \"zipCode\": \"10001\",\n    \"country\": \"US\"\n  },\n  \"preferences\": {\n    \"contactMethod\": \"EMAIL\",\n    \"contactTime\": \"BUSINESS_HOURS\",\n    \"language\": \"EN\",\n    \"marketingOptIn\": true,\n    \"smsOptIn\": true,\n    \"pushNotifications\": true\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/contacts",
+              "host": ["{{baseUrl}}"],
+              "path": ["contacts"]
+            },
+            "description": "Create or update customer contact information. Syncs with T24.CUSTOMER master data in Temenos."
+          },
+          "response": [
+            {
+              "name": "Contact Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerId\": \"CUST-2024-005678\",\n  \"contactType\": \"PRIMARY\",\n  \"email\": \"john.doe@email.com\",\n  \"phone\": \"+1-555-123-4567\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["contacts"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"contactId\": \"CONT-2024-001234\",\n    \"customerId\": \"CUST-2024-005678\",\n    \"verified\": false,\n    \"verificationRequired\": [\"EMAIL\", \"PHONE\"],\n    \"syncStatus\": \"SYNCED\",\n    \"temenosRef\": \"T24-CUST-005678\",\n    \"updatedAt\": \"2024-01-15T10:30:00Z\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Contact by Customer ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/customers/:customerId/contacts",
+              "host": ["{{baseUrl}}"],
+              "path": ["customers", ":customerId", "contacts"],
+              "variable": [
+                {
+                  "key": "customerId",
+                  "value": "CUST-2024-005678"
+                }
+              ]
+            },
+            "description": "Retrieve all contact records for a customer"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Contact Preferences",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"preferences\": {\n    \"contactMethod\": \"SMS\",\n    \"contactTime\": \"EVENING\",\n    \"marketingOptIn\": false,\n    \"transactionAlerts\": true,\n    \"balanceAlerts\": true,\n    \"securityAlerts\": true\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/contacts/:contactId/preferences",
+              "host": ["{{baseUrl}}"],
+              "path": ["contacts", ":contactId", "preferences"],
+              "variable": [
+                {
+                  "key": "contactId",
+                  "value": "CONT-2024-001234"
+                }
+              ]
+            },
+            "description": "Update contact preferences for notifications and marketing"
+          },
+          "response": []
+        },
+        {
+          "name": "Verify Contact Information",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"verificationType\": \"EMAIL\",\n  \"verificationCode\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/contacts/:contactId/verify",
+              "host": ["{{baseUrl}}"],
+              "path": ["contacts", ":contactId", "verify"],
+              "variable": [
+                {
+                  "key": "contactId",
+                  "value": "CONT-2024-001234"
+                }
+              ]
+            },
+            "description": "Verify contact email or phone number"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "3. Opportunity Management",
+      "description": "APIs for managing sales opportunities and product cross-sell",
+      "item": [
+        {
+          "name": "Create Opportunity",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"CUST-2024-005678\",\n  \"productType\": \"CREDIT_CARD\",\n  \"productCode\": \"PLATINUM_REWARDS_001\",\n  \"estimatedValue\": 15000,\n  \"requestedLimit\": 10000,\n  \"stage\": \"QUALIFICATION\",\n  \"probability\": 60,\n  \"source\": \"CROSS_SELL\",\n  \"campaign\": {\n    \"campaignId\": \"CC_UPGRADE_2024\",\n    \"channel\": \"IN_APP\"\n  },\n  \"notes\": \"Customer expressed interest during digital banking session\",\n  \"expectedCloseDate\": \"2024-02-15\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/opportunities",
+              "host": ["{{baseUrl}}"],
+              "path": ["opportunities"]
+            },
+            "description": "Create a new sales opportunity for product cross-sell. When the opportunity converts, it creates an arrangement in T24.AA.ARRANGEMENT in Temenos."
+          },
+          "response": [
+            {
+              "name": "Opportunity Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerId\": \"CUST-2024-005678\",\n  \"productType\": \"CREDIT_CARD\",\n  \"productCode\": \"PLATINUM_REWARDS_001\",\n  \"estimatedValue\": 15000,\n  \"stage\": \"QUALIFICATION\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/opportunities",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["opportunities"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"opportunityId\": \"OPP-2024-001234\",\n    \"customerId\": \"CUST-2024-005678\",\n    \"stage\": \"QUALIFICATION\",\n    \"createdAt\": \"2024-01-15T10:30:00Z\",\n    \"assignedTo\": \"RM-001\",\n    \"nextAction\": \"Schedule product consultation call\",\n    \"nextActionDate\": \"2024-01-18\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Opportunity by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/opportunities/:opportunityId",
+              "host": ["{{baseUrl}}"],
+              "path": ["opportunities", ":opportunityId"],
+              "variable": [
+                {
+                  "key": "opportunityId",
+                  "value": "OPP-2024-001234"
+                }
+              ]
+            },
+            "description": "Retrieve opportunity details by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Opportunity Stage",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stage\": \"PROPOSAL\",\n  \"probability\": 75,\n  \"approvedLimit\": 12000,\n  \"proposedTerms\": {\n    \"interestRate\": 18.99,\n    \"annualFee\": 0,\n    \"rewardsMultiplier\": 2\n  },\n  \"notes\": \"Customer approved for higher limit based on credit assessment\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/opportunities/:opportunityId",
+              "host": ["{{baseUrl}}"],
+              "path": ["opportunities", ":opportunityId"],
+              "variable": [
+                {
+                  "key": "opportunityId",
+                  "value": "OPP-2024-001234"
+                }
+              ]
+            },
+            "description": "Update opportunity stage and details as it progresses through the sales pipeline"
+          },
+          "response": []
+        },
+        {
+          "name": "Request Credit Assessment",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/customers/:customerId/credit-check?productType=CREDIT_CARD&requestedAmount=10000",
+              "host": ["{{baseUrl}}"],
+              "path": ["customers", ":customerId", "credit-check"],
+              "query": [
+                {
+                  "key": "productType",
+                  "value": "CREDIT_CARD"
+                },
+                {
+                  "key": "requestedAmount",
+                  "value": "10000"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "customerId",
+                  "value": "CUST-2024-005678"
+                }
+              ]
+            },
+            "description": "Request credit assessment for opportunity. Triggers T24.CREDIT.BUREAU.CHECK in Temenos."
+          },
+          "response": [
+            {
+              "name": "Credit Check Result",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/customers/:customerId/credit-check",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["customers", ":customerId", "credit-check"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"customerId\": \"CUST-2024-005678\",\n    \"creditScore\": 750,\n    \"creditRating\": \"EXCELLENT\",\n    \"approvedLimit\": 15000,\n    \"decision\": \"APPROVED\",\n    \"riskCategory\": \"LOW\",\n    \"factors\": [\n      \"Long credit history\",\n      \"Low credit utilization\",\n      \"No recent delinquencies\"\n    ],\n    \"validUntil\": \"2024-02-15T10:30:00Z\",\n    \"temenosRef\": \"T24-CREDIT-CHECK-001234\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Convert Opportunity (Issue Product)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stage\": \"CLOSED_WON\",\n  \"productDetails\": {\n    \"cardType\": \"VIRTUAL_FIRST\",\n    \"approvedLimit\": 12000,\n    \"billingCycle\": 15,\n    \"deliveryAddress\": \"HOME\"\n  },\n  \"customerConsent\": {\n    \"termsAccepted\": true,\n    \"consentTimestamp\": \"2024-01-20T14:30:00Z\",\n    \"consentChannel\": \"MOBILE_APP\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/opportunities/:opportunityId/convert",
+              "host": ["{{baseUrl}}"],
+              "path": ["opportunities", ":opportunityId", "convert"],
+              "variable": [
+                {
+                  "key": "opportunityId",
+                  "value": "OPP-2024-001234"
+                }
+              ]
+            },
+            "description": "Convert opportunity to actual product issuance. Creates arrangement in T24.AA.ARRANGEMENT and triggers T24.CARD.ISSUE in Temenos."
+          },
+          "response": [
+            {
+              "name": "Product Issued",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/opportunities/:opportunityId/convert",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["opportunities", ":opportunityId", "convert"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"opportunityId\": \"OPP-2024-001234\",\n    \"stage\": \"CLOSED_WON\",\n    \"product\": {\n      \"cardNumber\": \"****1234\",\n      \"cardType\": \"PLATINUM_REWARDS\",\n      \"status\": \"ISSUED\",\n      \"expiryDate\": \"12/27\",\n      \"creditLimit\": 12000\n    },\n    \"temenosArrangementId\": \"T24-ARR-001234\",\n    \"temenosCardRef\": \"T24-CARD-001234\",\n    \"issuedAt\": \"2024-01-20T14:35:00Z\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Customer Opportunities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/customers/:customerId/opportunities?stage=QUALIFICATION,PROPOSAL&sortBy=createdAt&order=desc",
+              "host": ["{{baseUrl}}"],
+              "path": ["customers", ":customerId", "opportunities"],
+              "query": [
+                {
+                  "key": "stage",
+                  "value": "QUALIFICATION,PROPOSAL"
+                },
+                {
+                  "key": "sortBy",
+                  "value": "createdAt"
+                },
+                {
+                  "key": "order",
+                  "value": "desc"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "customerId",
+                  "value": "CUST-2024-005678"
+                }
+              ]
+            },
+            "description": "Get all opportunities for a customer with optional filtering"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Events (Webhooks)",
+      "description": "Webhook endpoints for receiving events from Temenos Core Banking",
+      "item": [
+        {
+          "name": "Receive Customer Created Event",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Temenos-Signature",
+                "value": "{{webhook_signature}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventType\": \"Customer.Created\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\",\n  \"source\": \"TEMENOS_T24\",\n  \"data\": {\n    \"customerId\": \"CUST-2024-005678\",\n    \"temenosCustomerId\": \"T24-CUST-005678\",\n    \"customerType\": \"INDIVIDUAL\",\n    \"segment\": \"RETAIL\",\n    \"onboardingChannel\": \"DIGITAL\",\n    \"kycStatus\": \"VERIFIED\"\n  },\n  \"metadata\": {\n    \"correlationId\": \"corr-123456\",\n    \"version\": \"1.0\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhooks/temenos/customer-created",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhooks", "temenos", "customer-created"]
+            },
+            "description": "Webhook endpoint to receive Customer.Created events from Temenos (TEMENOS.CUSTOMER.CREATED)"
+          },
+          "response": []
+        },
+        {
+          "name": "Receive Account Status Event",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Temenos-Signature",
+                "value": "{{webhook_signature}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventType\": \"Account.StatusChanged\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\",\n  \"source\": \"TEMENOS_T24\",\n  \"data\": {\n    \"accountId\": \"ACC-1234567890\",\n    \"customerId\": \"CUST-2024-005678\",\n    \"temenosAccountId\": \"T24-ACC-1234567890\",\n    \"previousStatus\": \"PENDING\",\n    \"newStatus\": \"ACTIVE\",\n    \"activatedAt\": \"2024-01-15T10:30:00Z\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhooks/temenos/account-status",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhooks", "temenos", "account-status"]
+            },
+            "description": "Webhook endpoint to receive Account.StatusChanged events from Temenos (TEMENOS.ACCOUNT.STATUS)"
+          },
+          "response": []
+        },
+        {
+          "name": "Receive KYC Completed Event",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Temenos-Signature",
+                "value": "{{webhook_signature}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventType\": \"KYC.Completed\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\",\n  \"source\": \"TEMENOS_T24\",\n  \"data\": {\n    \"leadId\": \"LEAD-2024-001234\",\n    \"kycStatus\": \"VERIFIED\",\n    \"riskScore\": \"LOW\",\n    \"verificationMethod\": \"DOCUMENT\",\n    \"documentsVerified\": [\"PASSPORT\", \"UTILITY_BILL\"],\n    \"validUntil\": \"2025-01-15T10:30:00Z\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhooks/temenos/kyc-completed",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhooks", "temenos", "kyc-completed"]
+            },
+            "description": "Webhook endpoint to receive KYC.Completed events from Temenos (TEMENOS.KYC.VERIFIED)"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

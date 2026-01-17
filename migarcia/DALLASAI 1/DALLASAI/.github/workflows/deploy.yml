@@ -1,0 +1,193 @@
+name: Deploy to Azure VM
+
+# DISABLED: This workflow is no longer used. We now deploy to:
+# - Azure App Service (backend) via deploy-app-service.yml
+# - Azure Static Web Apps (frontend) via deploy-static-webapp.yml
+# The VM resource no longer exists.
+
+on:
+  # Disabled - VM no longer exists
+  # push:
+  #   branches:
+  #     - develop
+  workflow_dispatch:  # Keep manual trigger for emergency use only
+
+env:
+  AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  AZURE_RESOURCE_GROUP: bsg-demo-platform
+  VM_NAME: bsg-demo-platform-vm
+  VM_USERNAME: azureuser
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: backend/requirements.txt
+      
+      - name: Install frontend dependencies
+        working-directory: ./frontend
+        run: npm ci
+      
+      - name: Build frontend
+        working-directory: ./frontend
+        run: npm run build
+        env:
+          VITE_API_URL: https://bsg-demo-platform.azurewebsites.net/api/v1
+      
+      - name: Install backend dependencies
+        working-directory: ./backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Clean up test files
+        run: |
+          find . -name "*test*.py" -not -path "./backend/app/*" -not -path "./.venv/*" -not -path "./venv/*" -delete || true
+          find . -name "*.pyc" -delete || true
+          find . -type d -name "__pycache__" -exec rm -rf {} + || true
+      
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Get VM IP
+        id: get-vm-ip
+        run: |
+          echo "⚠️ WARNING: This workflow is disabled. VM no longer exists."
+          echo "⚠️ Backend is deployed to Azure App Service via deploy-app-service.yml"
+          echo "⚠️ Frontend is deployed to Azure Static Web Apps via deploy-static-webapp.yml"
+          exit 1  # Fail early to prevent further steps
+          # VM_IP=$(az vm show -d -g ${{ env.AZURE_RESOURCE_GROUP }} -n ${{ env.VM_NAME }} --query publicIps -o tsv)
+          # echo "vm_ip=$VM_IP" >> $GITHUB_OUTPUT
+          # echo "VM IP: $VM_IP"
+      
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VM_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ steps.get-vm-ip.outputs.vm_ip }} >> ~/.ssh/known_hosts
+      
+      - name: Deploy to VM
+        run: |
+          VM_IP="${{ steps.get-vm-ip.outputs.vm_ip }}"
+          VM_USER="${{ env.VM_USERNAME }}"
+          
+          # Create deployment directory structure
+          ssh -o StrictHostKeyChecking=no $VM_USER@$VM_IP "mkdir -p ~/bsg-demo-platform/{frontend/dist,backend,logs}"
+          
+          # Copy frontend build
+          scp -o StrictHostKeyChecking=no -r frontend/dist/* $VM_USER@$VM_IP:~/bsg-demo-platform/frontend/dist/
+          
+          # Copy backend code
+          scp -o StrictHostKeyChecking=no -r backend/* $VM_USER@$VM_IP:~/bsg-demo-platform/backend/
+          
+          # Copy environment file if it exists
+          if [ -f .env ]; then
+            scp -o StrictHostKeyChecking=no .env $VM_USER@$VM_IP:~/bsg-demo-platform/.env
+          fi
+          
+          # Setup backend on VM
+          ssh -o StrictHostKeyChecking=no $VM_USER@$VM_IP bash << 'DEPLOYSCRIPT'
+            set -e
+            cd ~/bsg-demo-platform/backend
+            
+            # Create virtual environment if it doesn't exist
+            if [ ! -d "venv" ]; then
+              python3 -m venv venv
+            fi
+            
+            # Activate venv and install dependencies
+            source venv/bin/activate
+            pip install --upgrade pip --quiet
+            pip install -r requirements.txt --quiet
+            
+            # Install systemd service for backend
+            sudo tee /etc/systemd/system/bsg-backend.service > /dev/null << 'SYSTEMDEOF'
+            [Unit]
+            Description=BSG Demo Platform Backend
+            After=network.target
+            
+            [Service]
+            Type=simple
+            User=azureuser
+            WorkingDirectory=/home/azureuser/bsg-demo-platform/backend
+            Environment="PATH=/home/azureuser/bsg-demo-platform/backend/venv/bin"
+            ExecStart=/home/azureuser/bsg-demo-platform/backend/venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000
+            Restart=always
+            RestartSec=10
+            
+            [Install]
+            WantedBy=multi-user.target
+            SYSTEMDEOF
+            
+            # Install nginx configuration
+            sudo tee /etc/nginx/sites-available/bsg-demo-platform > /dev/null << 'NGINXEOF'
+            server {
+                listen 80;
+                server_name _;
+                
+                # Frontend
+                location / {
+                    root /home/azureuser/bsg-demo-platform/frontend/dist;
+                    try_files $uri $uri/ /index.html;
+                }
+                
+                # Backend API
+                location /api {
+                    proxy_pass http://localhost:8000;
+                    proxy_http_version 1.1;
+                    proxy_set_header Upgrade $http_upgrade;
+                    proxy_set_header Connection 'upgrade';
+                    proxy_set_header Host $host;
+                    proxy_cache_bypass $http_upgrade;
+                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                    proxy_set_header X-Forwarded-Proto $scheme;
+                }
+            }
+            NGINXEOF
+            
+            # Enable nginx site
+            sudo ln -sf /etc/nginx/sites-available/bsg-demo-platform /etc/nginx/sites-enabled/
+            sudo rm -f /etc/nginx/sites-enabled/default
+            sudo nginx -t && sudo systemctl reload nginx
+            
+            # Restart backend service
+            sudo systemctl daemon-reload
+            sudo systemctl restart bsg-backend || sudo systemctl start bsg-backend
+            sudo systemctl enable bsg-backend
+          DEPLOYSCRIPT
+      
+      - name: Health Check
+        run: |
+          VM_IP="${{ steps.get-vm-ip.outputs.vm_ip }}"
+          sleep 10
+          curl -f http://$VM_IP/api/v1/health || exit 1
+          echo "Deployment successful! Frontend available at: http://$VM_IP"
+      
+      - name: Deployment Summary
+        run: |
+          echo "## Deployment Complete 🚀" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Frontend URL**: http://${{ steps.get-vm-ip.outputs.vm_ip }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Backend API**: http://${{ steps.get-vm-ip.outputs.vm_ip }}/api/v1" >> $GITHUB_STEP_SUMMARY
+          echo "**API Docs**: http://${{ steps.get-vm-ip.outputs.vm_ip }}/docs" >> $GITHUB_STEP_SUMMARY
+

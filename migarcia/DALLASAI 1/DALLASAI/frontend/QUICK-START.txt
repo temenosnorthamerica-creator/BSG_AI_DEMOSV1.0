@@ -1,0 +1,29 @@
+===========================================
+BSG Demo Platform - Frontend Quick Start
+===========================================
+
+TO START THE SERVER:
+
+1. Open a NEW PowerShell terminal
+2. Navigate to the frontend folder:
+   cd "C:\Users\apostolos.georgas\OneDrive - Temenos\Desktop\Temenos\Technical Stuff\GitHub\bsg-demo-platform\frontend"
+
+3. Run:
+   npm run dev
+
+4. Wait for output showing:
+   "Local: http://localhost:3000/"
+
+5. Open your browser to: http://localhost:3000
+
+===========================================
+
+IF IT DOESN'T START:
+
+- Check the terminal for error messages
+- Make sure port 3000 is not in use
+- Try: npm install (to reinstall dependencies)
+- Check: node --version (should be v18+)
+
+===========================================
+

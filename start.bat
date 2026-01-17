@@ -1,0 +1,3 @@
+@echo off
+echo Starting AmrBSGBankEcoIntDemo...
+powershell -ExecutionPolicy Bypass -File "%~dp0startup-all.ps1"

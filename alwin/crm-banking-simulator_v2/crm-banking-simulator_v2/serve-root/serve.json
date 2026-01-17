@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/crm-banking-simulator/**",
+      "destination": "/crm-banking-simulator/index.html"
+    }
+  ]
+}

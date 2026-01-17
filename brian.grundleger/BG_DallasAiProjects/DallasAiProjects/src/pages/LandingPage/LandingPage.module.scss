@@ -1,0 +1,111 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  flex: 1;
+}
+
+.hero {
+  background: linear-gradient(135deg, $primary-color 0%, $dark-bg 100%);
+  color: $white;
+  padding: $spacing-16 $container-padding;
+  text-align: center;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba($dark-bg, 0.3) 100%);
+    pointer-events: none;
+  }
+
+  @include mobile {
+    padding: $spacing-10 $container-padding;
+  }
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.heroTitle {
+  font-size: $font-size-4xl;
+  font-weight: 700;
+  margin-bottom: $spacing-4;
+  color: $white;
+
+  @include mobile {
+    font-size: $font-size-2xl;
+  }
+
+  @include tablet {
+    font-size: $font-size-3xl;
+  }
+}
+
+.heroDescription {
+  font-size: $font-size-lg;
+  opacity: 0.9;
+  line-height: 1.7;
+  margin: 0;
+
+  @include mobile {
+    font-size: $font-size-base;
+  }
+}
+
+.systems {
+  padding: $spacing-16 0;
+
+  @include mobile {
+    padding: $spacing-10 0;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.sectionTitle {
+  font-size: $font-size-2xl;
+  font-weight: 700;
+  color: $text-primary;
+  margin-bottom: $spacing-3;
+  text-align: center;
+
+  @include mobile {
+    font-size: $font-size-xl;
+  }
+}
+
+.sectionDescription {
+  text-align: center;
+  color: $text-secondary;
+  max-width: 600px;
+  margin: 0 auto $spacing-10;
+
+  @include mobile {
+    margin-bottom: $spacing-8;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-6;
+
+  @include tablet-up {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include desktop-up {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

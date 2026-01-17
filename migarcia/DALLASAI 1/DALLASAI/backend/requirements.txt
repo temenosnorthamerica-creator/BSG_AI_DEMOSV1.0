@@ -1,0 +1,77 @@
+# BSG Demo Platform - Backend Requirements
+
+# Core Framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+gunicorn==21.2.0
+python-multipart==0.0.6
+
+# Database
+pymongo==4.6.1  # MongoDB synchronous driver (used by motor)
+motor==3.3.2    # Async MongoDB driver for Python - provides async/await support for MongoDB operations
+                # Required for FastAPI async database operations with MongoDB
+                # Documentation: https://motor.readthedocs.io/
+
+# MSSQL Database
+pyodbc==5.3.0  # Microsoft SQL Server driver (supports parameter placeholders with ?)
+
+# Validation & Serialization
+pydantic==2.5.3
+pydantic-settings==2.1.0
+
+# Authentication & Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.1.2
+
+# Environment & Configuration
+python-dotenv==1.0.0
+
+# Async File Handling
+aiofiles==23.2.1
+
+# Caching (Optional)
+redis==5.0.1
+hiredis==2.3.2
+
+# Monitoring & Metrics
+prometheus-client==0.19.0
+
+# Tracing (Optional)
+opentelemetry-api==1.22.0
+opentelemetry-sdk==1.22.0
+opentelemetry-instrumentation-fastapi==0.43b0
+
+# CORS & Middleware
+# CORS is built into FastAPI, no separate package needed
+
+# Testing
+pytest==7.4.4
+pytest-asyncio==0.23.3
+pytest-cov==4.1.0
+httpx==0.26.0
+faker==22.1.0
+
+# Development
+black==24.1.1
+flake8==7.0.0
+mypy==1.8.0
+isort==5.13.2
+
+# Utilities
+python-slugify==8.0.1
+pytz==2024.1
+email-validator==2.1.0
+
+# Document Processing
+python-docx==1.1.0  # For reading .docx files
+python-pptx==0.6.23  # For reading .pptx files
+reportlab==4.0.7  # For PDF generation
+Pillow==10.2.0  # For image processing in PDF
+
+# Azure SDK for deployment analysis
+azure-identity==1.15.0
+azure-mgmt-resource==23.0.1
+azure-mgmt-containerinstance==10.1.0
+azure-mgmt-containerservice==29.0.0
+kubernetes==28.1.0

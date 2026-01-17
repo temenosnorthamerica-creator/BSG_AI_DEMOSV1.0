@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom utility classes matching bsg-demo-platform */
+.card {
+  @apply bg-white rounded-lg shadow-md p-6;
+}
+
+.btn-primary {
+  @apply bg-[#283054] text-white px-4 py-2 rounded-lg
+         hover:bg-[#1e243f] transition-colors duration-200
+         disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 text-gray-700 px-4 py-2 rounded-lg
+         hover:bg-gray-300 transition-colors duration-200
+         disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-success {
+  @apply bg-green-600 text-white px-4 py-2 rounded-lg
+         hover:bg-green-700 transition-colors duration-200
+         disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-danger {
+  @apply bg-red-600 text-white px-4 py-2 rounded-lg
+         hover:bg-red-700 transition-colors duration-200
+         disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.input-field {
+  @apply w-full px-4 py-2 border border-gray-200 rounded-lg
+         focus:ring-2 focus:ring-[#283054]/20 focus:border-[#283054]
+         outline-none bg-white text-[#2D3748];
+}
+
+.select-field {
+  @apply w-full px-4 py-2 border border-gray-200 rounded-lg
+         focus:ring-2 focus:ring-[#283054]/20 focus:border-[#283054]
+         outline-none bg-white text-[#2D3748] cursor-pointer;
+}
+
+/* Dark mode styles */
+.dark .card {
+  @apply bg-gray-800 text-gray-100;
+}
+
+.dark .input-field {
+  @apply bg-gray-700 border-gray-600 text-gray-100;
+}
+
+.dark .select-field {
+  @apply bg-gray-700 border-gray-600 text-gray-100;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #283054;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1e243f;
+}
+
+/* PIN keypad button */
+.keypad-btn {
+  @apply w-16 h-16 text-2xl font-semibold rounded-full
+         bg-gray-100 hover:bg-gray-200
+         transition-all duration-150
+         active:scale-95 active:bg-gray-300
+         flex items-center justify-center;
+}
+
+.keypad-btn:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* Transaction card */
+.transaction-card {
+  @apply bg-white rounded-lg shadow-sm border border-gray-100 p-4
+         hover:shadow-md transition-shadow duration-200;
+}
+
+/* Amount display */
+.amount-display {
+  @apply text-3xl font-bold text-[#283054];
+}
+
+.amount-positive {
+  @apply text-green-600;
+}
+
+.amount-negative {
+  @apply text-red-600;
+}

@@ -1,0 +1,251 @@
+name: Deploy to Azure Static Web Apps
+
+on:
+  push:
+    branches:
+      - develop
+  workflow_dispatch:
+
+env:
+  AZURE_STATIC_WEB_APPS_API_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+  STATIC_WEB_APP_NAME: bsg-demo-platform-4077
+  RESOURCE_GROUP: bsg-demo-platform
+
+jobs:
+  test-frontend:
+    name: Test Frontend
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+      
+      - name: Install frontend dependencies
+        working-directory: ./frontend
+        run: npm ci
+      
+      - name: Type check frontend
+        working-directory: ./frontend
+        run: |
+          echo "Running TypeScript type check..."
+          npx tsc --noEmit || (echo "⚠ TypeScript errors found" && exit 1)
+          echo "✓ TypeScript type check passed"
+      
+      - name: Test frontend build
+        working-directory: ./frontend
+        run: |
+          echo "Testing frontend build..."
+          npm run build
+          echo "✓ Frontend build successful"
+      
+      - name: Validate frontend build output
+        working-directory: ./frontend
+        run: |
+          echo "Validating build output..."
+          [ -d "dist" ] || (echo "✗ dist directory not found" && exit 1)
+          [ -f "dist/index.html" ] || (echo "✗ dist/index.html not found" && exit 1)
+          echo "✓ Frontend build output is valid"
+
+  build_and_deploy:
+    name: Build and Deploy Frontend
+    runs-on: ubuntu-latest
+    needs: [test-frontend]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+      
+      - name: Install dependencies
+        working-directory: ./frontend
+        run: npm ci
+      
+      - name: Create runtime config for production
+        working-directory: ./frontend
+        run: |
+          # Create production config.json with backend API URL
+          # This must be done BEFORE build so Vite copies it to dist/
+          mkdir -p public
+          cat > public/config.json << 'EOF'
+          {
+            "apiUrl": "https://bsg-demo-platform-app.azurewebsites.net/api/v1",
+            "environment": "production"
+          }
+          EOF
+          echo "✓ Created production config.json"
+          echo "Config contents:"
+          cat public/config.json
+          echo ""
+          echo "Verifying config.json exists:"
+          ls -la public/config.json
+      
+      - name: Build frontend
+        working-directory: ./frontend
+        run: npm run build
+        env:
+          NODE_ENV: production
+      
+      - name: Copy Static Web App config
+        run: |
+          if [ -f "frontend/staticwebapp.config.json" ]; then
+            # Copy to dist (where files are deployed from) - this is critical
+            cp frontend/staticwebapp.config.json frontend/dist/staticwebapp.config.json
+            echo "✓ Copied staticwebapp.config.json to dist"
+            # Also copy to repository root (Azure Static Web Apps may check here)
+            cp frontend/staticwebapp.config.json staticwebapp.config.json
+            echo "✓ Copied staticwebapp.config.json to repository root"
+            # Verify both copies exist
+            if [ -f "frontend/dist/staticwebapp.config.json" ] && [ -f "staticwebapp.config.json" ]; then
+              echo "✓ Verified staticwebapp.config.json exists in both locations"
+              echo "Config file contents:"
+              cat frontend/dist/staticwebapp.config.json
+            else
+              echo "✗ ERROR: staticwebapp.config.json not found after copy!"
+              echo "Dist exists: $([ -f 'frontend/dist/staticwebapp.config.json' ] && echo 'yes' || echo 'no')"
+              echo "Root exists: $([ -f 'staticwebapp.config.json' ] && echo 'yes' || echo 'no')"
+              exit 1
+            fi
+          else
+            echo "⚠ staticwebapp.config.json not found in frontend/"
+            exit 1
+          fi
+          
+          # Verify config.json is in dist (it should be copied from public/ during build)
+          if [ -f "frontend/dist/config.json" ]; then
+            echo "✓ config.json found in dist"
+            echo "Runtime config contents:"
+            cat frontend/dist/config.json
+          else
+            echo "⚠ WARNING: config.json not found in dist - runtime config may not work"
+            # Copy it manually as fallback
+            if [ -f "frontend/public/config.json" ]; then
+              cp frontend/public/config.json frontend/dist/config.json
+              echo "✓ Copied config.json to dist as fallback"
+            fi
+          fi
+      
+      - name: Verify build output
+        run: |
+          echo "Checking build output..."
+          echo "=== Contents of frontend/dist ==="
+          ls -la frontend/dist/ || echo "Build output not found"
+          echo ""
+          echo "=== Checking for index.html ==="
+          if [ -f "frontend/dist/index.html" ]; then
+            echo "✓ index.html found"
+            echo "=== First 30 lines of index.html ==="
+            head -30 frontend/dist/index.html
+            echo ""
+            echo "=== Checking script and link tags ==="
+            grep -E "(script|link)" frontend/dist/index.html || echo "No script/link tags found"
+          else
+            echo "✗ index.html not found - build may have failed"
+            exit 1
+          fi
+          echo ""
+          echo "=== Checking for config file ==="
+          if [ -f "frontend/dist/staticwebapp.config.json" ]; then
+            echo "✓ staticwebapp.config.json found in dist"
+            echo "Config contents:"
+            cat frontend/dist/staticwebapp.config.json
+          else
+            echo "✗ staticwebapp.config.json not found in dist - will fail deployment"
+            exit 1
+          fi
+          echo ""
+          echo "=== Checking for assets ==="
+          if [ -d "frontend/dist/assets" ]; then
+            echo "✓ Assets folder found"
+            echo "Asset files:"
+            ls -lh frontend/dist/assets/ | head -10
+            echo ""
+            echo "=== Verifying JS and CSS files exist ==="
+            JS_COUNT=$(find frontend/dist/assets -name "*.js" | wc -l)
+            CSS_COUNT=$(find frontend/dist/assets -name "*.css" | wc -l)
+            echo "JavaScript files: $JS_COUNT"
+            echo "CSS files: $CSS_COUNT"
+            if [ "$JS_COUNT" -eq 0 ] || [ "$CSS_COUNT" -eq 0 ]; then
+              echo "⚠ WARNING: Missing asset files!"
+              exit 1
+            fi
+            echo ""
+            echo "=== Checking JavaScript file headers ==="
+            JS_FILE=$(find frontend/dist/assets -name "*.js" | head -1)
+            if [ -n "$JS_FILE" ]; then
+              echo "Sample JS file: $JS_FILE"
+              echo "File size: $(stat -f%z "$JS_FILE" 2>/dev/null || stat -c%s "$JS_FILE" 2>/dev/null || echo "unknown") bytes"
+              echo "First 100 bytes (hex):"
+              head -c 100 "$JS_FILE" | xxd -l 100 | head -5 || echo "Could not read file"
+            fi
+          else
+            echo "✗ No assets folder found - build may have failed"
+            exit 1
+          fi
+          echo ""
+          echo "=== Build verification complete ==="
+      
+      - name: Verify staticwebapp.config.json location
+        run: |
+          echo "Verifying staticwebapp.config.json will be in correct location..."
+          if [ -f "frontend/dist/staticwebapp.config.json" ]; then
+            echo "✓ Config file exists in frontend/dist/"
+            echo "Config file will be deployed at root of Static Web App"
+          else
+            echo "✗ ERROR: staticwebapp.config.json not found in frontend/dist/"
+            exit 1
+          fi
+      
+      - name: Check deployment token
+        run: |
+          if [ -z "${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}" ]; then
+            echo "⚠️ ERROR: AZURE_STATIC_WEB_APPS_API_TOKEN secret is not set!"
+            echo ""
+            echo "To fix this:"
+            echo "1. Go to Azure Portal → Static Web App (bsg-demo-platform-4077)"
+            echo "2. Click 'Manage deployment token'"
+            echo "3. Copy the deployment token"
+            echo "4. Go to GitHub → Repository Settings → Secrets and variables → Actions"
+            echo "5. Add new secret: AZURE_STATIC_WEB_APPS_API_TOKEN with the token value"
+            echo ""
+            echo "⚠️ Deployment will be skipped without the token!"
+            exit 1
+          else
+            echo "✓ Deployment token is set"
+          fi
+      
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "/frontend/dist"
+          output_location: "."
+          skip_app_build: true
+          api_location: ""
+          api_build_command: ""
+        continue-on-error: false
+      
+      - name: Deployment Summary
+        run: |
+          echo "## Frontend Deployment Complete 🚀" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Frontend URL**: https://kind-beach-01c0a990f.3.azurestaticapps.net" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The frontend is now live and accessible!" >> $GITHUB_STEP_SUMMARY
+

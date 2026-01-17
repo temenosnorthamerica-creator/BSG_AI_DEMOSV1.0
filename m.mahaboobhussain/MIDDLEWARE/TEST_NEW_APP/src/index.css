@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar - Dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4A5568;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Base styles - Dark theme default */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0f172a;
+  color: #E2E8F0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+@layer components {
+  .card {
+    @apply bg-[#1e293b] rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-xl border border-[#334155];
+  }
+
+  .btn-primary {
+    @apply bg-[#0066CC] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#00A3E0] transition-colors;
+  }
+
+  .btn-secondary {
+    @apply bg-[#334155] text-[#E2E8F0] px-6 py-2 rounded-lg font-medium hover:bg-[#475569] transition-colors border border-[#475569];
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 border border-[#334155] rounded-lg outline-none bg-[#1e293b] text-[#E2E8F0];
+  }
+}
+
+.input-field:focus {
+  border-color: #00A3E0;
+  box-shadow: 0 0 0 2px rgba(0, 163, 224, 0.2);
+}

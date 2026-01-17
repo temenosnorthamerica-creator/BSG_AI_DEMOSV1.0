@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temenos Authentication</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        
+        .title-label {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 12px 24px;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            font-weight: bold;
+            font-size: 18px;
+            color: #283054;
+            z-index: 1000;
+            text-align: center;
+        }
+        
+        .text-section {
+            display: flex;
+            justify-content: space-between;
+            padding: 80px 40px 20px 40px;
+            margin-bottom: 20px;
+        }
+        
+        .bank-staff-auth {
+            flex: 1;
+            padding-right: 40px;
+        }
+        
+        .customer-auth {
+            flex: 1;
+            padding-left: 40px;
+        }
+        
+        .text-section h3 {
+            font-size: 16pt;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #ff0000;
+        }
+        
+        .text-section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            font-size: 14pt;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .text-section li {
+            margin-bottom: 8px;
+        }
+        
+        .diagram-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        text {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            fill: #000;
+        }
+        
+        .title-text {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .small-text {
+            font-size: 14px;
+        }
+        
+        .light-blue-box {
+            fill: #ADD8E6;
+            stroke: #000;
+            stroke-width: 2;
+        }
+        
+        .dark-blue-box {
+            fill: #1E3A8A;
+            stroke: #000;
+            stroke-width: 2;
+        }
+        
+        .purple-box {
+            fill: #9333ea;
+            stroke: #000;
+            stroke-width: 2;
+        }
+        
+        .teal-box {
+            fill: #14B8A6;
+            stroke: #000;
+            stroke-width: 2;
+        }
+        
+        .teal-container {
+            fill: #0D9488;
+            stroke: #000;
+            stroke-width: 2;
+        }
+        
+        .arrow-red {
+            stroke: #ff0000;
+            stroke-width: 2.5;
+            fill: none;
+            marker-end: url(#arrowhead-red);
+        }
+        
+        .text-white {
+            fill: #fff;
+        }
+        
+        .text-black {
+            fill: #000;
+        }
+        
+        .db-cylinder {
+            fill: #10b981;
+            stroke: #000;
+            stroke-width: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title-label">Here is the Temenos Authentication</div>
+        
+        <!-- Text Sections -->
+        <div class="text-section">
+            <div class="bank-staff-auth">
+                <h3>Bank Staff Authentication</h3>
+                <ul>
+                    <li>User Identity and authentication are externalized, utilizing Single Sign-On (SSO) with enterprise Identity Management (IdM) systems, specifically mentioning "Azure Entra ID" as an example.</li>
+                    <li>User identity and trust are established through a "security token oAuth 2.0 JWT".</li>
+                    <li>All product integration and validation are handled with "KeyCloak IdM".</li>
+                </ul>
+            </div>
+            <div class="customer-auth">
+                <h3>Customer Authentication</h3>
+                <ul>
+                    <li>Based on the open standards "OIDC" (OpenID Connect) and "JWT" (JSON Web Token), integrated with "Temenos Digital".</li>
+                    <li>"SCA Authentication partner" is the preferred approach for compliance with "PSD2" (Payment Services Directive 2) and open banking regulatory requirements.</li>
+                    <li>"HID, Uniken" are identified as exchange partners for "Temenos Digital SCA integration & certification".</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Diagram Container -->
+        <div class="diagram-container">
+            <svg viewBox="0 0 1400 600" preserveAspectRatio="xMidYMid meet">
+                <!-- Arrow marker definition -->
+                <defs>
+                    <marker id="arrowhead-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#ff0000" />
+                    </marker>
+                </defs>
+                
+                <!-- UI Configuration of Users, Roles, SSO etc. (Light Blue Box) -->
+                <rect x="50" y="100" width="200" height="80" class="light-blue-box" rx="5"/>
+                <text x="150" y="130" text-anchor="middle" class="text-black title-text">UI Configuration of</text>
+                <text x="150" y="150" text-anchor="middle" class="text-black title-text">Users, Roles, SSO etc.</text>
+                
+                <!-- Keycloak / External IdM (Dark Blue Box) -->
+                <rect x="50" y="220" width="200" height="100" class="dark-blue-box" rx="5"/>
+                <text x="150" y="250" text-anchor="middle" class="text-white title-text">Keycloak /</text>
+                <text x="150" y="275" text-anchor="middle" class="text-white title-text">External IdM</text>
+                
+                <!-- DB Cylinder (Green) - Outside Keycloak, close to lower border (Keycloak lower border is at y=320) -->
+                <ellipse cx="320" cy="340" rx="40" ry="12" class="db-cylinder"/>
+                <rect x="280" y="340" width="80" height="60" class="db-cylinder"/>
+                <ellipse cx="320" cy="400" rx="40" ry="12" class="db-cylinder"/>
+                <text x="320" y="375" text-anchor="middle" class="text-white title-text">DB</text>
+                
+                <!-- Authentication Service (Purple Box) -->
+                <rect x="350" y="220" width="220" height="100" class="purple-box" rx="5"/>
+                <text x="460" y="250" text-anchor="middle" class="text-white title-text">Authentication Service</text>
+                <text x="460" y="275" text-anchor="middle" class="text-white small-text">SAML / OIDC / Federated</text>
+                
+                <!-- Temenos Application (Dark Blue Box) -->
+                <rect x="650" y="220" width="200" height="100" class="dark-blue-box" rx="5"/>
+                <text x="750" y="260" text-anchor="middle" class="text-white title-text">Temenos</text>
+                <text x="750" y="285" text-anchor="middle" class="text-white title-text">Application</text>
+                
+                <!-- Temenos Security (Teal Container) -->
+                <rect x="950" y="180" width="300" height="180" class="teal-container" rx="5"/>
+                <text x="1100" y="210" text-anchor="middle" class="text-white title-text">Temenos Security</text>
+                
+                <!-- Auth Filter (Teal Box inside Temenos Security) -->
+                <rect x="970" y="230" width="260" height="50" class="teal-box" rx="5"/>
+                <text x="1100" y="260" text-anchor="middle" class="text-white title-text">Auth Filter</text>
+                
+                <!-- Security Token Validation (Teal Box inside Temenos Security) -->
+                <rect x="970" y="300" width="260" height="50" class="teal-box" rx="5"/>
+                <text x="1100" y="325" text-anchor="middle" class="text-white small-text">Security Token Validation</text>
+                <text x="1100" y="340" text-anchor="middle" class="text-white small-text">SAML / OIDC / FS</text>
+                
+                <!-- Arrows - All Red, connecting to borders -->
+                
+                <!-- UI Configuration to Keycloak (from bottom border to top border) -->
+                <line x1="150" y1="180" x2="150" y2="220" class="arrow-red"/>
+                
+                <!-- Keycloak to Authentication Service (from right border to left border) -->
+                <line x1="250" y1="270" x2="350" y2="270" class="arrow-red"/>
+                <text x="300" y="265" text-anchor="middle" class="text-black small-text">Identity &amp; Attributes</text>
+                
+                <!-- Authentication Service to Temenos Application (from right border to left border) -->
+                <line x1="570" y1="270" x2="650" y2="270" class="arrow-red"/>
+                <text x="610" y="265" text-anchor="middle" class="text-black small-text">Security Token</text>
+                
+                <!-- Temenos Application to Auth Filter (from right border to left border of Temenos Security container) -->
+                <line x1="850" y1="270" x2="950" y2="255" class="arrow-red"/>
+                <text x="900" y="260" text-anchor="middle" class="text-black small-text">Security Token</text>
+                
+                <!-- Auth Filter to Security Token Validation (from bottom border to top border) -->
+                <line x1="1100" y1="280" x2="1100" y2="300" class="arrow-red"/>
+                
+                <!-- Security Token Validation back to Temenos Application (from left border of Temenos Security to right border of Temenos Application) -->
+                <line x1="950" y1="325" x2="850" y2="270" class="arrow-red"/>
+                <text x="900" y="300" text-anchor="middle" class="text-black small-text">Identity &amp; Attributes</text>
+            </svg>
+        </div>
+    </div>
+</body>
+</html>
+

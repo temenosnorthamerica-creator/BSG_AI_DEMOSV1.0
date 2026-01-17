@@ -1,0 +1,18 @@
+{
+    "header": {},
+    "body": {
+        "customerId": "{{customerId}}",
+        "accountType": "{{accountType}}",
+        "currencyId": "{{currency}}",
+        "branchId": "{{branchCode}}",
+        "productId": "{{productCode}}",
+        "openingDate": "{{openedDate}}",
+        "initialDeposit": {
+            "amount": "{{balance.available}}"
+        },
+        "interestDetails": {
+            "rate": "{{interest.rate}}",
+            "rateType": "{{interest.rateType}}"
+        }
+    }
+}

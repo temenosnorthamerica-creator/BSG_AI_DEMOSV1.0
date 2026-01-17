@@ -1,0 +1,71 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+  background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+  color: $white;
+  padding: $spacing-4 0;
+  box-shadow: $shadow-xl;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container {
+  @include container;
+  @include flex-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  color: $white;
+  text-decoration: none;
+  transition: opacity $transition-fast;
+
+  &:hover {
+    opacity: 0.9;
+    color: $white;
+  }
+}
+
+.logoIcon {
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.logoText {
+  font-size: $font-size-xl;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+
+  @include mobile {
+    font-size: $font-size-lg;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: $spacing-6;
+}
+
+.navLink {
+  color: rgba($white, 0.9);
+  text-decoration: none;
+  font-weight: 500;
+  padding: $spacing-2 $spacing-3;
+  border-radius: $radius-md;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: $white;
+    background: rgba($white, 0.1);
+  }
+}

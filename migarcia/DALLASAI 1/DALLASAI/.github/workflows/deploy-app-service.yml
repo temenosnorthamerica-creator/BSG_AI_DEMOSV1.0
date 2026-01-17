@@ -1,0 +1,501 @@
+name: Deploy to Azure App Service
+
+on:
+  push:
+    branches:
+      - develop
+  workflow_dispatch:
+
+env:
+  AZURE_WEBAPP_NAME: bsg-demo-platform-app
+  AZURE_RESOURCE_GROUP: bsg-demo-platform
+  PYTHON_VERSION: '3.11'
+  NODE_VERSION: '20'
+
+jobs:
+  test-backend:
+    name: Test Backend
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          cache-dependency-path: backend/requirements.txt
+      
+      - name: Install backend dependencies
+        working-directory: ./backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Test backend imports
+        working-directory: ./backend
+        run: |
+          echo "Testing critical imports..."
+          python -c "from app.main import app; print('✓ FastAPI app imports successfully')"
+          python -c "from app.core.config import settings; print('✓ Settings import successfully')"
+          echo "✓ All critical imports successful"
+      
+      - name: Validate backend structure
+        working-directory: ./backend
+        run: |
+          echo "Validating backend structure..."
+          [ -f "app/main.py" ] || (echo "✗ app/main.py not found" && exit 1)
+          [ -f "requirements.txt" ] || (echo "✗ requirements.txt not found" && exit 1)
+          [ -d "app/api" ] || (echo "✗ app/api directory not found" && exit 1)
+          echo "✓ Backend structure is valid"
+
+  test-frontend:
+    name: Test Frontend
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+      
+      - name: Install frontend dependencies
+        working-directory: ./frontend
+        run: npm ci
+      
+      - name: Type check frontend
+        working-directory: ./frontend
+        run: |
+          echo "Running TypeScript type check..."
+          npx tsc --noEmit || (echo "⚠ TypeScript errors found" && exit 1)
+          echo "✓ TypeScript type check passed"
+      
+      - name: Test frontend build
+        working-directory: ./frontend
+        run: |
+          echo "Testing frontend build..."
+          npm run build
+          echo "✓ Frontend build successful"
+      
+      - name: Validate frontend build output
+        working-directory: ./frontend
+        run: |
+          echo "Validating build output..."
+          [ -d "dist" ] || (echo "✗ dist directory not found" && exit 1)
+          [ -f "dist/index.html" ] || (echo "✗ dist/index.html not found" && exit 1)
+          echo "✓ Frontend build output is valid"
+
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    needs: [test-backend, test-frontend]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          cache-dependency-path: backend/requirements.txt
+      
+      - name: Install frontend dependencies
+        working-directory: ./frontend
+        run: npm ci
+      
+      - name: Build frontend
+        working-directory: ./frontend
+        run: npm run build
+        env:
+          VITE_API_URL: /api/v1
+          NODE_ENV: production
+      
+      - name: Install backend dependencies
+        working-directory: ./backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+        continue-on-error: false
+        id: azure-login
+      
+      - name: Install kubectl (for AKS namespace discovery)
+        run: |
+          # Install kubectl for AKS namespace discovery
+          # This is optional - the app will work without it, but namespace discovery won't work
+          if ! command -v kubectl &> /dev/null; then
+            echo "Installing kubectl..."
+            curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+            chmod +x kubectl
+            sudo mv kubectl /usr/local/bin/
+            kubectl version --client
+          else
+            echo "kubectl already installed"
+            kubectl version --client
+          fi
+        continue-on-error: true
+        id: install-kubectl
+      
+      - name: Copy frontend build to backend static
+        run: |
+          echo "Copying frontend build to backend static directory..."
+          mkdir -p backend/app/static
+          if [ -d "frontend/dist" ] && [ "$(ls -A frontend/dist)" ]; then
+            cp -r frontend/dist/* backend/app/static/
+            echo "✓ Frontend files copied successfully"
+            echo "Static directory contents:"
+            ls -la backend/app/static/ | head -20
+            if [ -f "backend/app/static/index.html" ]; then
+              echo "✓ index.html found in static directory"
+            else
+              echo "✗ ERROR: index.html not found in static directory!"
+              exit 1
+            fi
+          else
+            echo "✗ ERROR: frontend/dist directory is empty or doesn't exist!"
+            echo "Frontend build may have failed. Checking dist directory..."
+            ls -la frontend/dist/ || echo "dist directory does not exist"
+            exit 1
+          fi
+      
+      - name: Make startup script executable
+        run: |
+          echo "Making startup.sh executable..."
+          chmod +x backend/startup.sh
+          echo "✓ startup.sh is now executable"
+      
+      - name: Clean up unnecessary files
+        working-directory: ./backend
+        run: |
+          echo "Cleaning up unnecessary files to reduce package size..."
+          echo "Package size before cleanup:"
+          du -sh . || echo "Could not calculate size"
+          
+          # Remove test files (keep tests/ directory structure but remove actual test files outside app/)
+          find . -name "*test*.py" -not -path "./app/*" -not -path "./tests/*" -delete || true
+          
+          # Remove files that shouldn't be deployed
+          rm -rf scripts/ infrastructure/ uploads/ .pytest_cache/ .vscode/ .idea/ || true
+          
+          # Remove node_modules if accidentally copied
+          rm -rf node_modules/ || true
+          
+          # Remove Python cache files (but keep __pycache__ structure for faster startup)
+          find . -type f -name "*.pyc" -delete 2>/dev/null || true
+          find . -type f -name "*.pyo" -delete 2>/dev/null || true
+          find . -type f -name "*.log" -delete 2>/dev/null || true
+          
+          # Remove .git directories if any
+          find . -type d -name ".git" -exec rm -rf {} + 2>/dev/null || true
+          
+          # Remove large unnecessary files
+          find . -name "*.zip" -delete 2>/dev/null || true
+          find . -name "*.tar.gz" -delete 2>/dev/null || true
+          
+          echo "Package size after cleanup:"
+          du -sh . || echo "Could not calculate size"
+          echo "✓ Cleanup complete"
+      
+      - name: Verify requirements.txt exists
+        run: |
+          if [ ! -f "backend/requirements.txt" ]; then
+            echo "❌ ERROR: requirements.txt not found in backend directory"
+            exit 1
+          fi
+          echo "✓ requirements.txt found"
+          echo "First 20 lines of requirements.txt:"
+          head -20 backend/requirements.txt
+      
+      - name: Configure App Settings (Before Deployment)
+        run: |
+          echo "Configuring Azure App Service settings BEFORE deployment..."
+          
+          # Generate JWT secret if not provided
+          if [ -z "${{ secrets.JWT_SECRET_KEY }}" ]; then
+            echo "⚠ Warning: JWT_SECRET_KEY secret is not set. Generating a temporary one..."
+            TEMP_JWT_SECRET=$(python3 -c "import secrets; print(secrets.token_urlsafe(32))")
+          else
+            TEMP_JWT_SECRET="${{ secrets.JWT_SECRET_KEY }}"
+          fi
+          
+          # Set RAG_API_URL (use secret or default)
+          RAG_API_URL_VALUE="${{ secrets.RAG_API_URL }}"
+          if [ -z "$RAG_API_URL_VALUE" ]; then
+            RAG_API_URL_VALUE="https://tbsg.temenos.com"
+          fi
+          
+          # Set build settings FIRST so Azure can build during deployment
+          # Note: Azure App Service will auto-detect Python and install dependencies
+          echo "Setting build settings..."
+          az webapp config appsettings set \
+            --name ${{ env.AZURE_WEBAPP_NAME }} \
+            --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+            --settings \
+              SCM_DO_BUILD_DURING_DEPLOYMENT=true \
+              ENABLE_ORYX_BUILD=true \
+            --output none
+          
+          # Set other app settings
+          echo "Setting app settings..."
+          az webapp config appsettings set \
+            --name ${{ env.AZURE_WEBAPP_NAME }} \
+            --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+            --settings \
+              ENVIRONMENT=production \
+              DEBUG=False \
+              DATABASE_NAME=bsg_demo \
+              CORS_ORIGINS="*" \
+              JWT_SECRET_KEY="$TEMP_JWT_SECRET" \
+              RAG_API_URL="$RAG_API_URL_VALUE" \
+            --output none
+          
+          # Set secrets individually if they exist (to avoid exposing them in logs)
+          if [ -n "${{ secrets.DATABASE_URL }}" ]; then
+            echo "Setting DATABASE_URL..."
+            az webapp config appsettings set \
+              --name ${{ env.AZURE_WEBAPP_NAME }} \
+              --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+              --settings DATABASE_URL="${{ secrets.DATABASE_URL }}" \
+              --output none
+          else
+            echo "⚠ Warning: DATABASE_URL secret is not set. App may not work correctly."
+            echo "Please set DATABASE_URL in GitHub Secrets"
+          fi
+          
+          if [ -n "${{ secrets.RAG_JWT_TOKEN }}" ]; then
+            echo "Setting RAG_JWT_TOKEN..."
+            az webapp config appsettings set \
+              --name ${{ env.AZURE_WEBAPP_NAME }} \
+              --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+              --settings RAG_JWT_TOKEN="${{ secrets.RAG_JWT_TOKEN }}" \
+              --output none
+          else
+            echo "⚠ Warning: RAG_JWT_TOKEN secret is not set. RAG features will not work."
+          fi
+          
+          # Set startup command (with logging for better debugging)
+          # Azure App Service Linux: Use startup-file to point to startup.sh script
+          # The startup.sh script will be deployed to /home/site/wwwroot/startup.sh
+          echo "Setting startup file..."
+          az webapp config set \
+            --name ${{ env.AZURE_WEBAPP_NAME }} \
+            --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+            --startup-file "startup.sh" \
+            --output none
+          echo "✓ Startup file configured: startup.sh"
+          
+          # Verify startup command was set correctly
+          echo "Verifying startup command..."
+          VERIFIED_CMD=$(az webapp config show --name ${{ env.AZURE_WEBAPP_NAME }} --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --query appCommandLine -o tsv 2>/dev/null || echo "Not set")
+          echo "Verified startup command: '$VERIFIED_CMD'"
+          if [ -z "$VERIFIED_CMD" ] || [ "$VERIFIED_CMD" = "Not set" ] || [ "$VERIFIED_CMD" = "null" ]; then
+            echo "⚠ WARNING: Startup command may not be set correctly!"
+            echo "Note: Startup file should be 'startup.sh' in the deployment root"
+          fi
+          
+          # Enable Always On (critical for App Service to prevent sleep)
+          echo "Enabling Always On..."
+          az webapp config set \
+            --name ${{ env.AZURE_WEBAPP_NAME }} \
+            --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+            --always-on true \
+            --output none
+          
+          echo ""
+          echo "✓ App settings configured successfully"
+          echo ""
+          echo "Required GitHub Secrets Status:"
+          echo "  - DATABASE_URL: $([ -n "${{ secrets.DATABASE_URL }}" ] && echo "✓ Set" || echo "✗ Missing - REQUIRED")"
+          echo "  - RAG_JWT_TOKEN: $([ -n "${{ secrets.RAG_JWT_TOKEN }}" ] && echo "✓ Set" || echo "✗ Missing (RAG features disabled)")"
+          echo "  - RAG_API_URL: $([ -n "${{ secrets.RAG_API_URL }}" ] && echo "✓ Set" || echo "⚠ Using default: https://tbsg.temenos.com")"
+          echo "  - JWT_SECRET_KEY: $([ -n "${{ secrets.JWT_SECRET_KEY }}" ] && echo "✓ Set" || echo "⚠ Generated temporary key")"
+          echo ""
+          echo "To set secrets: Repository → Settings → Secrets and variables → Actions → New repository secret"
+          echo "See ENVIRONMENT_VARIABLES.md for details"
+          echo ""
+          echo "Note: kubectl may not be available in Azure App Service. Namespace discovery will work if kubectl is installed, otherwise it will be skipped gracefully."
+      
+      # Note: Managed Identity and Python version moved to AFTER deployment
+      # to avoid SCM container restart conflicts
+      
+      - name: Check package size before deployment
+        run: |
+          echo "Checking package size..."
+          cd backend
+          PACKAGE_SIZE=$(du -sh . | cut -f1)
+          FILE_COUNT=$(find . -type f | wc -l)
+          echo "Package size: $PACKAGE_SIZE"
+          echo "File count: $FILE_COUNT"
+          echo ""
+          echo "Largest directories:"
+          du -sh */ 2>/dev/null | sort -hr | head -10
+          echo ""
+          echo "Checking if static directory exists and size:"
+          if [ -d "app/static" ]; then
+            STATIC_SIZE=$(du -sh app/static | cut -f1)
+            STATIC_FILES=$(find app/static -type f | wc -l)
+            echo "  Static directory size: $STATIC_SIZE ($STATIC_FILES files)"
+          else
+            echo "  ⚠ Static directory not found!"
+          fi
+      
+      - name: Wait and verify SCM is ready (avoid restart conflicts)
+        run: |
+          echo "Waiting 60 seconds and verifying SCM container is ready..."
+          echo ""
+          echo "⚠ App settings configuration can restart the SCM container."
+          echo "   We need to wait for it to fully restart before deploying."
+          echo "   Increasing wait time to 60 seconds to avoid deployment conflicts."
+          sleep 60
+          
+          # Try to verify SCM is accessible with more retries
+          echo "Verifying SCM container is accessible..."
+          SCM_URL="https://${{ env.AZURE_WEBAPP_NAME }}.scm.azurewebsites.net"
+          MAX_RETRIES=10
+          RETRY_DELAY=10
+          SCM_READY=false
+          
+          for i in $(seq 1 $MAX_RETRIES); do
+            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 $SCM_URL || echo "000")
+            if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "401" ] || [ "$HTTP_CODE" = "403" ]; then
+              echo "✓ SCM container is responding (HTTP $HTTP_CODE)"
+              SCM_READY=true
+              break
+            else
+              echo "SCM check attempt $i/$MAX_RETRIES returned HTTP $HTTP_CODE, waiting ${RETRY_DELAY} more seconds..."
+              if [ $i -lt $MAX_RETRIES ]; then
+                sleep $RETRY_DELAY
+              fi
+            fi
+          done
+          
+          if [ "$SCM_READY" = false ]; then
+            echo "⚠ WARNING: SCM container may not be fully ready, but proceeding with deployment"
+            echo "   If deployment fails, wait longer and retry"
+          fi
+          
+          echo ""
+          echo "✓ Ready to deploy"
+      
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          package: ./backend
+          startup-command: "bash startup.sh"
+        timeout-minutes: 45
+        continue-on-error: false
+        id: deploy-backend
+      
+      - name: Health Check
+        run: |
+          WEBAPP_URL="https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
+          echo "Waiting for app to start (allowing 90 seconds for first-time startup)..."
+          echo "Note: First deployment can take longer due to package installation and startup."
+          sleep 90
+          
+          # First check root endpoint (simplest check)
+          echo "Checking root endpoint..."
+          ROOT_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 $WEBAPP_URL/ || echo "000")
+          if [ "$ROOT_CODE" = "200" ]; then
+            echo "✓ Root endpoint is responding (HTTP $ROOT_CODE)"
+            curl -s --max-time 15 $WEBAPP_URL/ | head -5
+          else
+            echo "⚠ Root endpoint returned HTTP $ROOT_CODE (this is OK if static files aren't deployed)"
+          fi
+          
+          # Check liveness endpoint (doesn't require DB)
+          echo ""
+          echo "Checking liveness endpoint..."
+          MAX_RETRIES=12
+          RETRY_DELAY=5
+          LIVENESS_PASSED=false
+          
+          for i in $(seq 1 $MAX_RETRIES); do
+            echo "Liveness check attempt $i/$MAX_RETRIES..."
+            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 $WEBAPP_URL/api/v1/live || echo "000")
+            if [ "$HTTP_CODE" = "200" ]; then
+              echo "✓ Liveness check passed! (HTTP $HTTP_CODE)"
+              LIVENESS_PASSED=true
+              break
+            else
+              echo "Liveness check returned HTTP $HTTP_CODE"
+              if [ $i -lt $MAX_RETRIES ]; then
+                echo "Retrying in $RETRY_DELAY seconds..."
+                sleep $RETRY_DELAY
+              fi
+            fi
+          done
+          
+          if [ "$LIVENESS_PASSED" = false ]; then
+            echo ""
+            echo "❌ Liveness check failed after $MAX_RETRIES attempts"
+            echo "Checking app status..."
+            az webapp show --name ${{ env.AZURE_WEBAPP_NAME }} --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --query "{state: state, defaultHostName: defaultHostName, httpsOnly: httpsOnly}" || true
+            echo ""
+            echo "Checking recent logs..."
+            echo "Fetching last 100 log lines..."
+            az webapp log download --name ${{ env.AZURE_WEBAPP_NAME }} --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --log-file /tmp/app-logs.zip 2>&1 || echo "Could not download logs"
+            if [ -f /tmp/app-logs.zip ]; then
+              unzip -p /tmp/app-logs.zip 2>/dev/null | tail -100 || echo "Could not extract logs"
+            fi
+            echo ""
+            echo "Checking startup command..."
+            az webapp config show --name ${{ env.AZURE_WEBAPP_NAME }} --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --query appCommandLine || true
+            echo ""
+            echo "Troubleshooting steps:"
+            echo "1. Check App Service logs: az webapp log tail --name ${{ env.AZURE_WEBAPP_NAME }} --resource-group ${{ env.AZURE_RESOURCE_GROUP }}"
+            echo "2. Verify startup command: az webapp config show --name ${{ env.AZURE_WEBAPP_NAME }} --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --query appCommandLine"
+            echo "3. Check Always On: az webapp config show --name ${{ env.AZURE_WEBAPP_NAME }} --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --query alwaysOn"
+            echo "4. Test manually: curl $WEBAPP_URL/api/v1/live"
+            exit 1
+          fi
+          
+          # Now check full health endpoint (optional - doesn't fail deployment)
+          echo ""
+          echo "Checking full health endpoint..."
+          HEALTH_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 $WEBAPP_URL/api/v1/health || echo "000")
+          if [ "$HEALTH_CODE" = "200" ]; then
+            echo "✓ Full health check passed! (HTTP $HEALTH_CODE)"
+            curl -s --max-time 15 $WEBAPP_URL/api/v1/health | head -10
+          else
+            echo "⚠ Full health check returned HTTP $HEALTH_CODE"
+            echo "This may indicate database connectivity issues, but app is running"
+            echo "Liveness endpoint confirms the app is alive"
+          fi
+          
+          echo ""
+          echo "✓ Deployment successful!"
+      
+      - name: Deployment Summary
+        run: |
+          WEBAPP_URL="https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
+          echo "## Deployment Complete 🚀" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Frontend URL**: $WEBAPP_URL" >> $GITHUB_STEP_SUMMARY
+          echo "**Backend API**: $WEBAPP_URL/api/v1" >> $GITHUB_STEP_SUMMARY
+          echo "**API Docs**: $WEBAPP_URL/docs" >> $GITHUB_STEP_SUMMARY
+          echo "**Health Check**: $WEBAPP_URL/api/v1/health" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🌐 Live Application" >> $GITHUB_STEP_SUMMARY
+          echo "Your application is now live at: **$WEBAPP_URL**" >> $GITHUB_STEP_SUMMARY

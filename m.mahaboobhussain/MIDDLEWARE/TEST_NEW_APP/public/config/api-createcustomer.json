@@ -1,0 +1,18 @@
+{
+    "header": {},
+    "body": {
+        "givenName": "{{$randomFirstName}}",
+        "middleName": "A",
+        "lastName": "{{$randomLastName}}",
+        "nationalityId": "US",
+        "dateOfBirth": "1983-05-01",
+        "sectorId": 1001,
+        "communicationDevices": [
+            {
+                "emailId": "test@test.com"
+            }
+        ],
+        "languageId": 1,
+        "addressLine1":"asasa"
+    }
+}

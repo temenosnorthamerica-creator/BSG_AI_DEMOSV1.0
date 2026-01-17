@@ -1,0 +1,90 @@
+{
+  "projectName": "AmrBSGBankEcoIntDemo",
+  "description": "Americas BSG Bank Ecosystem Integration Demo - A unified platform showcasing Temenos banking integration capabilities",
+  "landingPage": {
+    "name": "Landing Page",
+    "owner": "brian.grundleger@temenos.com",
+    "path": "brian.grundleger/BG_DallasAiProjects/DallasAiProjects",
+    "port": 3000,
+    "type": "frontend",
+    "framework": "React/Vite",
+    "startCommand": "npm run dev"
+  },
+  "projects": [
+    {
+      "id": "crm-banking-simulator",
+      "name": "CRM Banking Simulator",
+      "owner": "alwin@temenos.com",
+      "path": "alwin/crm-banking-simulator_v2/crm-banking-simulator_v2",
+      "port": 3001,
+      "type": "frontend",
+      "framework": "React/Vite/TypeScript",
+      "startCommand": "npm run dev",
+      "description": "Customer relationship management banking simulator for Temenos integration demos"
+    },
+    {
+      "id": "bsg-demo-platform",
+      "name": "BSG Demo Platform",
+      "owner": "migarcia@temenos.com",
+      "frontendPath": "migarcia/DALLASAI 1/DALLASAI/frontend",
+      "backendPath": "migarcia/DALLASAI 1/DALLASAI/backend",
+      "frontendPort": 3002,
+      "backendPort": 8002,
+      "type": "fullstack",
+      "frontendFramework": "React/Vite/TypeScript",
+      "backendFramework": "FastAPI/Python",
+      "frontendStartCommand": "npm run dev",
+      "backendStartCommand": "python -m uvicorn app.main:app --host 0.0.0.0 --port 8002 --reload",
+      "description": "Full-stack BSG demo platform with React frontend and FastAPI backend"
+    },
+    {
+      "id": "debitcards-demo",
+      "name": "Debit Cards Demo",
+      "owner": "sweekruth.somaraju@temenos.com",
+      "frontendPath": "sweekruth.somaraju/debitcards/debitcards/frontend",
+      "backendPath": "sweekruth.somaraju/debitcards/debitcards/backend",
+      "frontendPort": 3003,
+      "backendPort": 8003,
+      "type": "fullstack",
+      "frontendFramework": "React/Vite/TypeScript",
+      "backendFramework": "Python/FastAPI",
+      "frontendStartCommand": "npm run dev",
+      "backendStartCommand": "python -m uvicorn app.main:app --host 0.0.0.0 --port 8003 --reload",
+      "description": "Debit card management and transaction demonstration application"
+    },
+    {
+      "id": "lms-applicant-portal",
+      "name": "LMS Applicant Portal",
+      "owner": "mmoore@temenos.com",
+      "path": "mmoore/lms-applicant-portal/lms-applicant-portal",
+      "port": 3004,
+      "type": "frontend",
+      "framework": "React/Vite/TypeScript",
+      "startCommand": "npm run dev",
+      "description": "Loan Management System applicant portal for loan origination and management"
+    },
+    {
+      "id": "middleware-demo",
+      "name": "Middleware Integration",
+      "owner": "m.mahaboobhussain@temenos.com",
+      "path": "m.mahaboobhussain/MIDDLEWARE/TEST_NEW_APP",
+      "frontendPort": 3005,
+      "backendPort": 8005,
+      "type": "fullstack",
+      "framework": "React/Vite + Express",
+      "startCommand": "npm run start",
+      "description": "Azure Event Hubs middleware integration demo with React frontend and Express backend"
+    }
+  ],
+  "portAssignments": {
+    "landingPage": 3000,
+    "crm-banking-simulator": 3001,
+    "bsg-demo-platform-frontend": 3002,
+    "bsg-demo-platform-backend": 8002,
+    "debitcards-frontend": 3003,
+    "debitcards-backend": 8003,
+    "lms-applicant-portal": 3004,
+    "middleware-frontend": 3005,
+    "middleware-backend": 8005
+  }
+}

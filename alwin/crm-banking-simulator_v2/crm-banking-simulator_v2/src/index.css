@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #F8FAFC;
+  color: #2D3748;
+}
+
+.dark body,
+body.dark-theme {
+  background-color: #0f172a;
+  color: #E2E8F0;
+}
+
+/* Scrollbar Styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #4A5568 #F8FAFC;
+}
+
+.dark *,
+.dark-theme * {
+  scrollbar-color: #4A5568 #1e293b;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+
+.dark *::-webkit-scrollbar-track,
+.dark-theme *::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #4A5568;
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #2D3748;
+}
+
+/* Custom Components */
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 text-gray-700 px-6 py-2 rounded-lg border border-gray-200 hover:bg-gray-200 transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-white dark:bg-[#1e293b] rounded-lg shadow-sm border border-gray-200 dark:border-transparent p-6 transition-all duration-300 hover:shadow-md;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all duration-200 dark:bg-[#1e293b] dark:border-gray-600 dark:text-gray-200;
+  }
+
+  .tab-active {
+    @apply border-b-2 border-primary bg-gray-50 dark:bg-gray-700 text-primary dark:text-white;
+  }
+
+  .tab-inactive {
+    @apply border-b-2 border-transparent text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700;
+  }
+}
+
+/* Journey Step Connector */
+.journey-connector {
+  position: relative;
+}
+
+.journey-connector::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -24px;
+  width: 2px;
+  height: 24px;
+  background: linear-gradient(to bottom, #283054, #00A3E0);
+}
+
+/* Pulse Animation for Active Steps */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+}
+
+.pulse-active {
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+/* API Flow Animation */
+@keyframes flow-right {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+}
+
+.flow-indicator {
+  animation: flow-right 1.5s ease-in-out infinite;
+}

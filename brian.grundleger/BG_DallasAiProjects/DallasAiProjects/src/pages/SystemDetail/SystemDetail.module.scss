@@ -1,0 +1,132 @@
+@use 'sass:color';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  flex: 1;
+}
+
+.header {
+  background: linear-gradient(135deg, var(--system-color, $primary-color) 0%, color.adjust($primary-color, $lightness: -10%) 100%);
+  color: $white;
+  padding: $spacing-8 $container-padding $spacing-12;
+
+  @include mobile {
+    padding: $spacing-6 $container-padding $spacing-8;
+  }
+}
+
+.headerContent {
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-2;
+  color: rgba($white, 0.8);
+  text-decoration: none;
+  font-size: $font-size-sm;
+  margin-bottom: $spacing-6;
+  padding: $spacing-2 $spacing-3;
+  margin-left: -$spacing-3;
+  border-radius: $radius-md;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: $white;
+    background: rgba($white, 0.1);
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.title {
+  font-size: $font-size-3xl;
+  font-weight: 700;
+  margin-bottom: $spacing-3;
+  color: $white;
+
+  @include mobile {
+    font-size: $font-size-2xl;
+  }
+}
+
+.description {
+  font-size: $font-size-lg;
+  opacity: 0.9;
+  margin: 0;
+  max-width: 700px;
+
+  @include mobile {
+    font-size: $font-size-base;
+  }
+}
+
+.content {
+  padding: $spacing-10 0 $spacing-16;
+  margin-top: -$spacing-6;
+
+  @include mobile {
+    padding: $spacing-6 0 $spacing-10;
+    margin-top: -$spacing-4;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.overview {
+  background: $light-surface;
+  border-radius: $radius-lg;
+  padding: $spacing-6;
+  margin-bottom: $spacing-8;
+  box-shadow: $shadow-sm;
+  border: 1px solid $gray-200;
+  transition: all $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: 700;
+  color: $text-primary;
+  margin-bottom: $spacing-4;
+}
+
+.overviewText {
+  color: $text-secondary;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-8;
+
+  @include desktop-up {
+    grid-template-columns: 1.5fr 1fr;
+    align-items: start;
+  }
+}
+
+.mainColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+}
+
+.sideColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+}

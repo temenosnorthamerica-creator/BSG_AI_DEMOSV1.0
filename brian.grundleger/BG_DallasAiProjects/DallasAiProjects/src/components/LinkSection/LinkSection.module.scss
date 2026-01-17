@@ -1,0 +1,108 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  background: $light-surface;
+  border-radius: $radius-lg;
+  padding: $spacing-6;
+  box-shadow: $shadow-sm;
+  border: 1px solid $gray-200;
+  transition: all $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  font-size: $font-size-lg;
+  font-weight: 700;
+  color: $text-primary;
+  margin-bottom: $spacing-5;
+  padding-bottom: $spacing-4;
+  border-bottom: 1px solid $gray-200;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: $gray-500;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  &:not(:last-child) {
+    margin-bottom: $spacing-3;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-4;
+  padding: $spacing-4;
+  background: $gray-50;
+  border-radius: $radius-md;
+  text-decoration: none;
+  border: 1px solid $gray-100;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $white;
+    border-color: var(--link-color, $accent-color);
+    box-shadow: $shadow-sm;
+
+    .arrow {
+      transform: translateX(4px);
+      color: var(--link-color, $accent-color);
+    }
+
+    .linkTitle {
+      color: var(--link-color, $accent-color);
+    }
+  }
+}
+
+.linkContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.linkTitle {
+  display: block;
+  font-weight: 500;
+  color: $text-primary;
+  transition: color $transition-fast;
+}
+
+.linkDescription {
+  display: block;
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  margin-top: $spacing-1;
+}
+
+.arrow {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: $gray-400;
+  transition: all $transition-fast;
+}

@@ -1,0 +1,5 @@
+export { CRMIntegrationDiagram } from './CRMIntegrationDiagram'
+export { BSGPlatformDiagram } from './BSGPlatformDiagram'
+export { DebitCardsDiagram } from './DebitCardsDiagram'
+export { LMSDiagram } from './LMSDiagram'
+export { MiddlewareDiagram } from './MiddlewareDiagram'
