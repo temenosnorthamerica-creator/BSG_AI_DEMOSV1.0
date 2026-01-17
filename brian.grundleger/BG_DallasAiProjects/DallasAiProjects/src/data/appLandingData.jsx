@@ -602,6 +602,124 @@ export const appLandingConfigs = {
         ]
       }
     ]
+  },
+
+  'credit-cards-demo': {
+    navItems: [
+      {
+        id: 'overview',
+        label: 'Overview',
+        icon: Info,
+        title: 'Credit Cards Demo Overview',
+        content: (
+          <div className="space-y-4">
+            <p>
+              The Credit Cards Demo application showcases comprehensive credit card management
+              capabilities including card products, rewards programs, credit limit management,
+              and statement processing.
+            </p>
+            <p>
+              This full-stack application demonstrates how credit card services integrate with
+              core banking systems, featuring a modern React frontend and a Python FastAPI backend.
+            </p>
+          </div>
+        ),
+        features: [
+          'Credit card product management',
+          'Rewards and loyalty programs',
+          'Credit limit adjustments',
+          'Statement generation',
+          'Payment processing',
+          'Credit bureau integration'
+        ],
+        technicalDetails: [
+          { label: 'Frontend', value: 'React + Vite + TypeScript' },
+          { label: 'Backend', value: 'FastAPI (Python)' },
+          { label: 'Database', value: 'PostgreSQL' },
+          { label: 'Ports', value: '3006 / 8006' }
+        ]
+      },
+      {
+        id: 'features',
+        label: 'Features',
+        icon: CreditCard,
+        title: 'Credit Card Features',
+        content: (
+          <div className="space-y-4">
+            <p>
+              Explore the complete lifecycle of credit card management from application
+              to rewards redemption.
+            </p>
+          </div>
+        ),
+        features: [
+          'New card applications',
+          'Credit limit management',
+          'Rewards points accrual',
+          'Points redemption',
+          'Statement viewing',
+          'Payment scheduling',
+          'Spending analytics',
+          'Fraud alerts'
+        ]
+      },
+      {
+        id: 'integration',
+        label: 'Integration',
+        icon: Code,
+        title: 'API Integration',
+        content: (
+          <div className="space-y-4">
+            <p>
+              The Credit Cards Demo integrates with Temenos credit card APIs and third-party
+              services for rewards and credit bureau reporting.
+            </p>
+            <div className="bg-slate-700/30 rounded-lg p-4 mt-4">
+              <p className="text-sm text-slate-300 mb-2">Key Integrations:</p>
+              <ul className="text-sm text-slate-400 list-disc list-inside space-y-1">
+                <li>Credit Card Products API</li>
+                <li>Rewards Program API</li>
+                <li>Credit Bureau Reporting</li>
+                <li>Statement Generation API</li>
+              </ul>
+            </div>
+          </div>
+        ),
+        features: [
+          'REST API integration',
+          'Third-party rewards partners',
+          'Credit bureau connectivity',
+          'Real-time authorization'
+        ],
+        technicalDetails: [
+          { label: 'API Style', value: 'REST' },
+          { label: 'Format', value: 'JSON' },
+          { label: 'Auth', value: 'OAuth 2.0' },
+          { label: 'Docs', value: '/docs' }
+        ]
+      },
+      {
+        id: 'config',
+        label: 'Configuration',
+        icon: Settings,
+        title: 'Configuration Options',
+        content: (
+          <div className="space-y-4">
+            <p>
+              The Credit Cards Demo can be configured to support different card products,
+              reward structures, and integration endpoints.
+            </p>
+          </div>
+        ),
+        features: [
+          'Card product configuration',
+          'Rewards program setup',
+          'Credit limit policies',
+          'Statement templates',
+          'Environment switching'
+        ]
+      }
+    ]
   }
 }
 
