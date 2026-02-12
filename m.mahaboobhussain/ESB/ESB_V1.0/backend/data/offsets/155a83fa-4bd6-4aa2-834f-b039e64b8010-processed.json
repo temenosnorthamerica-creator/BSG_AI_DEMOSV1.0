@@ -1,0 +1,1016 @@
+[
+  {
+    "id": "593ed42d-eb5b-40e2-b936-49faa0dce0ac",
+    "configId": "155a83fa-4bd6-4aa2-834f-b039e64b8010",
+    "configName": "cloudevent-createaccount_to_api-createaccount",
+    "partitionId": "0",
+    "offset": "2208",
+    "sequenceNumber": 3,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "b65405fb-8647-460f-87f9-b4e88bb7e0a0",
+      "type": "com.bank.checking-account.created",
+      "source": "/core-banking/account-service",
+      "subject": "account/ACC-987654321",
+      "time": "2026-02-12T01:25:43.240Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "customerIds": [
+          {
+            "customerId": "750326"
+          }
+        ],
+        "activityId": "ACCOUNTS-NEW-ARRANGEMENT",
+        "currencyId": "USD",
+        "productId": "CONS.CHECKING",
+        "officers": {
+          "primaryOfficer": 3
+        },
+        "balance": {
+          "shortTitle": "Investor Checking Account",
+          "fdicClassCode": 3,
+          "fdicOwnershipCode": "S",
+          "purposeCode": 5,
+          "accountType": "CHECKING"
+        },
+        "statement": {
+          "statement1Frequency": "M0131",
+          "attributeNamevalue": "Print.Option",
+          "fqu1PrintAttrValue1": "ESTATEMENT"
+        },
+        "schedule": [
+          {
+            "payment": [
+              {
+                "paymentType": "INTEREST",
+                "paymentMethod": "DUE"
+              },
+              {
+                "paymentType": "CHARGE",
+                "paymentMethod": "DUE"
+              },
+              {
+                "paymentType": "PERIODICCHARGE",
+                "paymentMethod": "DUE"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12549",
+              "description": "Bucket Override O-12549",
+              "id": "AA.INT.SRC.TYP.AND.PAY.MET.MISMATCH",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "customerIds": [
+          {
+            "customerId": "750326"
+          }
+        ],
+        "activityId": "ACCOUNTS-NEW-ARRANGEMENT",
+        "currencyId": "USD",
+        "productId": "CONS.CHECKING",
+        "officers": {
+          "primaryOfficer": 3
+        },
+        "balance": {
+          "shortTitle": "Investor Checking Account",
+          "fdicClassCode": 3,
+          "fdicOwnershipCode": "S",
+          "purposeCode": 5,
+          "accountType": "CHECKING"
+        },
+        "statement": {
+          "statement1Frequency": "M0131",
+          "attributeNamevalue": "Print.Option",
+          "fqu1PrintAttrValue1": "ESTATEMENT"
+        },
+        "schedule": [
+          {
+            "payment": [
+              {
+                "paymentType": "INTEREST",
+                "paymentMethod": "DUE"
+              },
+              {
+                "paymentType": "CHARGE",
+                "paymentMethod": "DUE"
+              },
+              {
+                "paymentType": "PERIODICCHARGE",
+                "paymentMethod": "DUE"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "3361ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 2988,
+            "responseParse_time": 6,
+            "requestParse_time": 7
+          },
+          "aaaId": "AAACT251071W70TD6C",
+          "id": "AA25107DB2YS",
+          "status": "success"
+        },
+        "body": {
+          "arrangementActivity": {
+            "arrangementId": "AA25107DB2YS",
+            "activityId": "ACCOUNTS-NEW-ARRANGEMENT",
+            "productId": "CONS.CHECKING",
+            "customerIds": [
+              {
+                "customerId": "750326",
+                "customerRole": "OWNER"
+              }
+            ],
+            "overrides": [
+              {
+                "override": "AA.INT.SRC.TYP.AND.PAY.MET.MISMATCH}Auto:Payment Method defined for the Interest property was mismatched with its Source type"
+              }
+            ],
+            "currencyId": "USD",
+            "effectiveDate": "2025-04-17",
+            "properties": [
+              {
+                "fields": [
+                  {
+                    "fieldName": "PAYMENT.METHOD:1",
+                    "fieldValue": "DUE"
+                  },
+                  {
+                    "fieldName": "PAYMENT.TYPE:1",
+                    "fieldValue": "INTEREST"
+                  },
+                  {
+                    "fieldName": "PAYMENT.METHOD:2",
+                    "fieldValue": "DUE"
+                  },
+                  {
+                    "fieldName": "PAYMENT.TYPE:2",
+                    "fieldValue": "CHARGE"
+                  },
+                  {
+                    "fieldName": "PAYMENT.METHOD:3",
+                    "fieldValue": "DUE"
+                  },
+                  {
+                    "fieldName": "PAYMENT.TYPE:3",
+                    "fieldValue": "PERIODICCHARGE"
+                  }
+                ],
+                "propertyId": "SCHEDULE"
+              },
+              {
+                "fields": [
+                  {
+                    "fieldName": "PURPOSE.CODE:1:1",
+                    "fieldValue": "5"
+                  },
+                  {
+                    "fieldName": "ACCOUNT.TITLE.1:1:1",
+                    "fieldValue": "CHECKING"
+                  },
+                  {
+                    "fieldName": "OWNERSHIP.CODE:1:1",
+                    "fieldValue": "S"
+                  }
+                ],
+                "propertyId": "BALANCE"
+              },
+              {
+                "fields": [
+                  {
+                    "fieldName": "PRIMARY.OFFICER:1:1",
+                    "fieldValue": "3"
+                  }
+                ],
+                "propertyId": "OFFICERS"
+              }
+            ]
+          },
+          "activities": {
+            "newAccountArrangement": {
+              "activity": "ACCOUNTS-NEW-ARRANGEMENT",
+              "transactionStatus": "Live",
+              "id": "AAACT251071W70TD6C"
+            }
+          },
+          "properties": {
+            "stopcharge": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107DB2YS-STOPCHARGE-20250417",
+                "status": "success"
+              }
+            },
+            "crinterest": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107DB2YS-CRINTEREST-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "interest": [
+                  {
+                    "effectiveRate": "0.5",
+                    "fixedRate": 0.5
+                  }
+                ],
+                "accrualRule": "BOTH",
+                "dayBasis": "C",
+                "rateTierType": "SINGLE"
+              }
+            },
+            "eligibility": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107DB2YS-ELIGIBILITY-20250417",
+                "status": "success"
+              }
+            },
+            "estmtcheckfrimg": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-ESTMTCHECKFRIMG-20250417",
+                "status": "success"
+              },
+              "body": {
+                "tiers": [
+                  {
+                    "calculationType": "UNIT",
+                    "tierType": "LEVEL",
+                    "chgAmount": "0.00"
+                  }
+                ],
+                "chargeId": "CALCULATED",
+                "tierGroups": "LEVELS"
+              }
+            },
+            "settlement": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-SETTLEMENT-20250417",
+                "status": "success"
+              },
+              "body": {
+                "payin": [
+                  {
+                    "payinType": [
+                      {
+                        "payinPaymentType": "PAYOFF$CURRENT"
+                      }
+                    ],
+                    "payinSettlement": "NO",
+                    "payinSettlementActivity": "ACCOUNTS-CREDIT-ARRANGEMENT",
+                    "payinRule": "FULL"
+                  }
+                ],
+                "payout": [
+                  {
+                    "payoutSettlementActivity": "ACCOUNTS-APPLYPAYMENT-ACCOUNTS.PAYOUT",
+                    "payoutClass": [
+                      {
+                        "payoutPropertyClass": "INTEREST"
+                      },
+                      {
+                        "payoutPropertyClass": "PAYOFF"
+                      }
+                    ],
+                    "property": [
+                      {
+                        "payoutActivity": "ACCOUNTS-CREDIT-ARRANGEMENT"
+                      }
+                    ],
+                    "payoutSettlement": "NO"
+                  }
+                ]
+              }
+            },
+            "balance": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107DB2YS-BALANCE-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "accountId": "30014103",
+                "alternateIds": [
+                  {
+                    "alternateIdType": "LEGACY"
+                  },
+                  {
+                    "alternateIdType": "T24.IBAN"
+                  },
+                  {
+                    "alternateIdType": "PREV.IBAN"
+                  },
+                  {
+                    "alternateIdType": "HOLDER.REF"
+                  },
+                  {
+                    "alternateIdType": "CONN.REF"
+                  },
+                  {
+                    "alternateIdType": "CBU"
+                  },
+                  {
+                    "alternateIdType": "RIB"
+                  },
+                  {
+                    "alternateIdType": "ISIN"
+                  },
+                  {
+                    "alternateIdType": "CUSIP"
+                  },
+                  {
+                    "alternateIdType": "BBAN"
+                  }
+                ],
+                "accountType": "CHECKING",
+                "purposeCode": "5",
+                "fdicOwnershipCode": "S",
+                "reserveSweepReference": "BASICCHK",
+                "anniversary": "0101"
+              }
+            },
+            "nsfreversalfees": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107DB2YS-NSFREVERSALFEES-20250417",
+                "status": "success"
+              }
+            },
+            "cfedwht": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107DB2YS-CFEDWHT-20250417",
+                "status": "success"
+              }
+            },
+            "activityCharges": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-ACTIVITY.CHARGES-20250417",
+                "status": "success"
+              },
+              "body": {
+                "activities": [
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  },
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  },
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  },
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  },
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  },
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  },
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  },
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  },
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            "nsffees": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-NSFFEES-20250417",
+                "status": "success"
+              },
+              "body": {
+                "chargeId": "FIXED",
+                "fixedAmount": "40.00"
+              }
+            },
+            "dormancy": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107DB2YS-DORMANCY-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "dormancies": [
+                  {
+                    "period": "9M",
+                    "status": "INACTIVE"
+                  },
+                  {
+                    "chargeFrequency": "e0Y e1M e0W o31D e0F",
+                    "period": "3M",
+                    "status": "DORMANT"
+                  },
+                  {
+                    "period": "100Y",
+                    "status": "ESCHEAT"
+                  }
+                ]
+              }
+            },
+            "limit": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107DB2YS-LIMIT-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "limitReference": "100",
+                "limitSerial": "10"
+              }
+            },
+            "statement": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107DB2YS-STATEMENT-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "taxAdvice": "NO",
+                "printoptions": [
+                  {
+                    "printAttributeName": "Printing.Option"
+                  },
+                  {
+                    "printAttributeName": "Statement.Image"
+                  },
+                  {
+                    "printAttributeName": "Images.Per.Page"
+                  },
+                  {
+                    "printAttributeName": "SplStmtPreAlert",
+                    "printAttributeValue": "1"
+                  },
+                  {
+                    "printAttributeName": "PreAlertFreq"
+                  }
+                ],
+                "interestClosingAdvice": "NO",
+                "ifNoMovement": "NO",
+                "statement": [
+                  {
+                    "frequency": "20250430M0131"
+                  }
+                ],
+                "interestScale": "NO",
+                "descriptiveStatement": "NO"
+              }
+            },
+            "closure": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107DB2YS-CLOSURE-20250417",
+                "status": "success"
+              }
+            },
+            "officers": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107DB2YS-OFFICERS-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "primaryOfficer": "3"
+              }
+            },
+            "balanceAvailability": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107DB2YS-BALANCE.AVAILABILITY-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "creditCheck": "COMPONENT",
+                "updateAvailableBalance": "NONE"
+              }
+            },
+            "checkretfee": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107DB2YS-CHECKRETFEE-20250417",
+                "status": "success"
+              }
+            },
+            "payoff": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-PAYOFF-20250417",
+                "status": "success"
+              },
+              "body": {}
+            },
+            "bfedwht": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107DB2YS-BFEDWHT-20250417",
+                "status": "success"
+              }
+            },
+            "messaging": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-MESSAGING-20250417",
+                "status": "success"
+              },
+              "body": {
+                "advices": [
+                  {
+                    "activityId": "ACCOUNTS-DEFER.CAPITALISE-PERIODICCHARGES",
+                    "sendAdvice": "YES",
+                    "advice": "AA-1077",
+                    "messageContent": "ALL"
+                  },
+                  {
+                    "activityId": "ACCOUNTS-STOP.PAY-ONLINE",
+                    "sendAdvice": "YES",
+                    "advice": "AA-TZI",
+                    "messageContent": "ALL"
+                  },
+                  {
+                    "activityId": "REG.D.VIOLATION.CHANGE.PRODUCT",
+                    "sendAdvice": "YES",
+                    "advice": "AA-0902",
+                    "messageContent": "ALL"
+                  },
+                  {
+                    "activityId": "ACCOUNTS-SET-DORMANCY*INACTIVE",
+                    "sendAdvice": "YES",
+                    "advice": "AA-DOM01",
+                    "messageContent": "ALL"
+                  },
+                  {
+                    "activityId": "ACCOUNTS-SET-DORMANCY*PREDORMANT",
+                    "sendAdvice": "YES",
+                    "advice": "AA-DOM01",
+                    "messageContent": "ALL"
+                  },
+                  {
+                    "activityId": "ACCOUNTS-ESCHEAT.ADVICE-ARRANGEMENT",
+                    "sendAdvice": "YES",
+                    "advice": "AA-DOM02",
+                    "messageContent": "ALL"
+                  }
+                ]
+              }
+            },
+            "bstatewht": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107DB2YS-BSTATEWHT-20250417",
+                "status": "success"
+              }
+            },
+            "alerts": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-ALERTS-20250417",
+                "status": "success"
+              },
+              "body": {
+                "events": [
+                  {
+                    "event": "AR.ACCOUNT.CLOSURE.REQUEST"
+                  },
+                  {
+                    "event": "ACCOUNT.CREDITED"
+                  },
+                  {
+                    "event": "SALARY.CREDIT"
+                  },
+                  {
+                    "event": "ACCOUNT.DEBITED"
+                  },
+                  {
+                    "event": "AR.ACCOUNT.PRODUCT.CHANGED"
+                  }
+                ]
+              }
+            },
+            "schedule": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107DB2YS-SCHEDULE-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "combineBills": "YES",
+                "payment": [
+                  {
+                    "billType": "PAYMENT",
+                    "payments": [
+                      {
+                        "startDate": false
+                      }
+                    ],
+                    "property": [
+                      {
+                        "dueFrequency": "e0Y e1M e0W e0D e0F",
+                        "propertyId": "CRINTEREST"
+                      }
+                    ],
+                    "paymentMethod": "DUE",
+                    "paymentFrequency": "e0Y e1M e0W e0D e0F",
+                    "paymentType": "INTEREST"
+                  },
+                  {
+                    "billType": "PAYMENT",
+                    "payments": [
+                      {
+                        "startDate": false
+                      }
+                    ],
+                    "property": [
+                      {
+                        "dueFrequency": "e0Y e1M e0W e0D e0F",
+                        "propertyId": "SERVICECHG"
+                      }
+                    ],
+                    "paymentMethod": "DUE",
+                    "paymentFrequency": "e0Y e1M e0W e0D e0F",
+                    "paymentType": "CHARGE"
+                  },
+                  {
+                    "billType": "PAYMENT",
+                    "payments": [
+                      {
+                        "startDate": false
+                      }
+                    ],
+                    "property": [
+                      {
+                        "dueFrequency": "e0Y e1M e0W e0D e0F",
+                        "propertyId": "STATEMENTCHARGE"
+                      }
+                    ],
+                    "paymentMethod": "DUE",
+                    "paymentFrequency": "e0Y e1M e0W e0D e0F",
+                    "paymentType": "PERIODICCHARGE"
+                  }
+                ]
+              }
+            },
+            "stmtnoimage": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-STMTNOIMAGE-20250417",
+                "status": "success"
+              },
+              "body": {
+                "tiers": [
+                  {
+                    "calculationType": "UNIT",
+                    "tierType": "LEVEL",
+                    "chgAmount": "2.00"
+                  }
+                ],
+                "chargeId": "CALCULATED",
+                "tierGroups": "LEVELS"
+              }
+            },
+            "estmtcheckonly": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-ESTMTCHECKONLY-20250417",
+                "status": "success"
+              },
+              "body": {
+                "tiers": [
+                  {
+                    "calculationType": "UNIT",
+                    "tierType": "LEVEL",
+                    "chgAmount": "0.00"
+                  }
+                ],
+                "chargeId": "CALCULATED",
+                "tierGroups": "LEVELS"
+              }
+            },
+            "stmtcheckfrimg": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-STMTCHECKFRIMG-20250417",
+                "status": "success"
+              },
+              "body": {
+                "tiers": [
+                  {
+                    "calculationType": "UNIT",
+                    "tierType": "LEVEL",
+                    "chgAmount": "2.75"
+                  }
+                ],
+                "chargeId": "CALCULATED",
+                "tierGroups": "LEVELS"
+              }
+            },
+            "estmtnoimage": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-ESTMTNOIMAGE-20250417",
+                "status": "success"
+              },
+              "body": {
+                "tiers": [
+                  {
+                    "calculationType": "UNIT",
+                    "tierType": "LEVEL",
+                    "chgAmount": "0.00"
+                  }
+                ],
+                "chargeId": "CALCULATED",
+                "tierGroups": "LEVELS"
+              }
+            },
+            "dormancyfees": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-DORMANCYFEES-20250417",
+                "status": "success"
+              },
+              "body": {
+                "chargeId": "FIXED",
+                "fixedAmount": "8.00"
+              }
+            },
+            "estmtwithimage": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-ESTMTWITHIMAGE-20250417",
+                "status": "success"
+              },
+              "body": {
+                "tiers": [
+                  {
+                    "calculationType": "UNIT",
+                    "tierType": "LEVEL",
+                    "chgAmount": "0.00"
+                  }
+                ],
+                "chargeId": "CALCULATED",
+                "tierGroups": "LEVELS"
+              }
+            },
+            "stmtcheckonly": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-STMTCHECKONLY-20250417",
+                "status": "success"
+              },
+              "body": {
+                "tiers": [
+                  {
+                    "calculationType": "UNIT",
+                    "tierType": "LEVEL",
+                    "chgAmount": "2.50"
+                  }
+                ],
+                "chargeId": "CALCULATED",
+                "tierGroups": "LEVELS"
+              }
+            },
+            "cstatewht": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107DB2YS-CSTATEWHT-20250417",
+                "status": "success"
+              }
+            },
+            "statementcharge": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-STATEMENTCHARGE-20250417",
+                "status": "success"
+              },
+              "body": {
+                "includeDeferred": "YES",
+                "amount": [
+                  {
+                    "charge": "ESTMTCHECKONLY"
+                  },
+                  {
+                    "charge": "ESTMTNOIMAGE"
+                  },
+                  {
+                    "charge": "ESTMTWITHIMAGE"
+                  },
+                  {
+                    "charge": "ESTMTCHECKFRIMG"
+                  },
+                  {
+                    "charge": "STMTCHECKONLY"
+                  },
+                  {
+                    "charge": "STMTNOIMAGE"
+                  },
+                  {
+                    "charge": "STMTWITHIMAGE"
+                  },
+                  {
+                    "charge": "STMTCHECKFRIMG"
+                  }
+                ]
+              }
+            },
+            "facility": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-FACILITY-20250417",
+                "status": "success"
+              },
+              "body": {
+                "services": [
+                  {
+                    "service": "CARD.ISSUE",
+                    "serviceAvailability": "OPTIONAL"
+                  },
+                  {
+                    "service": "TZ.STOP",
+                    "serviceAvailability": "OPTIONAL",
+                    "customerOption": "OPT-IN"
+                  },
+                  {
+                    "service": "OD.COVERAGE",
+                    "serviceAvailability": "OPTIONAL"
+                  },
+                  {
+                    "service": "REGE.OD.COVGE",
+                    "serviceAvailability": "OPTIONAL"
+                  }
+                ]
+              }
+            },
+            "customer": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107DB2YS-CUSTOMER-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "accountTitles": [
+                  {
+                    "accountTitle": "FirstName MiddleName LastName"
+                  }
+                ],
+                "customers": [
+                  {
+                    "taxPercentage": 100,
+                    "customerId": 750326,
+                    "liabilityPercentage": 100,
+                    "limitAllocactionPercentage": 100,
+                    "customerRole": "OWNER",
+                    "deliveryReqd": "YES"
+                  }
+                ]
+              }
+            },
+            "servicechg": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-SERVICECHG-20250417",
+                "status": "success"
+              },
+              "body": {
+                "chargeId": "FIXED",
+                "fixedAmount": "5.00"
+              }
+            },
+            "stmtwithimage": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107DB2YS-STMTWITHIMAGE-20250417",
+                "status": "success"
+              },
+              "body": {
+                "tiers": [
+                  {
+                    "calculationType": "UNIT",
+                    "tierType": "LEVEL",
+                    "chgAmount": "3.00"
+                  }
+                ],
+                "chargeId": "CALCULATED",
+                "tierGroups": "LEVELS"
+              }
+            }
+          }
+        }
+      }
+    },
+    "processedAt": "2026-02-12T01:35:18.615Z"
+  }
+]

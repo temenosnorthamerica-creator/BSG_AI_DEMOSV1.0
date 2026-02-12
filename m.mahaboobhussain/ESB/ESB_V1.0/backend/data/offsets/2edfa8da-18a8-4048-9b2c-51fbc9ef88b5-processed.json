@@ -1,0 +1,3521 @@
+[
+  {
+    "id": "7f00b212-66db-47af-bf89-6c77fd3b3fc8",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "0",
+    "sequenceNumber": 0,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "85a48600-c0e8-49b2-9a5c-8b8aec17a95e",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T01:17:38.585Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "1186ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 792,
+            "responseParse_time": 1,
+            "requestParse_time": 6,
+            "versionNumber": "1"
+          },
+          "id": "750507",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112034"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750506"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750507",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T01:34:44.210Z"
+  },
+  {
+    "id": "d2f030eb-e90a-4351-a309-438697a71e36",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "736",
+    "sequenceNumber": 1,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "2126a884-5088-41bc-bdf2-51b98ca2eada",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T01:20:38.658Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "916ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 769,
+            "responseParse_time": 1,
+            "requestParse_time": 4,
+            "versionNumber": "1"
+          },
+          "id": "750508",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112034"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750507"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750508",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T01:34:45.169Z"
+  },
+  {
+    "id": "43e3b62e-9c11-4225-9feb-1fd7555c044f",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "1472",
+    "sequenceNumber": 2,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "c3e90955-f0d8-4e82-9525-4461d109e57b",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T01:20:46.441Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "925ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 769,
+            "responseParse_time": 1,
+            "requestParse_time": 5,
+            "versionNumber": "1"
+          },
+          "id": "750509",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112034"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750508"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750509",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T01:34:46.114Z"
+  },
+  {
+    "id": "d219fae1-c273-4fbf-b8bb-71da80be4e6d",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "3232",
+    "sequenceNumber": 4,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "51a56b12-542f-4929-81f4-a5973c9c2ec7",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T01:31:56.070Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "913ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 768,
+            "responseParse_time": 2,
+            "requestParse_time": 7,
+            "versionNumber": "1"
+          },
+          "id": "750510",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112034"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750509"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750510",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T01:34:47.205Z"
+  },
+  {
+    "id": "80011953-3091-4246-ae75-45f06f2d25a0",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "4992",
+    "sequenceNumber": 6,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "ff00b37d-2b31-47e8-a8b5-e629f9409e9c",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T01:33:08.235Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "911ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 774,
+            "responseParse_time": 1,
+            "requestParse_time": 5,
+            "versionNumber": "1"
+          },
+          "id": "750511",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112034"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750510"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750511",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T01:34:48.272Z"
+  },
+  {
+    "id": "1ceb4960-1c61-4091-a387-7822b641464e",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "5728",
+    "sequenceNumber": 7,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "e762319d-4f8b-48be-ad36-fa497995eff5",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T02:25:08.056Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "1563ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 850,
+            "responseParse_time": 2,
+            "requestParse_time": 8,
+            "versionNumber": "1"
+          },
+          "id": "750512",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112125"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750511"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750512",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T02:25:22.506Z"
+  },
+  {
+    "id": "f7ff60fc-b47a-4b2b-9db7-f5eae46147ac",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "6464",
+    "sequenceNumber": 8,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "253be715-18c1-42ef-b0ae-0cfc35be14f3",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T02:29:55.427Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "1262ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 715,
+            "responseParse_time": 1,
+            "requestParse_time": 5,
+            "versionNumber": "1"
+          },
+          "id": "750513",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112130"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750512"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750513",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T02:30:08.427Z"
+  },
+  {
+    "id": "b28bdf6c-d08d-45be-9219-855dafb51be4",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "7200",
+    "sequenceNumber": 9,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "91c318fd-37d6-4b52-b15c-c4021f0fc9f4",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T02:30:50.299Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "1062ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 728,
+            "responseParse_time": 1,
+            "requestParse_time": 9,
+            "versionNumber": "1"
+          },
+          "id": "750514",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112130"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750513"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750514",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T02:30:53.210Z"
+  },
+  {
+    "id": "34330d49-c4b0-4c4b-87c6-5aa51b83a39c",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "7936",
+    "sequenceNumber": 10,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "da052e2b-cb08-4647-9040-a74bf839510f",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T02:33:40.813Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "1259ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 806,
+            "responseParse_time": 1,
+            "requestParse_time": 5,
+            "versionNumber": "1"
+          },
+          "id": "750515",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112133"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750514"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750515",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T02:33:53.300Z"
+  },
+  {
+    "id": "75211f13-3293-4f71-9baa-df2123c034ab",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "8672",
+    "sequenceNumber": 11,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "5837c75c-aeb2-41a4-8bb3-964caf74bd67",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T02:42:17.124Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "1265ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 774,
+            "responseParse_time": 1,
+            "requestParse_time": 5,
+            "versionNumber": "1"
+          },
+          "id": "750516",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112142"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750515"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750516",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T02:42:41.450Z"
+  },
+  {
+    "id": "b031a5ab-b315-4f90-980e-51bc2946d507",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "9408",
+    "sequenceNumber": 12,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "bc5f5620-2715-4338-93d8-cc6bde1a3208",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T02:51:20.527Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "1336ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 757,
+            "responseParse_time": 1,
+            "requestParse_time": 9,
+            "versionNumber": "1"
+          },
+          "id": "750517",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112151"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750516"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750517",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T02:51:23.605Z"
+  },
+  {
+    "id": "27c78480-5b61-4233-b75d-22f866db25a6",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "10144",
+    "sequenceNumber": 13,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "64fc570f-69b3-4081-83fe-22ed9e1fd693",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T02:51:35.789Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "985ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 773,
+            "responseParse_time": 1,
+            "requestParse_time": 4,
+            "versionNumber": "1"
+          },
+          "id": "750518",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112151"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750517"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750518",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T02:51:47.203Z"
+  },
+  {
+    "id": "fb84febb-db24-4596-a9b1-eb1f34d1af84",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "10880",
+    "sequenceNumber": 14,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "315edae6-0103-49a7-891c-472e6f55dac6",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T02:52:46.302Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "1304ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 749,
+            "responseParse_time": 1,
+            "requestParse_time": 5,
+            "versionNumber": "1"
+          },
+          "id": "750519",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112153"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750518"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750519",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T02:53:01.554Z"
+  },
+  {
+    "id": "177b51eb-ed93-472f-bb3b-902f67f50a4e",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "11616",
+    "sequenceNumber": 15,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "5fdb2b2b-b892-40d7-bb81-03ee88ebc6df",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T02:53:14.916Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "1325ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 789,
+            "responseParse_time": 1,
+            "requestParse_time": 4,
+            "versionNumber": "1"
+          },
+          "id": "750520",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112153"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750519"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750520",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T02:53:27.005Z"
+  },
+  {
+    "id": "bfdce0d7-11a0-48f0-8dfe-7bb90969f744",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "12352",
+    "sequenceNumber": 16,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "7188ba6f-2048-49af-81b6-60888fd68000",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T03:17:27.176Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "1484ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 803,
+            "responseParse_time": 1,
+            "requestParse_time": 6,
+            "versionNumber": "1"
+          },
+          "id": "750521",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112217"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750520"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750521",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T03:17:30.521Z"
+  },
+  {
+    "id": "4a022e27-5903-49ef-9908-9c61a8e721de",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "13088",
+    "sequenceNumber": 17,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "1d89b231-9d79-4b57-a56d-2a52b47c331a",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T03:17:57.822Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "1289ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 788,
+            "responseParse_time": 1,
+            "requestParse_time": 5,
+            "versionNumber": "1"
+          },
+          "id": "750522",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112218"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750521"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750522",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T03:18:11.857Z"
+  },
+  {
+    "id": "02d27881-776b-4b0f-bd2b-0624b2891bd2",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "13824",
+    "sequenceNumber": 18,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "cd1250ab-d60c-47cb-83e9-9beeb87c4032",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T03:18:37.489Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "1025ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 785,
+            "responseParse_time": 2,
+            "requestParse_time": 5,
+            "versionNumber": "1"
+          },
+          "id": "750523",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112218"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750522"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750523",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T03:18:48.776Z"
+  },
+  {
+    "id": "8545c63d-0e6e-4305-a4ad-c5cf1b9fdf1f",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "14560",
+    "sequenceNumber": 19,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "3668358e-b142-4d09-8122-adf45c927d02",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T03:19:06.896Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "1206ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 734,
+            "responseParse_time": 1,
+            "requestParse_time": 5,
+            "versionNumber": "1"
+          },
+          "id": "750524",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112219"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750523"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750524",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T03:19:24.273Z"
+  },
+  {
+    "id": "863b8639-1a0b-4a2b-83d0-88fa5fea3832",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "15296",
+    "sequenceNumber": 20,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "e01bf480-eae9-4c58-9919-e7d80f4adede",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T03:19:13.355Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "867ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 727,
+            "responseParse_time": 1,
+            "requestParse_time": 5,
+            "versionNumber": "1"
+          },
+          "id": "750525",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112219"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750524"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750525",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T03:19:25.158Z"
+  },
+  {
+    "id": "fe5e1cb3-a9af-458e-9d52-1e518f225c50",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "16032",
+    "sequenceNumber": 21,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "639ada2e-2260-4345-b53c-0498add4b043",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T03:36:29.943Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "1431ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 808,
+            "responseParse_time": 2,
+            "requestParse_time": 11,
+            "versionNumber": "1"
+          },
+          "id": "750526",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112236"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750525"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750526",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T03:36:48.799Z"
+  },
+  {
+    "id": "7e3477ec-48e7-423e-a51f-0e4f8499942e",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "16768",
+    "sequenceNumber": 22,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "610af8d7-902c-456d-86d7-2ea849390f4b",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T03:36:36.493Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "927ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 776,
+            "responseParse_time": 1,
+            "requestParse_time": 7,
+            "versionNumber": "1"
+          },
+          "id": "750527",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112236"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750526"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750527",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T03:36:49.740Z"
+  },
+  {
+    "id": "b00c0ede-e24b-4868-9c86-3055af38cd3a",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "17504",
+    "sequenceNumber": 23,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "c0b2f2db-e12d-46f1-a059-8c8d2df94e30",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T03:40:33.469Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "1273ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 783,
+            "responseParse_time": 3,
+            "requestParse_time": 6,
+            "versionNumber": "1"
+          },
+          "id": "750528",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112240"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750527"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750528",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T03:40:51.164Z"
+  },
+  {
+    "id": "8dc997d8-bab0-400a-95c9-c802b32a4edb",
+    "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "configName": "cloudevent-createcustomer_to_api-createcustomer",
+    "partitionId": "0",
+    "offset": "18240",
+    "sequenceNumber": 24,
+    "sourceData": {
+      "specversion": "1.0",
+      "id": "7e6b3c71-04b5-4cba-b393-aebdff2b9bb5",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-02-12T03:40:39.624Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "US0010001"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "mappedRequest": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "12"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "IN",
+        "dateOfBirth": "1990-05-10",
+        "sectorId": "1001",
+        "communicationDevices": [
+          {
+            "emailId": "mahaboob.hussain@example.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "apiResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "duration": "960ms",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 815,
+            "responseParse_time": 2,
+            "requestParse_time": 6,
+            "versionNumber": "1"
+          },
+          "id": "750529",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2602112240"
+            }
+          ],
+          "country": "US",
+          "lastName": "LastName",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "LastName FirstName MiddleName",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "mobilePhoneNumber": "9876543210",
+              "emailId": "mahaboob.hussain@example.com"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-17",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750528"
+            },
+            {
+              "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750529",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "15929_INPUTTER__OFS_IRISINTERNAL"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-17",
+          "affiliateMarketingExpirationDate": "2030-04-17",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "IN",
+          "givenName": "FirstName",
+          "languageId": "1",
+          "dateOfBirth": "1990-05-10",
+          "amlCheck": "NULL",
+          "customerName": "FirstName MiddleName LastName",
+          "ctrExempt": "NO",
+          "authoriser": "15929_INPUTTER_OFS_IRISINTERNAL",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "extensions": {
+            "cusRoom2": "12"
+          },
+          "affiliateMarketingStatus": "OPT-OUT",
+          "middleName": "MiddleName"
+        }
+      }
+    },
+    "processedAt": "2026-02-12T03:40:52.140Z"
+  }
+]

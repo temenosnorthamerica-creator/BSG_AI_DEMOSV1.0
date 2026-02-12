@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1f946de2-b199-4aac-a049-1648c2800694",
+    "fileName": "transfers_sample_14.csv",
+    "fileSize": 144,
+    "totalRows": 2,
+    "successfulRows": 2,
+    "failedRows": 0,
+    "status": "completed",
+    "loadedAt": "2026-02-04T17:53:21.488Z",
+    "processedAt": "2026-02-04T17:53:41.735Z"
+  },
+  {
+    "id": "415c40a0-f54b-4105-88b9-7883eaa50369",
+    "fileName": "transfers_sample_14.csv",
+    "fileSize": 144,
+    "totalRows": 2,
+    "successfulRows": 2,
+    "failedRows": 0,
+    "status": "completed",
+    "loadedAt": "2026-02-04T00:10:32.140Z",
+    "processedAt": "2026-02-04T00:10:34.717Z"
+  },
+  {
+    "id": "0e50cbd7-6f82-4c5b-85f8-5c8208662b7e",
+    "fileName": "transfers_sample_13.csv",
+    "fileSize": 144,
+    "totalRows": 2,
+    "successfulRows": 2,
+    "failedRows": 0,
+    "status": "completed",
+    "loadedAt": "2026-02-04T00:10:00.284Z",
+    "processedAt": "2026-02-04T00:10:02.838Z"
+  }
+]

@@ -4,7 +4,8 @@ import Header from './components/Header'
 import HomePage from './pages/HomePage'
 import SystemPage from './pages/SystemPage'
 import ClientConfigPage from './pages/ClientConfigPage'
-import SolutionMapPage from './pages/SolutionMapPage'
+import SolutionDiagramPage from './pages/SolutionDiagramPage'
+import HealthCheckPage from './pages/HealthCheckPage'
 import AppLandingPage from './pages/AppLandingPage'
 import { ClientConfigProvider, useClientConfig } from './context/ClientConfigContext'
 import systemsData from './data/systems.json'
@@ -36,8 +37,13 @@ function AppContent() {
     setCurrentSystem(null)
   }
 
-  const handleSolutionMapClick = () => {
-    setCurrentPage('solutionmap')
+  const handleSolutionDiagramClick = () => {
+    setCurrentPage('solutiondiagram')
+    setCurrentSystem(null)
+  }
+
+  const handleHealthCheckClick = () => {
+    setCurrentPage('healthcheck')
     setCurrentSystem(null)
   }
 
@@ -73,22 +79,15 @@ function AppContent() {
       style={themeStyles}
     >
       <Sidebar
-        systems={systems}
-        enabledSystems={enabledSystems}
-        currentSystem={currentSystem}
         currentPage={currentPage}
-        onSystemChange={handleSystemChange}
         onHomeClick={handleHomeClick}
-        onConfigClick={handleConfigClick}
-        onSolutionMapClick={handleSolutionMapClick}
-        activeFilter={activeFilter}
-        onFilterChange={handleFilterChange}
+        onSolutionDiagramClick={handleSolutionDiagramClick}
+        onHealthCheckClick={handleHealthCheckClick}
         clientConfig={config}
       />
 
       <main className="transition-all duration-300 min-h-screen p-8" style={{ marginLeft: '5rem' }}>
         <Header
-          onConfigClick={handleConfigClick}
           clientConfig={config}
         />
 
@@ -97,11 +96,14 @@ function AppContent() {
             systems={systems}
             onBack={handleHomeClick}
           />
-        ) : currentPage === 'solutionmap' ? (
-          <SolutionMapPage
-            systems={enabledSystems}
+        ) : currentPage === 'solutiondiagram' ? (
+          <SolutionDiagramPage
             onBack={handleHomeClick}
+            teamDemos={teamDemos}
+            onDemoAppClick={handleDemoAppClick}
           />
+        ) : currentPage === 'healthcheck' ? (
+          <HealthCheckPage />
         ) : currentSystem ? (
           <SystemPage
             system={selectedSystem}

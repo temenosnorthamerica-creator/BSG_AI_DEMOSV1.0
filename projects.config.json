@@ -64,16 +64,19 @@
       "description": "Loan Management System applicant portal for loan origination and management"
     },
     {
-      "id": "middleware-demo",
-      "name": "Middleware Integration",
+      "id": "esb-demo",
+      "name": "ESB",
       "owner": "m.mahaboobhussain@temenos.com",
-      "path": "m.mahaboobhussain/MIDDLEWARE/TEST_NEW_APP",
-      "frontendPort": 3005,
-      "backendPort": 8005,
+      "frontendPath": "m.mahaboobhussain/ESB/ESB_V1.0/frontend",
+      "backendPath": "m.mahaboobhussain/ESB/ESB_V1.0/backend",
+      "frontendPort": 3016,
+      "backendPort": 8006,
       "type": "fullstack",
-      "framework": "React/Vite + Express",
-      "startCommand": "npm run start",
-      "description": "Azure Event Hubs middleware integration demo with React frontend and Express backend"
+      "frontendFramework": "React/Vite",
+      "backendFramework": "Node/Express",
+      "frontendStartCommand": "npm run dev",
+      "backendStartCommand": "npm run dev",
+      "description": "Enterprise Service Bus - Event to API integration with visual mapping and configuration management"
     }
   ],
   "portAssignments": {
@@ -84,7 +87,7 @@
     "debitcards-frontend": 3003,
     "debitcards-backend": 8003,
     "lms-applicant-portal": 3004,
-    "middleware-frontend": 3005,
-    "middleware-backend": 8005
+    "esb-frontend": 3016,
+    "esb-backend": 8006
   }
 }

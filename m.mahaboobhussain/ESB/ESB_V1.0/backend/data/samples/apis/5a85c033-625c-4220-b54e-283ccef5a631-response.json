@@ -1,0 +1,72 @@
+{
+  "header": {
+    "transactionStatus": "Live",
+    "audit": {
+      "T24_time": 439,
+      "responseParse_time": 2099,
+      "requestParse_time": 4172
+    },
+    "id": "750152",
+    "status": "success"
+  },
+  "body": {
+    "dateTime": [
+      {
+        "dateTime": "2601161543"
+      }
+    ],
+    "country": "US",
+    "taxWithholding": "NO",
+    "currNo": 1,
+    "displayName": "Kovacek Ewald A",
+    "isInternetBankingService": "NULL",
+    "privacyStatus": "OPT-IN",
+    "communicationDevices": [
+      {
+        "emailId": "test@test.com",
+        "mobilePhoneNumber": "9876543210"
+      }
+    ],
+    "customerStatus": "61",
+    "statusChangeDate": "2025-04-16",
+    "escheat": "NO",
+    "overrideDetails": [
+      {
+        "override": "EB-TIN.BLANK.W8}Tin Id Missing"
+      }
+    ],
+    "accountOfficerId": "2",
+    "mnemonic": "C-750152",
+    "addressLine1": "asasa",
+    "customerCompany": "US0010001",
+    "inputter": [
+      {
+        "inputter": "81580_INPUTTER__OFS_DSF.PACKAGER"
+      }
+    ],
+    "amlResult": "NULL",
+    "addressStatus": "M",
+    "companyCode": "US0010001",
+    "affiliateMarketingStatusDate": "2025-04-16",
+    "affiliateMarketingExpirationDate": "2030-04-16",
+    "sectorId": 1001,
+    "isMobileBankingService": "NULL",
+    "nationalityId": "US",
+    "givenName": "Ewald",
+    "middleName": "A",
+    "lastName": "Kovacek",
+    "languageId": "1",
+    "dateOfBirth": "1983-05-01",
+    "amlCheck": "NULL",
+    "customerName": "Ewald A Kovacek",
+    "ctrExempt": "NO",
+    "authoriser": "81580_INPUTTER_OFS_DSF.PACKAGER",
+    "target": "9000",
+    "customerSince": "2009-12-23",
+    "affiliateMarketingStatus": "OPT-OUT",
+    "deptCode": "1",
+    "extensions": {
+      "cusRoom2": "10"
+    }
+  }
+}

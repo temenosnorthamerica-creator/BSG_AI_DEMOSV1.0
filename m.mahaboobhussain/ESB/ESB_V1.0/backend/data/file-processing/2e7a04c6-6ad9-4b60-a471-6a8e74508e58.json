@@ -1,0 +1,728 @@
+[
+  {
+    "id": "39b207a4-5509-4305-9d1e-25a3de8f4b38",
+    "batchId": "1f946de2-b199-4aac-a049-1648c2800694",
+    "success": true,
+    "rowIndex": 2,
+    "sourceData": {
+      "transactionId": "TXN002",
+      "fromAccount": "30013662",
+      "fromCurrency": "USD",
+      "toAccount": "30013678",
+      "toCurrency": "USD",
+      "amount": "10.00"
+    },
+    "capturedFields": {
+      "FundsTransferId": "FT25107Q65BW"
+    },
+    "request": {
+      "endpoint": "https://americasbsgbnpl.temenos.com/irf-provider-container/api/v1.0.0/order/transfers/inwards",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "companyId": "US0010001"
+      },
+      "body": {
+        "body": {
+          "paymentDetails": [
+            {
+              "paymentDetail": "TXN002"
+            }
+          ],
+          "debitAccountId": "30013662",
+          "debitCurrency": "USD",
+          "creditAccountId": "30013678",
+          "creditCurrencyId": "USD",
+          "debitAmount": "10.00",
+          "transactionType": "AC",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY"
+        }
+      }
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 9529,
+            "responseParse_time": 1,
+            "requestParse_time": 6,
+            "versionNumber": "1"
+          },
+          "id": "FT25107Q65BW",
+          "status": "success"
+        },
+        "body": {
+          "transactionType": "AC",
+          "debitValueDate": "2025-04-17",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY",
+          "debitCurrency": "USD",
+          "creditCurrencyId": "USD",
+          "creditValueDate": "2025-04-17",
+          "debitAccountId": "30013662",
+          "debitAmount": 10,
+          "creditAccountId": "30013678"
+        }
+      }
+    },
+    "duration": "10223ms",
+    "timestamp": "2026-02-04T17:53:41.733Z"
+  },
+  {
+    "id": "62152547-397f-4009-82d2-a465b48eb817",
+    "batchId": "1f946de2-b199-4aac-a049-1648c2800694",
+    "success": true,
+    "rowIndex": 1,
+    "sourceData": {
+      "transactionId": "TXN001",
+      "fromAccount": "30013654",
+      "fromCurrency": "USD",
+      "toAccount": "30013662",
+      "toCurrency": "USD",
+      "amount": "34.00"
+    },
+    "capturedFields": {
+      "FundsTransferId": "FT25107PPQF5"
+    },
+    "request": {
+      "endpoint": "https://americasbsgbnpl.temenos.com/irf-provider-container/api/v1.0.0/order/transfers/inwards",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "companyId": "US0010001"
+      },
+      "body": {
+        "body": {
+          "paymentDetails": [
+            {
+              "paymentDetail": "TXN001"
+            }
+          ],
+          "debitAccountId": "30013654",
+          "debitCurrency": "USD",
+          "creditAccountId": "30013662",
+          "creditCurrencyId": "USD",
+          "debitAmount": "34.00",
+          "transactionType": "AC",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY"
+        }
+      }
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 19400,
+            "responseParse_time": 5,
+            "requestParse_time": 5,
+            "versionNumber": "1"
+          },
+          "id": "FT25107PPQF5",
+          "status": "success"
+        },
+        "body": {
+          "transactionType": "AC",
+          "debitValueDate": "2025-04-17",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY",
+          "debitCurrency": "USD",
+          "creditCurrencyId": "USD",
+          "creditValueDate": "2025-04-17",
+          "debitAccountId": "30013654",
+          "debitAmount": 34,
+          "creditAccountId": "30013662"
+        }
+      }
+    },
+    "duration": "20220ms",
+    "timestamp": "2026-02-04T17:53:41.729Z"
+  },
+  {
+    "id": "87991f87-3c25-4e20-ae84-78bf39ed6c3d",
+    "batchId": "415c40a0-f54b-4105-88b9-7883eaa50369",
+    "success": true,
+    "rowIndex": 2,
+    "sourceData": {
+      "transactionId": "TXN002",
+      "fromAccount": "30013662",
+      "fromCurrency": "USD",
+      "toAccount": "30013678",
+      "toCurrency": "USD",
+      "amount": "10.00"
+    },
+    "capturedFields": {
+      "FundsTransferId": "FT25107080QM"
+    },
+    "request": {
+      "endpoint": "https://americasbsgbnpl.temenos.com/irf-provider-container/api/v1.0.0/order/transfers/inwards",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "companyId": "US0010001"
+      },
+      "body": {
+        "body": {
+          "paymentDetails": [
+            {
+              "paymentDetail": "TXN002"
+            }
+          ],
+          "debitAccountId": "30013662",
+          "debitCurrency": "USD",
+          "creditAccountId": "30013678",
+          "creditCurrencyId": "USD",
+          "debitAmount": "10.00",
+          "transactionType": "AC",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY"
+        }
+      }
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 2079,
+            "responseParse_time": 2,
+            "requestParse_time": 7,
+            "versionNumber": "1"
+          },
+          "id": "FT25107080QM",
+          "status": "success"
+        },
+        "body": {
+          "transactionType": "AC",
+          "debitValueDate": "2025-04-17",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY",
+          "debitCurrency": "USD",
+          "creditCurrencyId": "USD",
+          "creditValueDate": "2025-04-17",
+          "debitAccountId": "30013662",
+          "debitAmount": 10,
+          "creditAccountId": "30013678"
+        }
+      }
+    },
+    "duration": "2553ms",
+    "timestamp": "2026-02-04T00:10:34.715Z"
+  },
+  {
+    "id": "4df06139-a122-48e5-a4cf-183c03420d16",
+    "batchId": "415c40a0-f54b-4105-88b9-7883eaa50369",
+    "success": true,
+    "rowIndex": 1,
+    "sourceData": {
+      "transactionId": "TXN001",
+      "fromAccount": "30013654",
+      "fromCurrency": "USD",
+      "toAccount": "30013662",
+      "toCurrency": "USD",
+      "amount": "34.00"
+    },
+    "capturedFields": {
+      "FundsTransferId": "FT25107CSWRN"
+    },
+    "request": {
+      "endpoint": "https://americasbsgbnpl.temenos.com/irf-provider-container/api/v1.0.0/order/transfers/inwards",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "companyId": "US0010001"
+      },
+      "body": {
+        "body": {
+          "paymentDetails": [
+            {
+              "paymentDetail": "TXN001"
+            }
+          ],
+          "debitAccountId": "30013654",
+          "debitCurrency": "USD",
+          "creditAccountId": "30013662",
+          "creditCurrencyId": "USD",
+          "debitAmount": "34.00",
+          "transactionType": "AC",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY"
+        }
+      }
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 845,
+            "responseParse_time": 1,
+            "requestParse_time": 5,
+            "versionNumber": "1"
+          },
+          "id": "FT25107CSWRN",
+          "status": "success"
+        },
+        "body": {
+          "transactionType": "AC",
+          "debitValueDate": "2025-04-17",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY",
+          "debitCurrency": "USD",
+          "creditCurrencyId": "USD",
+          "creditValueDate": "2025-04-17",
+          "debitAccountId": "30013654",
+          "debitAmount": 34,
+          "creditAccountId": "30013662"
+        }
+      }
+    },
+    "duration": "1162ms",
+    "timestamp": "2026-02-04T00:10:34.709Z"
+  },
+  {
+    "id": "cf4d02d4-0ca1-4a69-9e09-2323e9089007",
+    "batchId": "0e50cbd7-6f82-4c5b-85f8-5c8208662b7e",
+    "success": true,
+    "rowIndex": 2,
+    "sourceData": {
+      "transactionId": "TXN002",
+      "fromAccount": "30013662",
+      "fromCurrency": "USD",
+      "toAccount": "30013678",
+      "toCurrency": "USD",
+      "amount": "10.00"
+    },
+    "capturedFields": {
+      "FundsTransferId": "FT25107HHXFZ"
+    },
+    "request": {
+      "endpoint": "https://americasbsgbnpl.temenos.com/irf-provider-container/api/v1.0.0/order/transfers/inwards",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "companyId": "US0010001"
+      },
+      "body": {
+        "body": {
+          "paymentDetails": [
+            {
+              "paymentDetail": "TXN002"
+            }
+          ],
+          "debitAccountId": "30013662",
+          "debitCurrency": "USD",
+          "creditAccountId": "30013678",
+          "creditCurrencyId": "USD",
+          "debitAmount": "10.00",
+          "transactionType": "AC",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY"
+        }
+      }
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 867,
+            "responseParse_time": 4,
+            "requestParse_time": 6,
+            "versionNumber": "1"
+          },
+          "id": "FT25107HHXFZ",
+          "status": "success"
+        },
+        "body": {
+          "transactionType": "AC",
+          "debitValueDate": "2025-04-17",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY",
+          "debitCurrency": "USD",
+          "creditCurrencyId": "USD",
+          "creditValueDate": "2025-04-17",
+          "debitAccountId": "30013662",
+          "debitAmount": 10,
+          "creditAccountId": "30013678"
+        }
+      }
+    },
+    "duration": "1404ms",
+    "timestamp": "2026-02-04T00:10:02.835Z"
+  },
+  {
+    "id": "bd41ea73-18aa-4611-8a98-3df555d1341f",
+    "batchId": "0e50cbd7-6f82-4c5b-85f8-5c8208662b7e",
+    "success": true,
+    "rowIndex": 1,
+    "sourceData": {
+      "transactionId": "TXN001",
+      "fromAccount": "30013654",
+      "fromCurrency": "USD",
+      "toAccount": "30013662",
+      "toCurrency": "USD",
+      "amount": "34.00"
+    },
+    "capturedFields": {
+      "FundsTransferId": "FT25107J3H22"
+    },
+    "request": {
+      "endpoint": "https://americasbsgbnpl.temenos.com/irf-provider-container/api/v1.0.0/order/transfers/inwards",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "companyId": "US0010001"
+      },
+      "body": {
+        "body": {
+          "paymentDetails": [
+            {
+              "paymentDetail": "TXN001"
+            }
+          ],
+          "debitAccountId": "30013654",
+          "debitCurrency": "USD",
+          "creditAccountId": "30013662",
+          "creditCurrencyId": "USD",
+          "debitAmount": "34.00",
+          "transactionType": "AC",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY"
+        }
+      }
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 1839,
+            "responseParse_time": 2,
+            "requestParse_time": 8,
+            "versionNumber": "1"
+          },
+          "id": "FT25107J3H22",
+          "status": "success"
+        },
+        "body": {
+          "transactionType": "AC",
+          "debitValueDate": "2025-04-17",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY",
+          "debitCurrency": "USD",
+          "creditCurrencyId": "USD",
+          "creditValueDate": "2025-04-17",
+          "debitAccountId": "30013654",
+          "debitAmount": 34,
+          "creditAccountId": "30013662"
+        }
+      }
+    },
+    "duration": "2525ms",
+    "timestamp": "2026-02-04T00:10:02.832Z"
+  },
+  {
+    "id": "2791cf3d-99a2-4d03-8613-f21d5ae3957d",
+    "success": true,
+    "rowIndex": 2,
+    "sourceData": {
+      "transactionId": "TXN002",
+      "fromAccount": "30013662",
+      "fromCurrency": "USD",
+      "toAccount": "30013678",
+      "toCurrency": "USD",
+      "amount": "10.00"
+    },
+    "capturedFields": {
+      "FundsTransferId": "FT251073WQXQ"
+    },
+    "request": {
+      "endpoint": "https://americasbsgbnpl.temenos.com/irf-provider-container/api/v1.0.0/order/transfers/inwards",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "companyId": "US0010001"
+      },
+      "body": {
+        "body": {
+          "paymentDetails": [
+            {
+              "paymentDetail": "TXN002"
+            }
+          ],
+          "debitAccountId": "30013662",
+          "debitCurrency": "USD",
+          "creditAccountId": "30013678",
+          "creditCurrencyId": "USD",
+          "debitAmount": "10.00",
+          "transactionType": "AC",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY"
+        }
+      }
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 2039,
+            "responseParse_time": 1,
+            "requestParse_time": 8,
+            "versionNumber": "1"
+          },
+          "id": "FT251073WQXQ",
+          "status": "success"
+        },
+        "body": {
+          "transactionType": "AC",
+          "debitValueDate": "2025-04-17",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY",
+          "debitCurrency": "USD",
+          "creditCurrencyId": "USD",
+          "creditValueDate": "2025-04-17",
+          "debitAccountId": "30013662",
+          "debitAmount": 10,
+          "creditAccountId": "30013678"
+        }
+      }
+    },
+    "duration": "2716ms",
+    "timestamp": "2026-02-03T23:09:44.470Z"
+  },
+  {
+    "id": "570d4996-0f3b-4fd9-9838-41da800ba6bd",
+    "success": true,
+    "rowIndex": 1,
+    "sourceData": {
+      "transactionId": "TXN001",
+      "fromAccount": "30013654",
+      "fromCurrency": "USD",
+      "toAccount": "30013662",
+      "toCurrency": "USD",
+      "amount": "34.00"
+    },
+    "capturedFields": {
+      "FundsTransferId": "FT251073W1LJ"
+    },
+    "request": {
+      "endpoint": "https://americasbsgbnpl.temenos.com/irf-provider-container/api/v1.0.0/order/transfers/inwards",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "companyId": "US0010001"
+      },
+      "body": {
+        "body": {
+          "paymentDetails": [
+            {
+              "paymentDetail": "TXN001"
+            }
+          ],
+          "debitAccountId": "30013654",
+          "debitCurrency": "USD",
+          "creditAccountId": "30013662",
+          "creditCurrencyId": "USD",
+          "debitAmount": "34.00",
+          "transactionType": "AC",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY"
+        }
+      }
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 834,
+            "responseParse_time": 1,
+            "requestParse_time": 7,
+            "versionNumber": "1"
+          },
+          "id": "FT251073W1LJ",
+          "status": "success"
+        },
+        "body": {
+          "transactionType": "AC",
+          "debitValueDate": "2025-04-17",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY",
+          "debitCurrency": "USD",
+          "creditCurrencyId": "USD",
+          "creditValueDate": "2025-04-17",
+          "debitAccountId": "30013654",
+          "debitAmount": 34,
+          "creditAccountId": "30013662"
+        }
+      }
+    },
+    "duration": "1545ms",
+    "timestamp": "2026-02-03T23:09:44.465Z"
+  },
+  {
+    "id": "6050e19c-ba41-40a3-9c4a-0271cc5d99fe",
+    "success": true,
+    "rowIndex": 2,
+    "sourceData": {
+      "transactionId": "TXN002",
+      "fromAccount": "30013662",
+      "fromCurrency": "USD",
+      "toAccount": "30013678",
+      "toCurrency": "USD",
+      "amount": "10.00"
+    },
+    "capturedFields": {
+      "FundsTransferId": "FT25107Z4G9Y"
+    },
+    "request": {
+      "endpoint": "https://americasbsgbnpl.temenos.com/irf-provider-container/api/v1.0.0/order/transfers/inwards",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "companyId": "US0010001"
+      },
+      "body": {
+        "body": {
+          "paymentDetails": [
+            {
+              "paymentDetail": "TXN002"
+            }
+          ],
+          "debitAccountId": "30013662",
+          "debitCurrency": "USD",
+          "creditAccountId": "30013678",
+          "creditCurrencyId": "USD",
+          "debitAmount": "10.00",
+          "transactionType": "AC",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY"
+        }
+      }
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 938,
+            "responseParse_time": 1,
+            "requestParse_time": 6,
+            "versionNumber": "1"
+          },
+          "id": "FT25107Z4G9Y",
+          "status": "success"
+        },
+        "body": {
+          "transactionType": "AC",
+          "debitValueDate": "2025-04-17",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY",
+          "debitCurrency": "USD",
+          "creditCurrencyId": "USD",
+          "creditValueDate": "2025-04-17",
+          "debitAccountId": "30013662",
+          "debitAmount": 10,
+          "creditAccountId": "30013678"
+        }
+      }
+    },
+    "duration": "1545ms",
+    "timestamp": "2026-02-03T23:01:30.363Z"
+  },
+  {
+    "id": "37b292ea-fcbe-4bc0-9f09-8f37916c62fe",
+    "success": true,
+    "rowIndex": 1,
+    "sourceData": {
+      "transactionId": "TXN001",
+      "fromAccount": "30013654",
+      "fromCurrency": "USD",
+      "toAccount": "30013662",
+      "toCurrency": "USD",
+      "amount": "34.00"
+    },
+    "capturedFields": {
+      "FundsTransferId": "FT251076XLRV"
+    },
+    "request": {
+      "endpoint": "https://americasbsgbnpl.temenos.com/irf-provider-container/api/v1.0.0/order/transfers/inwards",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "companyId": "US0010001"
+      },
+      "body": {
+        "body": {
+          "paymentDetails": [
+            {
+              "paymentDetail": "TXN001"
+            }
+          ],
+          "debitAccountId": "30013654",
+          "debitCurrency": "USD",
+          "creditAccountId": "30013662",
+          "creditCurrencyId": "USD",
+          "debitAmount": "34.00",
+          "transactionType": "AC",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY"
+        }
+      }
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "data": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 9372,
+            "responseParse_time": 1,
+            "requestParse_time": 9,
+            "versionNumber": "1"
+          },
+          "id": "FT251076XLRV",
+          "status": "success"
+        },
+        "body": {
+          "transactionType": "AC",
+          "debitValueDate": "2025-04-17",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY",
+          "debitCurrency": "USD",
+          "creditCurrencyId": "USD",
+          "creditValueDate": "2025-04-17",
+          "debitAccountId": "30013654",
+          "debitAmount": 34,
+          "creditAccountId": "30013662"
+        }
+      }
+    },
+    "duration": "10086ms",
+    "timestamp": "2026-02-03T23:01:30.358Z"
+  }
+]

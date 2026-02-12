@@ -16,8 +16,8 @@ AmrBSGBankEcoIntDemo/
 │   └── debitcards/
 ├── mmoore/                     # LMS Applicant Portal (Port 3004)
 │   └── lms-applicant-portal/
-├── m.mahaboobhussain/          # Middleware Integration (Port 3005, API: 8005)
-│   └── MIDDLEWARE/
+├── m.mahaboobhussain/          # ESB (Port 3016, API: 8006)
+│   └── ESB/
 ├── projects.config.json        # Configuration file
 ├── startup-all.ps1             # PowerShell startup script
 ├── install-all.ps1             # Dependencies installation script
@@ -34,7 +34,7 @@ AmrBSGBankEcoIntDemo/
 | BSG Demo Platform | migarcia@temenos.com | 3002 | 8002 |
 | Debit Cards Demo | sweekruth.somaraju@temenos.com | 3003 | 8003 |
 | LMS Applicant Portal | mmoore@temenos.com | 3004 | - |
-| Middleware Integration | m.mahaboobhussain@temenos.com | 3005 | 8005 |
+| ESB | m.mahaboobhussain@temenos.com | 3016 | 8006 |
 
 ## Prerequisites
 
@@ -62,7 +62,7 @@ cd alwin\crm-banking-simulator_v2\crm-banking-simulator_v2 && npm install
 cd migarcia\DALLASAI 1\DALLASAI\frontend && npm install
 cd sweekruth.somaraju\debitcards\debitcards\frontend && npm install
 cd mmoore\lms-applicant-portal\lms-applicant-portal && npm install
-cd m.mahaboobhussain\MIDDLEWARE\TEST_NEW_APP && npm install
+cd m.mahaboobhussain\ESB\ESB_V1.0\frontend && npm install
 
 # Python backends
 cd migarcia\DALLASAI 1\DALLASAI\backend && pip install -r requirements.txt
@@ -89,7 +89,7 @@ cd sweekruth.somaraju\debitcards\debitcards\backend && pip install -r requiremen
 .\startup-all.ps1 -Project landing
 .\startup-all.ps1 -Project crm
 .\startup-all.ps1 -Project bsg-frontend
-.\startup-all.ps1 -Project middleware
+.\startup-all.ps1 -Project esb-frontend
 ```
 
 ## Project Details
@@ -121,11 +121,11 @@ cd sweekruth.somaraju\debitcards\debitcards\backend && pip install -r requiremen
 - **Tech Stack**: React, Vite, TypeScript, TanStack Query
 - **Description**: Loan Management System applicant portal
 
-### Middleware Integration (m.mahaboobhussain)
-- **Frontend URL**: http://localhost:3005
-- **Backend API**: http://localhost:8005
-- **Tech Stack**: React/Vite (frontend), Express.js (backend), Azure Event Hubs
-- **Description**: Azure Event Hubs middleware integration demo
+### ESB (m.mahaboobhussain)
+- **Frontend URL**: http://localhost:3016
+- **Backend API**: http://localhost:8006
+- **Tech Stack**: React/Vite (frontend), Node/Express (backend)
+- **Description**: Enterprise Service Bus - Event to API integration with visual mapping
 
 ## Usage
 

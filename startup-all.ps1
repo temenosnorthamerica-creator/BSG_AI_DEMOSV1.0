@@ -1,14 +1,21 @@
 # AmrBSGBankEcoIntDemo - Unified Startup Script
-# This script starts all demo projects in separate PowerShell windows
+# This script starts all demo projects in hidden mode with log files
 
 param(
     [switch]$LandingOnly,
     [switch]$InstallDeps,
+    [switch]$Visible,  # Use -Visible flag to open windows (for debugging)
     [string]$Project
 )
 
 $ErrorActionPreference = "Continue"
 $BaseDir = $PSScriptRoot
+$LogsDir = Join-Path $BaseDir "logs"
+
+# Ensure logs directory exists
+if (-not (Test-Path $LogsDir)) {
+    New-Item -ItemType Directory -Path $LogsDir -Force | Out-Null
+}
 
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host " AmrBSGBankEcoIntDemo - Startup Script" -ForegroundColor Cyan
@@ -24,6 +31,14 @@ $Projects = @{
         Port = 3000
         Type = "frontend"
         StartCmd = "npm run dev"
+    }
+    "config-api" = @{
+        Name = "Config API Server"
+        Owner = "brian.grundleger@temenos.com"
+        Path = "brian.grundleger\BG_DallasAiProjects\DallasAiProjects"
+        Port = 3010
+        Type = "backend-node"
+        StartCmd = "npm run config-server"
     }
     "crm" = @{
         Name = "CRM Banking Simulator"
@@ -73,13 +88,21 @@ $Projects = @{
         Type = "frontend"
         StartCmd = "npm run dev"
     }
-    "middleware" = @{
-        Name = "Middleware Integration"
+    "esb-frontend" = @{
+        Name = "ESB - Frontend"
         Owner = "m.mahaboobhussain@temenos.com"
-        Path = "m.mahaboobhussain\MIDDLEWARE\TEST_NEW_APP"
-        Port = "3005 (frontend), 8005 (backend)"
-        Type = "fullstack"
-        StartCmd = "npm run start"
+        Path = "m.mahaboobhussain\ESB\ESB_V1.0\frontend"
+        Port = 3016
+        Type = "frontend"
+        StartCmd = "npm run dev"
+    }
+    "esb-backend" = @{
+        Name = "ESB - Backend"
+        Owner = "m.mahaboobhussain@temenos.com"
+        Path = "m.mahaboobhussain\ESB\ESB_V1.0\backend"
+        Port = 8006
+        Type = "backend-node"
+        StartCmd = "npm run dev"
     }
 }
 
@@ -124,18 +147,35 @@ function Start-Project {
     $FullPath = Join-Path $BaseDir $ProjectInfo.Path
 
     if (-not (Test-Path $FullPath)) {
-        Write-Host "  [SKIP] Path not found: $ProjectInfo.Name" -ForegroundColor Yellow
+        Write-Host "  [SKIP] Path not found: $($ProjectInfo.Name)" -ForegroundColor Yellow
         return
     }
 
-    $Title = "$($ProjectInfo.Name) - Port: $($ProjectInfo.Port)"
+    $LogFile = Join-Path $LogsDir "$ProjectKey.log"
     Write-Host "  Starting: $($ProjectInfo.Name) on port $($ProjectInfo.Port)..." -ForegroundColor Green
 
-    Start-Process powershell -ArgumentList @(
-        "-NoExit",
-        "-Command",
-        "Set-Location '$FullPath'; Write-Host 'Starting $($ProjectInfo.Name)...' -ForegroundColor Cyan; $($ProjectInfo.StartCmd)"
-    ) -WindowStyle Normal
+    if ($Visible) {
+        # Visible mode - opens PowerShell windows (for debugging)
+        Start-Process powershell -ArgumentList @(
+            "-NoExit",
+            "-Command",
+            "Set-Location '$FullPath'; Write-Host 'Starting $($ProjectInfo.Name)...' -ForegroundColor Cyan; $($ProjectInfo.StartCmd)"
+        ) -WindowStyle Normal
+    } else {
+        # Hidden mode - runs in background with logs
+        $Timestamp = Get-Date -Format "yyyy-MM-ddTHH:mm:ss"
+        $Header = "`n$('=' * 60)`n[$Timestamp] Starting $($ProjectInfo.Name) (Port $($ProjectInfo.Port))`n$('=' * 60)`n"
+        Add-Content -Path $LogFile -Value $Header
+
+        # Create batch file for the service
+        $BatchFile = Join-Path $LogsDir "start-$ProjectKey.bat"
+        $BatchContent = "@echo off`r`ncd /d `"$FullPath`"`r`n$($ProjectInfo.StartCmd) >> `"$LogFile`" 2>&1"
+        Set-Content -Path $BatchFile -Value $BatchContent
+
+        # Start the batch file hidden using PowerShell
+        Start-Process -FilePath $BatchFile -WindowStyle Hidden
+        Write-Host "    Logs: $LogFile" -ForegroundColor DarkGray
+    }
 
     Start-Sleep -Milliseconds 500
 }
@@ -178,10 +218,29 @@ if ($LandingOnly) {
 Write-Host "Starting all projects..." -ForegroundColor Cyan
 Write-Host ""
 
+# Generate integration data first
+Write-Host "[Integration Data]" -ForegroundColor Magenta
+$LandingPath = Join-Path $BaseDir "brian.grundleger\BG_DallasAiProjects\DallasAiProjects"
+if (Test-Path $LandingPath) {
+    Write-Host "  Generating integration data from apps_integration_info.txt..." -ForegroundColor Yellow
+    Push-Location $LandingPath
+    try {
+        $result = npm run generate-data 2>&1
+        Write-Host "  [OK] Integration data generated successfully" -ForegroundColor Green
+    }
+    catch {
+        Write-Host "  [WARN] Could not generate integration data" -ForegroundColor Yellow
+    }
+    Pop-Location
+}
+Write-Host ""
+
 # Start backends first
 Write-Host "[Backends]" -ForegroundColor Magenta
+Start-Project -ProjectKey "config-api" -ProjectInfo $Projects["config-api"]
 Start-Project -ProjectKey "bsg-backend" -ProjectInfo $Projects["bsg-backend"]
 Start-Project -ProjectKey "debitcards-backend" -ProjectInfo $Projects["debitcards-backend"]
+Start-Project -ProjectKey "esb-backend" -ProjectInfo $Projects["esb-backend"]
 
 Write-Host ""
 Write-Host "[Frontends]" -ForegroundColor Magenta
@@ -194,7 +253,7 @@ Start-Project -ProjectKey "crm" -ProjectInfo $Projects["crm"]
 Start-Project -ProjectKey "bsg-frontend" -ProjectInfo $Projects["bsg-frontend"]
 Start-Project -ProjectKey "debitcards-frontend" -ProjectInfo $Projects["debitcards-frontend"]
 Start-Project -ProjectKey "lms" -ProjectInfo $Projects["lms"]
-Start-Project -ProjectKey "middleware" -ProjectInfo $Projects["middleware"]
+Start-Project -ProjectKey "esb-frontend" -ProjectInfo $Projects["esb-frontend"]
 
 Write-Host ""
 Write-Host "========================================" -ForegroundColor Cyan
@@ -203,11 +262,51 @@ Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "Project URLs:" -ForegroundColor Yellow
 Write-Host "  Landing Page:      http://localhost:3000" -ForegroundColor White
+Write-Host "  Health Check:      http://localhost:3000 (Menu)" -ForegroundColor White
+Write-Host "  Config API:        http://localhost:3010" -ForegroundColor White
 Write-Host "  CRM Simulator:     http://localhost:3001" -ForegroundColor White
 Write-Host "  BSG Demo:          http://localhost:3002 (API: :8002)" -ForegroundColor White
 Write-Host "  Debit Cards:       http://localhost:3003 (API: :8003)" -ForegroundColor White
 Write-Host "  LMS Portal:        http://localhost:3004" -ForegroundColor White
-Write-Host "  Middleware:        http://localhost:3005 (API: :8005)" -ForegroundColor White
+Write-Host "  ESB:               http://localhost:3016 (API: :8006)" -ForegroundColor White
+Write-Host ""
+Write-Host "----------------------------------------" -ForegroundColor DarkGray
+Write-Host " Integration Config Editor" -ForegroundColor Green
+Write-Host "----------------------------------------" -ForegroundColor DarkGray
+Write-Host "  Use 'Edit Config' button in Solution Diagram" -ForegroundColor White
+Write-Host "  Or edit 'apps_integration_info.txt' directly" -ForegroundColor White
+Write-Host "  Diagram will auto-update on changes!" -ForegroundColor White
+Write-Host ""
+
+# Wait for services to initialize
+Write-Host ""
+Write-Host "[Waiting for services to start...]" -ForegroundColor Yellow
+Start-Sleep -Seconds 5
+
+# Open Landing Page in default browser
+Write-Host ""
+Write-Host "[Opening Browser]" -ForegroundColor Magenta
+Write-Host "  Opening Landing Page at http://localhost:3000..." -ForegroundColor Green
+Start-Process "http://localhost:3000"
+
+Write-Host ""
+Write-Host "========================================" -ForegroundColor Cyan
+Write-Host " Startup Complete!" -ForegroundColor Green
+Write-Host "========================================" -ForegroundColor Cyan
+Write-Host ""
+
+if (-not $Visible) {
+    Write-Host "Services running in HIDDEN mode" -ForegroundColor Yellow
+    Write-Host "Logs directory: $LogsDir" -ForegroundColor DarkGray
+    Write-Host ""
+    Write-Host "To view logs:" -ForegroundColor White
+    Write-Host "  - Use Health Check page (http://localhost:3000 > Health Check)" -ForegroundColor Gray
+    Write-Host "  - Or open log files in: $LogsDir" -ForegroundColor Gray
+    Write-Host ""
+    Write-Host "To run with visible windows (debugging):" -ForegroundColor White
+    Write-Host "  .\startup-all.ps1 -Visible" -ForegroundColor Gray
+}
+
 Write-Host ""
 Write-Host "Press any key to exit this window..." -ForegroundColor Gray
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")

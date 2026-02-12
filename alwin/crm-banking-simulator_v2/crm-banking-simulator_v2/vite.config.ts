@@ -3,11 +3,14 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/crm-banking-simulator/',
   server: {
     port: 3001,
     host: true,
-    open: true,
+    open: false,  // Disabled - Landing Page opens browser
+    headers: {
+      'X-Frame-Options': 'ALLOWALL',
+      'Content-Security-Policy': "frame-ancestors *"
+    },
     proxy: {
       '/api/temenos': {
         target: 'https://americasbsgprd.temenos.com',
@@ -18,6 +21,10 @@ export default defineConfig({
     }
   },
   preview: {
-    port: 3001
+    port: 3001,
+    headers: {
+      'X-Frame-Options': 'ALLOWALL',
+      'Content-Security-Policy': "frame-ancestors *"
+    }
   }
 })

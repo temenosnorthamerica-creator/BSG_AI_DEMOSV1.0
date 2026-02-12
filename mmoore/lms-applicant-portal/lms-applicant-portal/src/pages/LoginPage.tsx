@@ -2,16 +2,115 @@ import type { FormEvent } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks';
-import { applicationService, tokenService } from '../api/services';
+import { applicationService, tokenService, ApiError, API_ERROR_CODES } from '../api/services';
+
+// Error display component with details toggle
+interface ErrorDisplayProps {
+  error: {
+    message: string;
+    code?: string;
+    statusCode?: number;
+    details?: string;
+    hint?: string;
+  };
+}
+
+function ErrorDisplay({ error }: ErrorDisplayProps) {
+  const [showDetails, setShowDetails] = useState(false);
+
+  // Get icon based on error code
+  const getErrorIcon = () => {
+    switch (error.code) {
+      case API_ERROR_CODES.INVALID_API_KEY:
+      case API_ERROR_CODES.EXPIRED_API_KEY:
+        return '🔑';
+      case API_ERROR_CODES.FORBIDDEN:
+        return '🚫';
+      case API_ERROR_CODES.NETWORK_ERROR:
+        return '🌐';
+      case API_ERROR_CODES.TIMEOUT:
+        return '⏱️';
+      case API_ERROR_CODES.SERVER_ERROR:
+      case API_ERROR_CODES.SERVER_UNAVAILABLE:
+        return '🖥️';
+      default:
+        return '⚠️';
+    }
+  };
+
+  return (
+    <div className="bg-red-50 border border-red-200 rounded overflow-hidden">
+      {/* Main error message */}
+      <div className="px-4 py-3">
+        <div className="flex items-start gap-2">
+          <span className="text-lg">{getErrorIcon()}</span>
+          <div className="flex-1">
+            <p className="text-red-700 font-medium">{error.message}</p>
+            {error.hint && (
+              <p className="text-red-600 text-sm mt-1">{error.hint}</p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Technical details toggle */}
+      {(error.code || error.statusCode || error.details) && (
+        <div className="border-t border-red-200">
+          <button
+            type="button"
+            onClick={() => setShowDetails(!showDetails)}
+            className="w-full px-4 py-2 text-left text-xs text-red-600 hover:bg-red-100 flex items-center justify-between"
+          >
+            <span>Technical Details</span>
+            <span>{showDetails ? '▲' : '▼'}</span>
+          </button>
+
+          {showDetails && (
+            <div className="px-4 py-2 bg-red-100/50 text-xs font-mono text-red-800 space-y-1">
+              {error.code && <p><strong>Error Code:</strong> {error.code}</p>}
+              {error.statusCode && <p><strong>HTTP Status:</strong> {error.statusCode}</p>}
+              {error.details && <p><strong>Details:</strong> {error.details}</p>}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Error state type
+interface ErrorState {
+  message: string;
+  code?: string;
+  statusCode?: number;
+  details?: string;
+  hint?: string;
+}
 
 export function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [ssn, setSsn] = useState('');
-  const [error, setError] = useState('');
+  const [error, setError] = useState<ErrorState | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [demoMode] = useState(true); // Enable demo mode for testing
   const { login, setUser } = useAuth();
   const navigate = useNavigate();
+
+  // Demo login handler for quick testing
+  const handleDemoLogin = () => {
+    const demoUser = {
+      userId: 'demo-1',
+      firstName: 'Demo',
+      lastName: 'User',
+      ssn: '123456789',
+    };
+    setUser(demoUser);
+    localStorage.setItem('user_data', JSON.stringify(demoUser));
+    localStorage.setItem('user_ssn', '123456789');
+    localStorage.setItem('isAuthenticated', 'true');
+    navigate('/dashboard');
+  };
 
   // Format SSN as user types (XXX-XX-XXXX)
   const handleSsnChange = (value: string) => {
@@ -28,7 +127,7 @@ export function LoginPage() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError(null);
     setIsLoading(true);
 
     // Extract raw SSN digits for API calls
@@ -59,6 +158,7 @@ export function LoginPage() {
           localStorage.setItem('user_applications', JSON.stringify(searchResponse));
         } catch (searchError) {
           console.error('Application search failed:', searchError);
+          // Don't fail login for application search errors
         }
       }
 
@@ -76,7 +176,30 @@ export function LoginPage() {
       navigate('/dashboard');
     } catch (err) {
       console.error('Login error:', err);
-      setError('Failed to connect to the server. Please try again.');
+
+      // Handle our custom ApiError with detailed information
+      if (err instanceof ApiError) {
+        setError({
+          message: err.message,
+          code: err.code,
+          statusCode: err.statusCode,
+          details: err.details,
+          hint: err.hint,
+        });
+      } else if (err instanceof Error) {
+        // Handle standard errors
+        setError({
+          message: 'An unexpected error occurred',
+          details: err.message,
+          hint: 'Please try again. If the problem persists, use Demo Mode or contact support.',
+        });
+      } else {
+        // Handle unknown errors
+        setError({
+          message: 'Failed to connect to the server',
+          hint: 'Please check your network connection and try again.',
+        });
+      }
     } finally {
       setIsLoading(false);
     }
@@ -103,11 +226,7 @@ export function LoginPage() {
             <p className="text-gray-600 text-center mb-6">Sign in to manage your applications</p>
 
             <form onSubmit={handleSubmit} className="space-y-5">
-              {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded text-sm">
-                  {error}
-                </div>
-              )}
+              {error && <ErrorDisplay error={error} />}
 
               <div>
                 <label htmlFor="username" className="block text-sm font-semibold text-gray-700 mb-2">
@@ -165,6 +284,19 @@ export function LoginPage() {
               >
                 {isLoading ? 'Signing in...' : 'Sign In'}
               </button>
+
+              {demoMode && (
+                <button
+                  type="button"
+                  onClick={handleDemoLogin}
+                  className="w-full mt-3 text-white py-3 px-4 rounded font-semibold transition-colors shadow-sm hover:shadow-md"
+                  style={{ backgroundColor: '#10B981' }}
+                  onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#059669'}
+                  onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#10B981'}
+                >
+                  🎭 Continue in Demo Mode
+                </button>
+              )}
             </form>
 
             <div className="mt-6 text-center">

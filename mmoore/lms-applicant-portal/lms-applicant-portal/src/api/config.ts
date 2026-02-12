@@ -3,8 +3,9 @@ export const API_CONFIG = {
   // Use empty string for dev (proxy handles it), full URL for production
   BASE_URL: '',
   API_VERSION: '1',
-  API_KEY: 'xKHCjZOXMACk1xGmTPmYD2y3ov3BANyGI/thJB0YOCDntzw9LVsfx3IjRWJqwoPZ0pPhATz8YtyR6qn+aLjomve5GU7BktkOBhf1cH88+KS78/ujIPmsztVVQ0l7xdQubgmj3I+9T40YUFZjSLgcP4hUM0dRxPJALHRYlbKtptY=',
-  TOKEN_EXPIRY_SECONDS: 900,      // 15 minutes
+  //API_KEY: 'xKHCjZOXMACk1xGmTPmYD2y3ov3BANyGI/thJB0YOCDntzw9LVsfx3IjRWJqwoPZ0pPhATz8YtyR6qn+aLjomve5GU7BktkOBhf1cH88+KS78/ujIPmsztVVQ0l7xdQubgmj3I+9T40YUFZjSLgcP4hUM0dRxPJALHRYlbKtptY=',
+  API_KEY: '3Q2sh5lIl0vcwDfrtNSsmgbyH4jAiTvVcXuh0KWsRABmTqvwKSvzPm9r8yPNwS+zQgpe9miwND7SuIhU0lzr/PCFBUCRrIFhpCVk+KGhdiQA85YhLe8Euuo7YpQSUgSdfdzhOUgN7kas/wYK6fSLza88zHi9VBLY5Xai1NcEqDM=',
+ TOKEN_EXPIRY_SECONDS: 900,      // 15 minutes
   TOKEN_BUFFER_SECONDS: 60,       // Refresh 1 minute before expiry
 };
 

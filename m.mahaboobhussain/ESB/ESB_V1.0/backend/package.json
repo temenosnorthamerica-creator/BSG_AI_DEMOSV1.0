@@ -1,0 +1,18 @@
+{
+  "name": "esb-backend",
+  "version": "1.0.0",
+  "description": "ESB Application Backend - API Server",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "@azure/event-hubs": "^5.12.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^9.0.0"
+  }
+}

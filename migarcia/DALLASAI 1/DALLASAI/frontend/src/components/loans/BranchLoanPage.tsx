@@ -39,6 +39,9 @@ const BranchLoanPage: React.FC = () => {
   const [customerLoans, setCustomerLoans] = useState<LoanSummary[]>([]);
   const [isLoadingLoans, setIsLoadingLoans] = useState(false);
 
+  // Detect embed mode from URL parameter
+  const isEmbedded = new URLSearchParams(window.location.search).get('embed') === 'true';
+
   // Fetch customer loans when customer is selected
   useEffect(() => {
     const fetchCustomerLoans = async () => {
@@ -170,7 +173,7 @@ const BranchLoanPage: React.FC = () => {
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
       <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className={isEmbedded ? "w-full px-4 py-4" : "max-w-7xl mx-auto px-4 py-4"}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Building2 className="w-8 h-8 text-blue-600" />

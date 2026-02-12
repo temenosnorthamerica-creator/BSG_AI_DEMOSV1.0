@@ -1,0 +1,36 @@
+{
+  "apiSampleId": "61e7d7c6-fcad-4732-ad74-0d82e781be81",
+  "sections": {
+    "headers": {
+      "visible": false,
+      "defaultValues": {}
+    }
+  },
+  "fields": {
+    "specversion": {
+      "visible": false
+    },
+    "id": {
+      "visible": false
+    },
+    "type": {
+      "visible": false
+    },
+    "source": {
+      "visible": false
+    },
+    "subject": {
+      "visible": false
+    },
+    "time": {
+      "visible": true
+    },
+    "datacontenttype": {
+      "visible": false
+    },
+    "headers.companyId": {
+      "visible": false
+    }
+  },
+  "updatedAt": "2026-02-11T02:21:26.661Z"
+}

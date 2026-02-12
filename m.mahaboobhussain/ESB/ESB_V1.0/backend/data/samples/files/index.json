@@ -1,0 +1,70 @@
+[
+  {
+    "id": "2e7a04c6-6ad9-4b60-a471-6a8e74508e58",
+    "name": "Funds Transfer",
+    "description": "CSV file for funds transfer using API mapping",
+    "fileFormat": {
+      "delimiter": ",",
+      "hasHeader": true,
+      "headerRowCount": 1,
+      "footerRowCount": 0,
+      "textQualifier": "\"",
+      "encoding": "utf-8"
+    },
+    "columns": [
+      {
+        "name": "transactionId",
+        "type": "string"
+      },
+      {
+        "name": "fromAccount",
+        "type": "string"
+      },
+      {
+        "name": "fromCurrency",
+        "type": "string"
+      },
+      {
+        "name": "toAccount",
+        "type": "string"
+      },
+      {
+        "name": "toCurrency",
+        "type": "string"
+      },
+      {
+        "name": "amount",
+        "type": "string"
+      }
+    ],
+    "targetApi": {
+      "apiSampleId": "352afb12-6fe6-4ffd-a49b-d1c58e1263de",
+      "apiSampleName": "Fund Transfer"
+    },
+    "fieldMapping": {
+      "transactionId": "body.paymentDetails[].paymentDetail",
+      "fromAccount": "body.debitAccountId",
+      "fromCurrency": "body.debitCurrency",
+      "toAccount": "body.creditAccountId",
+      "toCurrency": "body.creditCurrencyId",
+      "amount": "body.debitAmount"
+    },
+    "staticFields": {
+      "body.transactionType": "AC",
+      "body.orderingBank": "PE1",
+      "body.orderingCustomerId": "PRIMARY"
+    },
+    "responseCapture": [
+      {
+        "responsePath": "header.id",
+        "displayName": "FundsTransferId"
+      }
+    ],
+    "displayPreferences": {
+      "sourceFields": [],
+      "responseFields": []
+    },
+    "createdAt": "2026-02-03T22:55:26.366Z",
+    "updatedAt": "2026-02-03T23:00:43.514Z"
+  }
+]

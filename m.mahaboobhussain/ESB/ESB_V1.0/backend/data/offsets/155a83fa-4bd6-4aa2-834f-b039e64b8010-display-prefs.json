@@ -1,0 +1,10 @@
+{
+  "configId": "155a83fa-4bd6-4aa2-834f-b039e64b8010",
+  "sourceFields": [
+    "headers.companyId",
+    "data.customerIds[].customerId",
+    "data.productId"
+  ],
+  "responseFields": [],
+  "updatedAt": "2026-02-02T17:54:51.337Z"
+}

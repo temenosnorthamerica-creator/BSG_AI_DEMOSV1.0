@@ -9,7 +9,9 @@ import {
   Cpu,
   FileText,
   Landmark,
-  Server
+  Server,
+  GitBranch,
+  Workflow
 } from 'lucide-react'
 
 export const appLandingConfigs = {
@@ -478,245 +480,266 @@ export const appLandingConfigs = {
     ]
   },
 
-  'middleware-demo': {
+  'creditos': {
     navItems: [
       {
         id: 'overview',
         label: 'Overview',
         icon: Info,
-        title: 'Middleware Integration Overview',
+        title: 'Creditos - Sistema de Solicitudes Overview',
         content: (
           <div className="space-y-4">
             <p>
-              The Middleware Integration demo showcases how Azure Event Hubs enables seamless
-              event-driven integration between banking systems. This application demonstrates
-              the complete event lifecycle from creation to consumption.
+              The Creditos application (Sucursal - Creditos) is a comprehensive branch-level credit
+              and loan management system. It enables bank branch employees to process loan applications,
+              manage payment schedules, and track credit status for personal and automotive loans.
             </p>
             <p>
-              Built with React and Express.js, it provides a visual interface for understanding
-              how CloudEvents flow through the middleware layer to connect source systems with
-              Temenos Transact.
+              This module is part of the BSG Demo Platform and demonstrates how Temenos solutions
+              integrate with branch operations to provide seamless credit management workflows.
             </p>
           </div>
         ),
         features: [
-          'Event Hub connectivity',
-          'CloudEvents format support',
-          'Customer event creation',
-          'Account event creation',
-          'Event mapping visualization',
-          'API transformation demo'
+          'Loan application submission (Solicitar Credito)',
+          'Payment consultation and tracking (Consultar Pagos)',
+          'Customer search by loan ID',
+          'Payment status overview (Pagados, Pendientes, Vencidos)',
+          'Next payment date and amount display',
+          'Payment history export functionality'
         ],
         technicalDetails: [
-          { label: 'Frontend', value: 'React + Vite' },
-          { label: 'Backend', value: 'Express.js' },
-          { label: 'Events', value: 'Azure Event Hubs' },
-          { label: 'Ports', value: '3005 / 8005' }
+          { label: 'Frontend', value: 'React + Vite + TypeScript' },
+          { label: 'Backend', value: 'FastAPI (Python)' },
+          { label: 'Database', value: 'Azure Cosmos DB' },
+          { label: 'Ports', value: '3002 / 8002' }
         ]
       },
       {
-        id: 'events',
-        label: 'Events',
-        icon: Cpu,
-        title: 'Event Processing',
-        content: (
-          <div className="space-y-4">
-            <p>
-              The middleware processes events using the CloudEvents specification, ensuring
-              interoperability and standardization across systems.
-            </p>
-            <div className="bg-slate-700/30 rounded-lg p-4 mt-4">
-              <p className="text-sm text-slate-300 mb-2">Supported Event Types:</p>
-              <ul className="text-sm text-slate-400 list-disc list-inside space-y-1">
-                <li>com.bank.customer.created</li>
-                <li>com.bank.account.created</li>
-                <li>com.bank.transaction.processed</li>
-              </ul>
-            </div>
-          </div>
-        ),
-        features: [
-          'Event publishing',
-          'Event consumption',
-          'Event replay',
-          'Dead letter handling',
-          'Event schema validation',
-          'Correlation tracking'
-        ]
-      },
-      {
-        id: 'mapping',
-        label: 'Mapping',
+        id: 'components',
+        label: 'Components',
         icon: Layers,
-        title: 'Field Mapping',
+        title: 'System Components',
         content: (
           <div className="space-y-4">
             <p>
-              The middleware provides configurable field mapping to transform events from
-              source format to Temenos Transact API format.
+              The Creditos system is composed of modular components that handle different
+              aspects of the credit lifecycle management.
             </p>
           </div>
         ),
         features: [
-          'Source to target mapping',
-          'Field transformation rules',
-          'Data type conversion',
-          'Default value handling',
-          'Conditional mapping',
-          'Array handling'
+          'Customer Search Component - Find customers by loan ID',
+          'Credit Application Form - Submit new loan requests',
+          'Payment Schedule Viewer - View upcoming and past payments',
+          'Payment Status Dashboard - Overview of all payment states',
+          'Auto Loan Form - Vehicle financing applications',
+          'Personal Loan Form - Personal credit applications',
+          'Export Module - Generate reports and statements'
         ]
       },
       {
-        id: 'api',
-        label: 'API Flow',
-        icon: Server,
-        title: 'API Integration Flow',
+        id: 'architecture',
+        label: 'Architecture',
+        icon: Database,
+        title: 'System Architecture',
         content: (
           <div className="space-y-4">
             <p>
-              Events are transformed and sent to Temenos Transact APIs using the configured
-              mappings and transformation rules.
+              The Creditos module follows a modern microservices architecture integrated
+              within the BSG Demo Platform ecosystem.
             </p>
             <div className="bg-slate-700/30 rounded-lg p-4 mt-4">
-              <p className="text-sm text-slate-300 mb-2">Flow: PULL → MAP → SEND</p>
+              <p className="text-sm text-slate-300 mb-2">Architecture Flow:</p>
               <ol className="text-sm text-slate-400 list-decimal list-inside space-y-1">
-                <li>Pull event from Event Hub</li>
-                <li>Map fields to API format</li>
-                <li>Send to Transact API</li>
-                <li>Handle response</li>
+                <li>User interacts with React Frontend</li>
+                <li>Frontend calls FastAPI Backend services</li>
+                <li>Backend queries Azure Cosmos DB</li>
+                <li>Data flows to Temenos Integration layer</li>
+                <li>Results returned to user interface</li>
               </ol>
             </div>
           </div>
         ),
         features: [
-          'Pull events from queue',
-          'Transform to API format',
-          'Call Transact API',
-          'Handle success/failure'
+          'React SPA with component-based design',
+          'FastAPI async backend services',
+          'MongoDB-compatible data layer',
+          'RESTful API communication',
+          'JWT-based authentication',
+          'Real-time data synchronization'
         ],
         technicalDetails: [
-          { label: 'Pattern', value: 'Pull-Map-Send' },
-          { label: 'Retry', value: '3 attempts' },
-          { label: 'Timeout', value: '30 seconds' },
-          { label: 'DLQ', value: 'Enabled' }
+          { label: 'Pattern', value: 'Microservices' },
+          { label: 'API Style', value: 'REST' },
+          { label: 'Auth', value: 'JWT Tokens' },
+          { label: 'State', value: 'React Hooks' }
+        ]
+      },
+      {
+        id: 'api',
+        label: 'API Docs',
+        icon: Code,
+        title: 'API Documentation',
+        content: (
+          <div className="space-y-4">
+            <p>
+              The Creditos module exposes RESTful APIs for loan and payment management
+              operations through the BSG Demo Platform backend.
+            </p>
+            <div className="bg-slate-700/30 rounded-lg p-4 mt-4">
+              <p className="text-sm font-mono text-slate-300">
+                API Docs: http://localhost:8002/docs
+              </p>
+            </div>
+          </div>
+        ),
+        features: [
+          'Loan simulation endpoint',
+          'Customer search API',
+          'Payment schedule retrieval',
+          'Loan creation endpoints',
+          'Payment status queries',
+          'Export generation API'
+        ],
+        technicalDetails: [
+          { label: 'Base URL', value: 'localhost:8002/api/v1' },
+          { label: 'Format', value: 'JSON' },
+          { label: 'Auth', value: 'Bearer Token' },
+          { label: 'Docs', value: 'OpenAPI/Swagger' }
         ]
       }
     ]
   },
 
-  'credit-cards-demo': {
+  'esb-demo': {
     navItems: [
       {
         id: 'overview',
         label: 'Overview',
         icon: Info,
-        title: 'Credit Cards Demo Overview',
+        title: 'ESB - Enterprise Service Bus Overview',
         content: (
           <div className="space-y-4">
             <p>
-              The Credit Cards Demo application showcases comprehensive credit card management
-              capabilities including card products, rewards programs, credit limit management,
-              and statement processing.
+              The ESB (Enterprise Service Bus) application provides a user-friendly interface for
+              integrating file/event sources with API destinations. It features comprehensive
+              configuration management, visual data mapping, and interactive demo execution.
             </p>
             <p>
-              This full-stack application demonstrates how credit card services integrate with
-              core banking systems, featuring a modern React frontend and a Python FastAPI backend.
+              Built with React and Node.js/Express, this application demonstrates how to build
+              flexible integration solutions that connect Azure Event Hubs with Temenos APIs
+              through configurable field mappings.
             </p>
           </div>
         ),
         features: [
-          'Credit card product management',
-          'Rewards and loyalty programs',
-          'Credit limit adjustments',
-          'Statement generation',
-          'Payment processing',
-          'Credit bureau integration'
+          'Sample event JSON management',
+          'Sample API request/response management',
+          'Visual field mapping interface',
+          'Configuration save and load',
+          'Interactive demo execution',
+          'Real-time processing visualization'
         ],
         technicalDetails: [
-          { label: 'Frontend', value: 'React + Vite + TypeScript' },
-          { label: 'Backend', value: 'FastAPI (Python)' },
-          { label: 'Database', value: 'PostgreSQL' },
-          { label: 'Ports', value: '3006 / 8006' }
+          { label: 'Frontend', value: 'React 19 + Vite' },
+          { label: 'Backend', value: 'Node.js + Express' },
+          { label: 'Events', value: 'Azure Event Hubs' },
+          { label: 'Ports', value: '3016 / 8006' }
         ]
       },
       {
-        id: 'features',
-        label: 'Features',
-        icon: CreditCard,
-        title: 'Credit Card Features',
+        id: 'samples',
+        label: 'Sample Data',
+        icon: Database,
+        title: 'Sample Data Management',
         content: (
           <div className="space-y-4">
             <p>
-              Explore the complete lifecycle of credit card management from application
-              to rewards redemption.
-            </p>
-          </div>
-        ),
-        features: [
-          'New card applications',
-          'Credit limit management',
-          'Rewards points accrual',
-          'Points redemption',
-          'Statement viewing',
-          'Payment scheduling',
-          'Spending analytics',
-          'Fraud alerts'
-        ]
-      },
-      {
-        id: 'integration',
-        label: 'Integration',
-        icon: Code,
-        title: 'API Integration',
-        content: (
-          <div className="space-y-4">
-            <p>
-              The Credit Cards Demo integrates with Temenos credit card APIs and third-party
-              services for rewards and credit bureau reporting.
+              The ESB application provides dedicated pages for managing sample data that drives
+              the integration configuration and demo execution.
             </p>
             <div className="bg-slate-700/30 rounded-lg p-4 mt-4">
-              <p className="text-sm text-slate-300 mb-2">Key Integrations:</p>
+              <p className="text-sm text-slate-300 mb-2">Sample Data Types:</p>
               <ul className="text-sm text-slate-400 list-disc list-inside space-y-1">
-                <li>Credit Card Products API</li>
-                <li>Rewards Program API</li>
-                <li>Credit Bureau Reporting</li>
-                <li>Statement Generation API</li>
+                <li>Event JSON samples with schema detection</li>
+                <li>API request/response JSON pairs</li>
+                <li>CSV file definitions for bulk processing</li>
               </ul>
             </div>
           </div>
         ),
         features: [
-          'REST API integration',
-          'Third-party rewards partners',
-          'Credit bureau connectivity',
-          'Real-time authorization'
-        ],
-        technicalDetails: [
-          { label: 'API Style', value: 'REST' },
-          { label: 'Format', value: 'JSON' },
-          { label: 'Auth', value: 'OAuth 2.0' },
-          { label: 'Docs', value: '/docs' }
+          'Drag-drop JSON file upload',
+          'Automatic schema detection',
+          'JSON syntax validation',
+          'Request/response pair linking',
+          'Sample preview and editing',
+          'CSV column mapping'
         ]
       },
       {
-        id: 'config',
-        label: 'Configuration',
-        icon: Settings,
-        title: 'Configuration Options',
+        id: 'mapping',
+        label: 'Mapping',
+        icon: GitBranch,
+        title: 'Field Mapping Configuration',
         content: (
           <div className="space-y-4">
             <p>
-              The Credit Cards Demo can be configured to support different card products,
-              reward structures, and integration endpoints.
+              The visual mapping interface allows you to connect source fields to API parameters
+              using an intuitive drag-and-drop or connection-based interface.
             </p>
           </div>
         ),
         features: [
-          'Card product configuration',
-          'Rewards program setup',
-          'Credit limit policies',
-          'Statement templates',
-          'Environment switching'
+          'Source to API field mapping',
+          'Visual connection interface',
+          'Nested field support (dot notation)',
+          'Array field handling',
+          'Mapping templates',
+          'Configuration versioning'
+        ],
+        technicalDetails: [
+          { label: 'UI Library', value: 'React Flow' },
+          { label: 'Nested Fields', value: 'Dot notation' },
+          { label: 'Arrays', value: '[] syntax' },
+          { label: 'Storage', value: 'File-based JSON' }
+        ]
+      },
+      {
+        id: 'execution',
+        label: 'Execution',
+        icon: Workflow,
+        title: 'Demo Execution',
+        content: (
+          <div className="space-y-4">
+            <p>
+              Execute integrations with real-time visualization showing data flow from source
+              through transformation to API destination.
+            </p>
+            <div className="bg-slate-700/30 rounded-lg p-4 mt-4">
+              <p className="text-sm text-slate-300 mb-2">Execution Paths:</p>
+              <ol className="text-sm text-slate-400 list-decimal list-inside space-y-1">
+                <li>CRM Path: Event Hub → Process Events</li>
+                <li>Digital Path: Direct API calls with response capture</li>
+                <li>CSV Path: Bulk file processing row by row</li>
+              </ol>
+            </div>
+          </div>
+        ),
+        features: [
+          'Processing animation',
+          'Progress tracking',
+          'Success/failure status',
+          'Response parameter extraction',
+          'Variable substitution',
+          'Execution history tracking'
+        ],
+        technicalDetails: [
+          { label: 'Variables', value: '{{VAR_NAME}} syntax' },
+          { label: 'Capture', value: 'Response path extraction' },
+          { label: 'History', value: 'CRM, Digital, CSV tabs' },
+          { label: 'Storage', value: 'File-based logs' }
         ]
       }
     ]

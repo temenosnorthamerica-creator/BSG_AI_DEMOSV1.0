@@ -13,6 +13,24 @@ function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark')
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [pendingFeature, setPendingFeature] = useState<string | null>(null)
+  const [hideSidebar, setHideSidebar] = useState(false)
+
+  // Load initial component and embed mode from URL parameters (for deep-linking from Landing Page)
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const componentParam = urlParams.get('component')
+    const embedParam = urlParams.get('embed')
+
+    if (componentParam) {
+      setCurrentComponent(componentParam as ComponentId)
+    }
+    // Hide sidebar when embedded in iframe (embed=true)
+    if (embedParam === 'true') {
+      setHideSidebar(true)
+      // Remove data-sidebar attribute to prevent margin-left CSS rule
+      document.body.removeAttribute('data-sidebar')
+    }
+  }, [])
 
   // Load theme from localStorage on mount
   useEffect(() => {
@@ -52,13 +70,15 @@ function App() {
 
   return (
     <div className={`min-h-screen flex ${theme === 'dark' ? 'bg-[#0f172a]' : 'bg-[#F8FAFC]'}`}>
-      {/* Sidebar */}
-      <Sidebar
-        currentComponent={currentComponent}
-        onComponentChange={handleComponentChange}
-        onHomeClick={handleHomeClick}
-        onSettingsClick={() => setSettingsOpen(true)}
-      />
+      {/* Sidebar - removed when embedded in iframe (embed=true) */}
+      {!hideSidebar && (
+        <Sidebar
+          currentComponent={currentComponent}
+          onComponentChange={handleComponentChange}
+          onHomeClick={handleHomeClick}
+          onSettingsClick={() => setSettingsOpen(true)}
+        />
+      )}
 
       {/* Settings Modal */}
       <SettingsModal
@@ -73,28 +93,31 @@ function App() {
         onClose={() => setPendingFeature(null)}
       />
 
-      {/* Main Content Area */}
-      <main className={`flex-1 ml-20 relative overflow-hidden transition-all duration-300 ${theme === 'dark' ? 'bg-[#0f172a]' : 'bg-[#F8FAFC]'}`}>
-        {/* Background Watermark */}
-        <div className="fixed inset-0 pointer-events-none z-0">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className={`text-[400px] font-light select-none opacity-30 ${theme === 'dark' ? 'text-[#1e293b]' : 'text-[#D1D5DB]'}`}>
-              BSG
-            </span>
+      {/* Main Content Area - full width when sidebar is hidden */}
+      <main className={`flex-1 ${hideSidebar ? 'ml-0' : 'ml-20'} relative overflow-hidden transition-all duration-300 ${theme === 'dark' ? 'bg-[#0f172a]' : 'bg-[#F8FAFC]'}`}>
+        {/* Background Watermark - hidden when embedded */}
+        {!hideSidebar && (
+          <div className="fixed inset-0 pointer-events-none z-0">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className={`text-[400px] font-light select-none opacity-30 ${theme === 'dark' ? 'text-[#1e293b]' : 'text-[#D1D5DB]'}`}>
+                BSG
+              </span>
+            </div>
+            {/* Gradient Curve from Bottom Right */}
+            <div className={`absolute bottom-0 right-0 w-[800px] h-[600px] bg-gradient-to-tl rounded-full blur-3xl opacity-40 ${
+              theme === 'dark'
+                ? 'from-[#283054] via-[#283054]/20 to-transparent'
+                : 'from-[#283054] via-[#283054]/10 to-transparent'
+            }`}></div>
           </div>
-          {/* Gradient Curve from Bottom Right */}
-          <div className={`absolute bottom-0 right-0 w-[800px] h-[600px] bg-gradient-to-tl rounded-full blur-3xl opacity-40 ${
-            theme === 'dark'
-              ? 'from-[#283054] via-[#283054]/20 to-transparent'
-              : 'from-[#283054] via-[#283054]/10 to-transparent'
-          }`}></div>
-        </div>
+        )}
 
-        {/* Content Container */}
-        <div className="relative z-10 px-8 py-8 h-full overflow-y-auto">
-          <Header />
+        {/* Content Container - reduced padding and full width when embedded */}
+        <div className={`relative z-10 h-full overflow-y-auto ${hideSidebar ? 'px-2 py-2' : 'px-8 py-8'}`}>
+          {/* Hide header when embedded */}
+          {!hideSidebar && <Header />}
 
-          <div className="max-w-7xl">
+          <div className={hideSidebar ? 'w-full' : 'max-w-7xl'}>
             {currentComponent === 'branch-loans' ? (
               <BranchLoanPage />
             ) : currentComponent ? (

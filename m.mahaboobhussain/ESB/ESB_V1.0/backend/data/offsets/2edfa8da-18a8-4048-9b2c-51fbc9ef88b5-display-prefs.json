@@ -1,0 +1,14 @@
+{
+  "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+  "sourceFields": [
+    "headers.companyId",
+    "data.personalDetails.firstName",
+    "data.personalDetails.middleName",
+    "data.personalDetails.lastName",
+    "data.personalDetails.dateOfBirth",
+    "data.contactDetails.email",
+    "data.extensions.customField"
+  ],
+  "responseFields": [],
+  "updatedAt": "2026-02-02T17:55:22.435Z"
+}

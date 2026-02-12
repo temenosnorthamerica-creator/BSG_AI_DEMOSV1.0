@@ -69,10 +69,10 @@ export function MiddlewareDiagram({ color = '#8B5CF6' }) {
           className="transition-all duration-300"
         />
         <text x="90" y="20" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">
-          Middleware UI (React)
+          ESB UI (React)
         </text>
         <text x="90" y="35" textAnchor="middle" fill="white" fontSize="8" opacity="0.8">
-          Port 3005
+          Port 3016
         </text>
       </g>
 
@@ -96,10 +96,10 @@ export function MiddlewareDiagram({ color = '#8B5CF6' }) {
           className="transition-all duration-300"
         />
         <text x="90" y="20" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">
-          Express.js Backend
+          ESB API Backend
         </text>
         <text x="90" y="35" textAnchor="middle" fill="white" fontSize="8" opacity="0.8">
-          Port 8005
+          Port 8006
         </text>
       </g>
 

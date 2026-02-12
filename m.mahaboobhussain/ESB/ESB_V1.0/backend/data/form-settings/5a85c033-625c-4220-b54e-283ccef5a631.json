@@ -1,0 +1,24 @@
+{
+  "apiSampleId": "5a85c033-625c-4220-b54e-283ccef5a631",
+  "sections": {
+    "headers": {
+      "visible": false,
+      "defaultValues": {}
+    }
+  },
+  "fields": {
+    "header.override.overrideDetails[].code": {
+      "visible": false
+    },
+    "header.override.overrideDetails[].description": {
+      "visible": false
+    },
+    "header.override.overrideDetails[].id": {
+      "visible": false
+    },
+    "header.override.overrideDetails[].type": {
+      "visible": false
+    }
+  },
+  "updatedAt": "2026-02-11T02:24:22.029Z"
+}

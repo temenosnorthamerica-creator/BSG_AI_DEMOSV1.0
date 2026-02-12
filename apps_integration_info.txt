@@ -1,0 +1,9 @@
+CRM Banking Simulator:ESB - Enterprise Service Bus|Events
+ESB - Enterprise Service Bus:CRM Banking Simulator|APIs
+Debit Cards Demo:Enterprise Service Bus|Events,APIs
+LMS Applicant Portal:Enterprise Service Bus|APIs
+Creditos - Sistema de Solicitudes:Enterprise Service Bus|Events,APIs
+Enterprise Service Bus:Core|APIs,Files
+Core:Enterprise Service Bus|Events
+Core:Azure Event Hub|Events
+Azure Event Hub:Enterprise Service Bus|Events

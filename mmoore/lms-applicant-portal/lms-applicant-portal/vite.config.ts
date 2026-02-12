@@ -7,6 +7,10 @@ export default defineConfig({
   server: {
     port: 3004,
     host: true,
+    headers: {
+      'X-Frame-Options': 'ALLOWALL',
+      'Content-Security-Policy': "frame-ancestors *"
+    },
     proxy: {
       '/api': {
         target: 'https://lmsdemo1.temenos.com/LendingAPI',

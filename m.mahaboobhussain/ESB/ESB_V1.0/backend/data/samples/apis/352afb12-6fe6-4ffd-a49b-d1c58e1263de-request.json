@@ -1,0 +1,18 @@
+{
+  "header": {},
+  "body": {
+    "paymentDetails": [
+      {
+        "paymentDetail": "Fund Account"
+      }
+    ],
+    "debitAccountId": "{{DebitAcctId}}",
+    "debitCurrency": "USD",
+    "debitAmount": "10000",
+    "creditAccountId": "{{CreditAcctId}}",
+    "creditCurrencyId": "USD",
+    "transactionType": "AC",
+    "orderingBank": "PE1",
+    "orderingCustomerId": "PRIMARY"
+  }
+}

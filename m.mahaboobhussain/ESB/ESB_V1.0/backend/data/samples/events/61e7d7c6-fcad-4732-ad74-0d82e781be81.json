@@ -1,0 +1,31 @@
+{
+  "specversion": "1.0",
+  "id": "9f1c2b7e-3e44-4c3a-9c7e-5c8e6d7f12ab",
+  "type": "com.bank.customer.created",
+  "source": "/core-banking/customer-service",
+  "subject": "customer/123456789",
+  "time": "2026-01-15T14:32:10Z",
+  "datacontenttype": "application/json",
+  "headers": {
+    "companyId": "{{companyId}}"
+  },
+  "data": {
+    "personalDetails": {
+      "firstName": "{{FirstName}}",
+      "middleName": "{{MiddleName}}",
+      "lastName": "{{LastName}}",
+      "dateOfBirth": "1990-05-10",
+      "nationality": "IN",
+      "sectorId": "1001",
+      "languageId": 1,
+      "addressLine1": "asasa"
+    },
+    "contactDetails": {
+      "email": "mahaboob.hussain@example.com",
+      "mobile": "9876543210"
+    },
+    "extensions": {
+      "customField": "12"
+    }
+  }
+}

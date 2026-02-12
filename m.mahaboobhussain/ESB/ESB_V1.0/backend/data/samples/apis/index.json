@@ -1,0 +1,2086 @@
+[
+  {
+    "id": "5a85c033-625c-4220-b54e-283ccef5a631",
+    "name": "Create Customer",
+    "endpoint": "https://americasbsgbnpl.temenos.com/irf-provider-container/api/v4.1.0/party/us/customers/individuals",
+    "method": "POST",
+    "request": {
+      "fileName": "5a85c033-625c-4220-b54e-283ccef5a631-request.json",
+      "schema": {
+        "header": "object",
+        "header.override": "object",
+        "header.override.overrideDetails": "array",
+        "header.override.overrideDetails[].code": "string",
+        "header.override.overrideDetails[].description": "string",
+        "header.override.overrideDetails[].id": "string",
+        "header.override.overrideDetails[].type": "string",
+        "body": "object",
+        "body.extensions": "object",
+        "body.extensions.cusRoom2": "string",
+        "body.givenName": "string",
+        "body.middleName": "string",
+        "body.lastName": "string",
+        "body.nationalityId": "string",
+        "body.dateOfBirth": "string",
+        "body.sectorId": "number",
+        "body.communicationDevices": "array",
+        "body.communicationDevices[].emailId": "string",
+        "body.communicationDevices[].mobilePhoneNumber": "string",
+        "body.languageId": "number",
+        "body.addressLine1": "string"
+      },
+      "fields": [
+        "header.override.overrideDetails[].code",
+        "header.override.overrideDetails[].description",
+        "header.override.overrideDetails[].id",
+        "header.override.overrideDetails[].type",
+        "body.extensions.cusRoom2",
+        "body.givenName",
+        "body.middleName",
+        "body.lastName",
+        "body.nationalityId",
+        "body.dateOfBirth",
+        "body.sectorId",
+        "body.communicationDevices[].emailId",
+        "body.communicationDevices[].mobilePhoneNumber",
+        "body.languageId",
+        "body.addressLine1"
+      ],
+      "sampleData": {
+        "header": {
+          "override": {
+            "overrideDetails": [
+              {
+                "code": "O-12284",
+                "description": "Bucket Override O-12284",
+                "id": "EB-TIN.BLANK.W8",
+                "type": "Override"
+              }
+            ]
+          }
+        },
+        "body": {
+          "extensions": {
+            "cusRoom2": "10"
+          },
+          "givenName": "{{FirstName}}",
+          "middleName": "{{MiddleName}}",
+          "lastName": "{{LastName}}",
+          "nationalityId": "US",
+          "dateOfBirth": "1983-05-01",
+          "sectorId": 1001,
+          "communicationDevices": [
+            {
+              "emailId": "test@test.com",
+              "mobilePhoneNumber": "9876543210"
+            }
+          ],
+          "languageId": 1,
+          "addressLine1": "asasa"
+        }
+      }
+    },
+    "response": {
+      "fileName": "5a85c033-625c-4220-b54e-283ccef5a631-response.json",
+      "schema": {
+        "header": "object",
+        "header.transactionStatus": "string",
+        "header.audit": "object",
+        "header.audit.T24_time": "number",
+        "header.audit.responseParse_time": "number",
+        "header.audit.requestParse_time": "number",
+        "header.id": "string",
+        "header.status": "string",
+        "body": "object",
+        "body.dateTime": "array",
+        "body.dateTime[].dateTime": "string",
+        "body.country": "string",
+        "body.taxWithholding": "string",
+        "body.currNo": "number",
+        "body.displayName": "string",
+        "body.isInternetBankingService": "string",
+        "body.privacyStatus": "string",
+        "body.communicationDevices": "array",
+        "body.communicationDevices[].emailId": "string",
+        "body.communicationDevices[].mobilePhoneNumber": "string",
+        "body.customerStatus": "string",
+        "body.statusChangeDate": "string",
+        "body.escheat": "string",
+        "body.overrideDetails": "array",
+        "body.overrideDetails[].override": "string",
+        "body.accountOfficerId": "string",
+        "body.mnemonic": "string",
+        "body.addressLine1": "string",
+        "body.customerCompany": "string",
+        "body.inputter": "array",
+        "body.inputter[].inputter": "string",
+        "body.amlResult": "string",
+        "body.addressStatus": "string",
+        "body.companyCode": "string",
+        "body.affiliateMarketingStatusDate": "string",
+        "body.affiliateMarketingExpirationDate": "string",
+        "body.sectorId": "number",
+        "body.isMobileBankingService": "string",
+        "body.nationalityId": "string",
+        "body.givenName": "string",
+        "body.middleName": "string",
+        "body.lastName": "string",
+        "body.languageId": "string",
+        "body.dateOfBirth": "string",
+        "body.amlCheck": "string",
+        "body.customerName": "string",
+        "body.ctrExempt": "string",
+        "body.authoriser": "string",
+        "body.target": "string",
+        "body.customerSince": "string",
+        "body.affiliateMarketingStatus": "string",
+        "body.deptCode": "string",
+        "body.extensions": "object",
+        "body.extensions.cusRoom2": "string"
+      },
+      "fields": [
+        "header.transactionStatus",
+        "header.audit.T24_time",
+        "header.audit.responseParse_time",
+        "header.audit.requestParse_time",
+        "header.id",
+        "header.status",
+        "body.dateTime[].dateTime",
+        "body.country",
+        "body.taxWithholding",
+        "body.currNo",
+        "body.displayName",
+        "body.isInternetBankingService",
+        "body.privacyStatus",
+        "body.communicationDevices[].emailId",
+        "body.communicationDevices[].mobilePhoneNumber",
+        "body.customerStatus",
+        "body.statusChangeDate",
+        "body.escheat",
+        "body.overrideDetails[].override",
+        "body.accountOfficerId",
+        "body.mnemonic",
+        "body.addressLine1",
+        "body.customerCompany",
+        "body.inputter[].inputter",
+        "body.amlResult",
+        "body.addressStatus",
+        "body.companyCode",
+        "body.affiliateMarketingStatusDate",
+        "body.affiliateMarketingExpirationDate",
+        "body.sectorId",
+        "body.isMobileBankingService",
+        "body.nationalityId",
+        "body.givenName",
+        "body.middleName",
+        "body.lastName",
+        "body.languageId",
+        "body.dateOfBirth",
+        "body.amlCheck",
+        "body.customerName",
+        "body.ctrExempt",
+        "body.authoriser",
+        "body.target",
+        "body.customerSince",
+        "body.affiliateMarketingStatus",
+        "body.deptCode",
+        "body.extensions.cusRoom2"
+      ],
+      "sampleData": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 439,
+            "responseParse_time": 2099,
+            "requestParse_time": 4172
+          },
+          "id": "750152",
+          "status": "success"
+        },
+        "body": {
+          "dateTime": [
+            {
+              "dateTime": "2601161543"
+            }
+          ],
+          "country": "US",
+          "taxWithholding": "NO",
+          "currNo": 1,
+          "displayName": "Kovacek Ewald A",
+          "isInternetBankingService": "NULL",
+          "privacyStatus": "OPT-IN",
+          "communicationDevices": [
+            {
+              "emailId": "test@test.com",
+              "mobilePhoneNumber": "9876543210"
+            }
+          ],
+          "customerStatus": "61",
+          "statusChangeDate": "2025-04-16",
+          "escheat": "NO",
+          "overrideDetails": [
+            {
+              "override": "EB-TIN.BLANK.W8}Tin Id Missing"
+            }
+          ],
+          "accountOfficerId": "2",
+          "mnemonic": "C-750152",
+          "addressLine1": "asasa",
+          "customerCompany": "US0010001",
+          "inputter": [
+            {
+              "inputter": "81580_INPUTTER__OFS_DSF.PACKAGER"
+            }
+          ],
+          "amlResult": "NULL",
+          "addressStatus": "M",
+          "companyCode": "US0010001",
+          "affiliateMarketingStatusDate": "2025-04-16",
+          "affiliateMarketingExpirationDate": "2030-04-16",
+          "sectorId": 1001,
+          "isMobileBankingService": "NULL",
+          "nationalityId": "US",
+          "givenName": "Ewald",
+          "middleName": "A",
+          "lastName": "Kovacek",
+          "languageId": "1",
+          "dateOfBirth": "1983-05-01",
+          "amlCheck": "NULL",
+          "customerName": "Ewald A Kovacek",
+          "ctrExempt": "NO",
+          "authoriser": "81580_INPUTTER_OFS_DSF.PACKAGER",
+          "target": "9000",
+          "customerSince": "2009-12-23",
+          "affiliateMarketingStatus": "OPT-OUT",
+          "deptCode": "1",
+          "extensions": {
+            "cusRoom2": "10"
+          }
+        }
+      }
+    },
+    "createdAt": "2026-01-29T22:12:54.751Z",
+    "updatedAt": "2026-02-02T22:29:18.075Z",
+    "defaultHeaders": {
+      "companyId": "US0010001"
+    },
+    "responseCapture": [
+      {
+        "variableName": "CustomerId",
+        "responsePath": "header.id"
+      }
+    ]
+  },
+  {
+    "id": "59adb237-e6e3-4d76-b928-e9c690d95443",
+    "name": "Create Account",
+    "endpoint": "https://americasbsgbnpl.temenos.com/irf-provider-container/api/v6.1.0/holdings/us/accounts/consumerAccounts",
+    "method": "POST",
+    "request": {
+      "fileName": "59adb237-e6e3-4d76-b928-e9c690d95443-request.json",
+      "schema": {
+        "header": "object",
+        "header.override": "object",
+        "header.override.overrideDetails": "array",
+        "header.override.overrideDetails[].code": "string",
+        "header.override.overrideDetails[].description": "string",
+        "header.override.overrideDetails[].id": "string",
+        "header.override.overrideDetails[].type": "string",
+        "body": "object",
+        "body.customerIds": "array",
+        "body.customerIds[].customerId": "string",
+        "body.activityId": "string",
+        "body.currencyId": "string",
+        "body.productId": "string",
+        "body.officers": "object",
+        "body.officers.primaryOfficer": "number",
+        "body.balance": "object",
+        "body.balance.shortTitle": "string",
+        "body.balance.fdicClassCode": "number",
+        "body.balance.fdicOwnershipCode": "string",
+        "body.balance.purposeCode": "number",
+        "body.balance.accountType": "string",
+        "body.statement": "object",
+        "body.statement.statement1Frequency": "string",
+        "body.statement.attributeNamevalue": "string",
+        "body.statement.fqu1PrintAttrValue1": "string",
+        "body.schedule": "array",
+        "body.schedule[].payment": "array",
+        "body.schedule[].payment[].paymentType": "string",
+        "body.schedule[].payment[].paymentMethod": "string"
+      },
+      "fields": [
+        "header.override.overrideDetails[].code",
+        "header.override.overrideDetails[].description",
+        "header.override.overrideDetails[].id",
+        "header.override.overrideDetails[].type",
+        "body.customerIds[].customerId",
+        "body.activityId",
+        "body.currencyId",
+        "body.productId",
+        "body.officers.primaryOfficer",
+        "body.balance.shortTitle",
+        "body.balance.fdicClassCode",
+        "body.balance.fdicOwnershipCode",
+        "body.balance.purposeCode",
+        "body.balance.accountType",
+        "body.statement.statement1Frequency",
+        "body.statement.attributeNamevalue",
+        "body.statement.fqu1PrintAttrValue1",
+        "body.schedule[].payment[].paymentType",
+        "body.schedule[].payment[].paymentMethod"
+      ],
+      "sampleData": {
+        "header": {
+          "override": {
+            "overrideDetails": [
+              {
+                "code": "O-12549",
+                "description": "Bucket Override O-12549",
+                "id": "AA.INT.SRC.TYP.AND.PAY.MET.MISMATCH",
+                "type": "Override"
+              }
+            ]
+          }
+        },
+        "body": {
+          "customerIds": [
+            {
+              "customerId": "{{CustomerId}}"
+            }
+          ],
+          "activityId": "ACCOUNTS-NEW-ARRANGEMENT",
+          "currencyId": "USD",
+          "productId": "CONS.CHECKING",
+          "officers": {
+            "primaryOfficer": 3
+          },
+          "balance": {
+            "shortTitle": "Investor Checking Account",
+            "fdicClassCode": 3,
+            "fdicOwnershipCode": "S",
+            "purposeCode": 5,
+            "accountType": "CHECKING"
+          },
+          "statement": {
+            "statement1Frequency": "M0131",
+            "attributeNamevalue": "Print.Option",
+            "fqu1PrintAttrValue1": "ESTATEMENT"
+          },
+          "schedule": [
+            {
+              "payment": [
+                {
+                  "paymentType": "INTEREST",
+                  "paymentMethod": "DUE"
+                },
+                {
+                  "paymentType": "CHARGE",
+                  "paymentMethod": "DUE"
+                },
+                {
+                  "paymentType": "PERIODICCHARGE",
+                  "paymentMethod": "DUE"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "response": {
+      "fileName": "59adb237-e6e3-4d76-b928-e9c690d95443-response.json",
+      "schema": {
+        "header": "object",
+        "header.transactionStatus": "string",
+        "header.audit": "object",
+        "header.audit.T24_time": "number",
+        "header.audit.responseParse_time": "number",
+        "header.audit.requestParse_time": "number",
+        "header.aaaId": "string",
+        "header.id": "string",
+        "header.status": "string",
+        "body": "object",
+        "body.arrangementActivity": "object",
+        "body.arrangementActivity.arrangementId": "string",
+        "body.arrangementActivity.activityId": "string",
+        "body.arrangementActivity.productId": "string",
+        "body.arrangementActivity.customerIds": "array",
+        "body.arrangementActivity.customerIds[].customerId": "string",
+        "body.arrangementActivity.customerIds[].customerRole": "string",
+        "body.arrangementActivity.overrides": "array",
+        "body.arrangementActivity.overrides[].override": "string",
+        "body.arrangementActivity.currencyId": "string",
+        "body.arrangementActivity.effectiveDate": "string",
+        "body.arrangementActivity.properties": "array",
+        "body.arrangementActivity.properties[].fields": "array",
+        "body.arrangementActivity.properties[].fields[].fieldName": "string",
+        "body.arrangementActivity.properties[].fields[].fieldValue": "string",
+        "body.arrangementActivity.properties[].propertyId": "string",
+        "body.activities": "object",
+        "body.activities.newAccountArrangement": "object",
+        "body.activities.newAccountArrangement.activity": "string",
+        "body.activities.newAccountArrangement.transactionStatus": "string",
+        "body.activities.newAccountArrangement.id": "string",
+        "body.properties": "object",
+        "body.properties.stopcharge": "object",
+        "body.properties.stopcharge.header": "object",
+        "body.properties.stopcharge.header.transactionStatus": "string",
+        "body.properties.stopcharge.header.id": "string",
+        "body.properties.stopcharge.header.status": "string",
+        "body.properties.crinterest": "object",
+        "body.properties.crinterest.header": "object",
+        "body.properties.crinterest.header.transactionStatus": "string",
+        "body.properties.crinterest.header.audit": "object",
+        "body.properties.crinterest.header.audit.versionNumber": "string",
+        "body.properties.crinterest.header.id": "string",
+        "body.properties.crinterest.header.status": "string",
+        "body.properties.crinterest.body": "object",
+        "body.properties.crinterest.body.interest": "array",
+        "body.properties.crinterest.body.interest[].effectiveRate": "string",
+        "body.properties.crinterest.body.interest[].fixedRate": "number",
+        "body.properties.crinterest.body.accrualRule": "string",
+        "body.properties.crinterest.body.dayBasis": "string",
+        "body.properties.crinterest.body.rateTierType": "string",
+        "body.properties.eligibility": "object",
+        "body.properties.eligibility.header": "object",
+        "body.properties.eligibility.header.transactionStatus": "string",
+        "body.properties.eligibility.header.id": "string",
+        "body.properties.eligibility.header.status": "string",
+        "body.properties.estmtcheckfrimg": "object",
+        "body.properties.estmtcheckfrimg.header": "object",
+        "body.properties.estmtcheckfrimg.header.transactionStatus": "string",
+        "body.properties.estmtcheckfrimg.header.audit": "object",
+        "body.properties.estmtcheckfrimg.header.id": "string",
+        "body.properties.estmtcheckfrimg.header.status": "string",
+        "body.properties.estmtcheckfrimg.body": "object",
+        "body.properties.estmtcheckfrimg.body.tiers": "array",
+        "body.properties.estmtcheckfrimg.body.tiers[].calculationType": "string",
+        "body.properties.estmtcheckfrimg.body.tiers[].tierType": "string",
+        "body.properties.estmtcheckfrimg.body.tiers[].chgAmount": "string",
+        "body.properties.estmtcheckfrimg.body.chargeId": "string",
+        "body.properties.estmtcheckfrimg.body.tierGroups": "string",
+        "body.properties.settlement": "object",
+        "body.properties.settlement.header": "object",
+        "body.properties.settlement.header.transactionStatus": "string",
+        "body.properties.settlement.header.audit": "object",
+        "body.properties.settlement.header.id": "string",
+        "body.properties.settlement.header.status": "string",
+        "body.properties.settlement.body": "object",
+        "body.properties.settlement.body.payin": "array",
+        "body.properties.settlement.body.payin[].payinType": "array",
+        "body.properties.settlement.body.payin[].payinType[].payinPaymentType": "string",
+        "body.properties.settlement.body.payin[].payinSettlement": "string",
+        "body.properties.settlement.body.payin[].payinSettlementActivity": "string",
+        "body.properties.settlement.body.payin[].payinRule": "string",
+        "body.properties.settlement.body.payout": "array",
+        "body.properties.settlement.body.payout[].payoutSettlementActivity": "string",
+        "body.properties.settlement.body.payout[].payoutClass": "array",
+        "body.properties.settlement.body.payout[].payoutClass[].payoutPropertyClass": "string",
+        "body.properties.settlement.body.payout[].property": "array",
+        "body.properties.settlement.body.payout[].property[].payoutActivity": "string",
+        "body.properties.settlement.body.payout[].payoutSettlement": "string",
+        "body.properties.balance": "object",
+        "body.properties.balance.header": "object",
+        "body.properties.balance.header.transactionStatus": "string",
+        "body.properties.balance.header.audit": "object",
+        "body.properties.balance.header.audit.versionNumber": "string",
+        "body.properties.balance.header.id": "string",
+        "body.properties.balance.header.status": "string",
+        "body.properties.balance.body": "object",
+        "body.properties.balance.body.accountId": "string",
+        "body.properties.balance.body.alternateIds": "array",
+        "body.properties.balance.body.alternateIds[].alternateIdType": "string",
+        "body.properties.balance.body.accountType": "string",
+        "body.properties.balance.body.purposeCode": "string",
+        "body.properties.balance.body.fdicOwnershipCode": "string",
+        "body.properties.balance.body.reserveSweepReference": "string",
+        "body.properties.balance.body.anniversary": "string",
+        "body.properties.nsfreversalfees": "object",
+        "body.properties.nsfreversalfees.header": "object",
+        "body.properties.nsfreversalfees.header.transactionStatus": "string",
+        "body.properties.nsfreversalfees.header.id": "string",
+        "body.properties.nsfreversalfees.header.status": "string",
+        "body.properties.cfedwht": "object",
+        "body.properties.cfedwht.header": "object",
+        "body.properties.cfedwht.header.transactionStatus": "string",
+        "body.properties.cfedwht.header.id": "string",
+        "body.properties.cfedwht.header.status": "string",
+        "body.properties.activityCharges": "object",
+        "body.properties.activityCharges.header": "object",
+        "body.properties.activityCharges.header.transactionStatus": "string",
+        "body.properties.activityCharges.header.audit": "object",
+        "body.properties.activityCharges.header.id": "string",
+        "body.properties.activityCharges.header.status": "string",
+        "body.properties.activityCharges.body": "object",
+        "body.properties.activityCharges.body.activities": "array",
+        "body.properties.activityCharges.body.activities[].charges": "array",
+        "body.properties.activityCharges.body.activities[].charges[].applicationMethod": "string",
+        "body.properties.nsffees": "object",
+        "body.properties.nsffees.header": "object",
+        "body.properties.nsffees.header.transactionStatus": "string",
+        "body.properties.nsffees.header.audit": "object",
+        "body.properties.nsffees.header.id": "string",
+        "body.properties.nsffees.header.status": "string",
+        "body.properties.nsffees.body": "object",
+        "body.properties.nsffees.body.chargeId": "string",
+        "body.properties.nsffees.body.fixedAmount": "string",
+        "body.properties.dormancy": "object",
+        "body.properties.dormancy.header": "object",
+        "body.properties.dormancy.header.transactionStatus": "string",
+        "body.properties.dormancy.header.audit": "object",
+        "body.properties.dormancy.header.audit.versionNumber": "string",
+        "body.properties.dormancy.header.id": "string",
+        "body.properties.dormancy.header.status": "string",
+        "body.properties.dormancy.body": "object",
+        "body.properties.dormancy.body.dormancies": "array",
+        "body.properties.dormancy.body.dormancies[].period": "string",
+        "body.properties.dormancy.body.dormancies[].status": "string",
+        "body.properties.limit": "object",
+        "body.properties.limit.header": "object",
+        "body.properties.limit.header.transactionStatus": "string",
+        "body.properties.limit.header.audit": "object",
+        "body.properties.limit.header.audit.versionNumber": "string",
+        "body.properties.limit.header.id": "string",
+        "body.properties.limit.header.status": "string",
+        "body.properties.limit.body": "object",
+        "body.properties.limit.body.limitReference": "string",
+        "body.properties.limit.body.limitSerial": "string",
+        "body.properties.statement": "object",
+        "body.properties.statement.header": "object",
+        "body.properties.statement.header.transactionStatus": "string",
+        "body.properties.statement.header.audit": "object",
+        "body.properties.statement.header.audit.versionNumber": "string",
+        "body.properties.statement.header.id": "string",
+        "body.properties.statement.header.status": "string",
+        "body.properties.statement.body": "object",
+        "body.properties.statement.body.taxAdvice": "string",
+        "body.properties.statement.body.printoptions": "array",
+        "body.properties.statement.body.printoptions[].printAttributeName": "string",
+        "body.properties.statement.body.interestClosingAdvice": "string",
+        "body.properties.statement.body.ifNoMovement": "string",
+        "body.properties.statement.body.statement": "array",
+        "body.properties.statement.body.statement[].frequency": "string",
+        "body.properties.statement.body.interestScale": "string",
+        "body.properties.statement.body.descriptiveStatement": "string",
+        "body.properties.closure": "object",
+        "body.properties.closure.header": "object",
+        "body.properties.closure.header.transactionStatus": "string",
+        "body.properties.closure.header.id": "string",
+        "body.properties.closure.header.status": "string",
+        "body.properties.officers": "object",
+        "body.properties.officers.header": "object",
+        "body.properties.officers.header.transactionStatus": "string",
+        "body.properties.officers.header.audit": "object",
+        "body.properties.officers.header.audit.versionNumber": "string",
+        "body.properties.officers.header.id": "string",
+        "body.properties.officers.header.status": "string",
+        "body.properties.officers.body": "object",
+        "body.properties.officers.body.primaryOfficer": "string",
+        "body.properties.balanceAvailability": "object",
+        "body.properties.balanceAvailability.header": "object",
+        "body.properties.balanceAvailability.header.transactionStatus": "string",
+        "body.properties.balanceAvailability.header.audit": "object",
+        "body.properties.balanceAvailability.header.audit.versionNumber": "string",
+        "body.properties.balanceAvailability.header.id": "string",
+        "body.properties.balanceAvailability.header.status": "string",
+        "body.properties.balanceAvailability.body": "object",
+        "body.properties.balanceAvailability.body.creditCheck": "string",
+        "body.properties.balanceAvailability.body.updateAvailableBalance": "string",
+        "body.properties.checkretfee": "object",
+        "body.properties.checkretfee.header": "object",
+        "body.properties.checkretfee.header.transactionStatus": "string",
+        "body.properties.checkretfee.header.id": "string",
+        "body.properties.checkretfee.header.status": "string",
+        "body.properties.payoff": "object",
+        "body.properties.payoff.header": "object",
+        "body.properties.payoff.header.transactionStatus": "string",
+        "body.properties.payoff.header.audit": "object",
+        "body.properties.payoff.header.id": "string",
+        "body.properties.payoff.header.status": "string",
+        "body.properties.payoff.body": "object",
+        "body.properties.bfedwht": "object",
+        "body.properties.bfedwht.header": "object",
+        "body.properties.bfedwht.header.transactionStatus": "string",
+        "body.properties.bfedwht.header.id": "string",
+        "body.properties.bfedwht.header.status": "string",
+        "body.properties.messaging": "object",
+        "body.properties.messaging.header": "object",
+        "body.properties.messaging.header.transactionStatus": "string",
+        "body.properties.messaging.header.audit": "object",
+        "body.properties.messaging.header.id": "string",
+        "body.properties.messaging.header.status": "string",
+        "body.properties.messaging.body": "object",
+        "body.properties.messaging.body.advices": "array",
+        "body.properties.messaging.body.advices[].activityId": "string",
+        "body.properties.messaging.body.advices[].sendAdvice": "string",
+        "body.properties.messaging.body.advices[].advice": "string",
+        "body.properties.messaging.body.advices[].messageContent": "string",
+        "body.properties.bstatewht": "object",
+        "body.properties.bstatewht.header": "object",
+        "body.properties.bstatewht.header.transactionStatus": "string",
+        "body.properties.bstatewht.header.id": "string",
+        "body.properties.bstatewht.header.status": "string",
+        "body.properties.alerts": "object",
+        "body.properties.alerts.header": "object",
+        "body.properties.alerts.header.transactionStatus": "string",
+        "body.properties.alerts.header.audit": "object",
+        "body.properties.alerts.header.id": "string",
+        "body.properties.alerts.header.status": "string",
+        "body.properties.alerts.body": "object",
+        "body.properties.alerts.body.events": "array",
+        "body.properties.alerts.body.events[].event": "string",
+        "body.properties.schedule": "object",
+        "body.properties.schedule.header": "object",
+        "body.properties.schedule.header.transactionStatus": "string",
+        "body.properties.schedule.header.audit": "object",
+        "body.properties.schedule.header.audit.versionNumber": "string",
+        "body.properties.schedule.header.id": "string",
+        "body.properties.schedule.header.status": "string",
+        "body.properties.schedule.body": "object",
+        "body.properties.schedule.body.combineBills": "string",
+        "body.properties.schedule.body.payment": "array",
+        "body.properties.schedule.body.payment[].billType": "string",
+        "body.properties.schedule.body.payment[].payments": "array",
+        "body.properties.schedule.body.payment[].payments[].startDate": "boolean",
+        "body.properties.schedule.body.payment[].property": "array",
+        "body.properties.schedule.body.payment[].property[].dueFrequency": "string",
+        "body.properties.schedule.body.payment[].property[].propertyId": "string",
+        "body.properties.schedule.body.payment[].paymentMethod": "string",
+        "body.properties.schedule.body.payment[].paymentFrequency": "string",
+        "body.properties.schedule.body.payment[].paymentType": "string",
+        "body.properties.stmtnoimage": "object",
+        "body.properties.stmtnoimage.header": "object",
+        "body.properties.stmtnoimage.header.transactionStatus": "string",
+        "body.properties.stmtnoimage.header.audit": "object",
+        "body.properties.stmtnoimage.header.id": "string",
+        "body.properties.stmtnoimage.header.status": "string",
+        "body.properties.stmtnoimage.body": "object",
+        "body.properties.stmtnoimage.body.tiers": "array",
+        "body.properties.stmtnoimage.body.tiers[].calculationType": "string",
+        "body.properties.stmtnoimage.body.tiers[].tierType": "string",
+        "body.properties.stmtnoimage.body.tiers[].chgAmount": "string",
+        "body.properties.stmtnoimage.body.chargeId": "string",
+        "body.properties.stmtnoimage.body.tierGroups": "string",
+        "body.properties.estmtcheckonly": "object",
+        "body.properties.estmtcheckonly.header": "object",
+        "body.properties.estmtcheckonly.header.transactionStatus": "string",
+        "body.properties.estmtcheckonly.header.audit": "object",
+        "body.properties.estmtcheckonly.header.id": "string",
+        "body.properties.estmtcheckonly.header.status": "string",
+        "body.properties.estmtcheckonly.body": "object",
+        "body.properties.estmtcheckonly.body.tiers": "array",
+        "body.properties.estmtcheckonly.body.tiers[].calculationType": "string",
+        "body.properties.estmtcheckonly.body.tiers[].tierType": "string",
+        "body.properties.estmtcheckonly.body.tiers[].chgAmount": "string",
+        "body.properties.estmtcheckonly.body.chargeId": "string",
+        "body.properties.estmtcheckonly.body.tierGroups": "string",
+        "body.properties.stmtcheckfrimg": "object",
+        "body.properties.stmtcheckfrimg.header": "object",
+        "body.properties.stmtcheckfrimg.header.transactionStatus": "string",
+        "body.properties.stmtcheckfrimg.header.audit": "object",
+        "body.properties.stmtcheckfrimg.header.id": "string",
+        "body.properties.stmtcheckfrimg.header.status": "string",
+        "body.properties.stmtcheckfrimg.body": "object",
+        "body.properties.stmtcheckfrimg.body.tiers": "array",
+        "body.properties.stmtcheckfrimg.body.tiers[].calculationType": "string",
+        "body.properties.stmtcheckfrimg.body.tiers[].tierType": "string",
+        "body.properties.stmtcheckfrimg.body.tiers[].chgAmount": "string",
+        "body.properties.stmtcheckfrimg.body.chargeId": "string",
+        "body.properties.stmtcheckfrimg.body.tierGroups": "string",
+        "body.properties.estmtnoimage": "object",
+        "body.properties.estmtnoimage.header": "object",
+        "body.properties.estmtnoimage.header.transactionStatus": "string",
+        "body.properties.estmtnoimage.header.audit": "object",
+        "body.properties.estmtnoimage.header.id": "string",
+        "body.properties.estmtnoimage.header.status": "string",
+        "body.properties.estmtnoimage.body": "object",
+        "body.properties.estmtnoimage.body.tiers": "array",
+        "body.properties.estmtnoimage.body.tiers[].calculationType": "string",
+        "body.properties.estmtnoimage.body.tiers[].tierType": "string",
+        "body.properties.estmtnoimage.body.tiers[].chgAmount": "string",
+        "body.properties.estmtnoimage.body.chargeId": "string",
+        "body.properties.estmtnoimage.body.tierGroups": "string",
+        "body.properties.dormancyfees": "object",
+        "body.properties.dormancyfees.header": "object",
+        "body.properties.dormancyfees.header.transactionStatus": "string",
+        "body.properties.dormancyfees.header.audit": "object",
+        "body.properties.dormancyfees.header.id": "string",
+        "body.properties.dormancyfees.header.status": "string",
+        "body.properties.dormancyfees.body": "object",
+        "body.properties.dormancyfees.body.chargeId": "string",
+        "body.properties.dormancyfees.body.fixedAmount": "string",
+        "body.properties.estmtwithimage": "object",
+        "body.properties.estmtwithimage.header": "object",
+        "body.properties.estmtwithimage.header.transactionStatus": "string",
+        "body.properties.estmtwithimage.header.audit": "object",
+        "body.properties.estmtwithimage.header.id": "string",
+        "body.properties.estmtwithimage.header.status": "string",
+        "body.properties.estmtwithimage.body": "object",
+        "body.properties.estmtwithimage.body.tiers": "array",
+        "body.properties.estmtwithimage.body.tiers[].calculationType": "string",
+        "body.properties.estmtwithimage.body.tiers[].tierType": "string",
+        "body.properties.estmtwithimage.body.tiers[].chgAmount": "string",
+        "body.properties.estmtwithimage.body.chargeId": "string",
+        "body.properties.estmtwithimage.body.tierGroups": "string",
+        "body.properties.stmtcheckonly": "object",
+        "body.properties.stmtcheckonly.header": "object",
+        "body.properties.stmtcheckonly.header.transactionStatus": "string",
+        "body.properties.stmtcheckonly.header.audit": "object",
+        "body.properties.stmtcheckonly.header.id": "string",
+        "body.properties.stmtcheckonly.header.status": "string",
+        "body.properties.stmtcheckonly.body": "object",
+        "body.properties.stmtcheckonly.body.tiers": "array",
+        "body.properties.stmtcheckonly.body.tiers[].calculationType": "string",
+        "body.properties.stmtcheckonly.body.tiers[].tierType": "string",
+        "body.properties.stmtcheckonly.body.tiers[].chgAmount": "string",
+        "body.properties.stmtcheckonly.body.chargeId": "string",
+        "body.properties.stmtcheckonly.body.tierGroups": "string",
+        "body.properties.cstatewht": "object",
+        "body.properties.cstatewht.header": "object",
+        "body.properties.cstatewht.header.transactionStatus": "string",
+        "body.properties.cstatewht.header.id": "string",
+        "body.properties.cstatewht.header.status": "string",
+        "body.properties.statementcharge": "object",
+        "body.properties.statementcharge.header": "object",
+        "body.properties.statementcharge.header.transactionStatus": "string",
+        "body.properties.statementcharge.header.audit": "object",
+        "body.properties.statementcharge.header.id": "string",
+        "body.properties.statementcharge.header.status": "string",
+        "body.properties.statementcharge.body": "object",
+        "body.properties.statementcharge.body.includeDeferred": "string",
+        "body.properties.statementcharge.body.amount": "array",
+        "body.properties.statementcharge.body.amount[].charge": "string",
+        "body.properties.facility": "object",
+        "body.properties.facility.header": "object",
+        "body.properties.facility.header.transactionStatus": "string",
+        "body.properties.facility.header.audit": "object",
+        "body.properties.facility.header.id": "string",
+        "body.properties.facility.header.status": "string",
+        "body.properties.facility.body": "object",
+        "body.properties.facility.body.services": "array",
+        "body.properties.facility.body.services[].service": "string",
+        "body.properties.facility.body.services[].serviceAvailability": "string",
+        "body.properties.customer": "object",
+        "body.properties.customer.header": "object",
+        "body.properties.customer.header.transactionStatus": "string",
+        "body.properties.customer.header.audit": "object",
+        "body.properties.customer.header.audit.versionNumber": "string",
+        "body.properties.customer.header.id": "string",
+        "body.properties.customer.header.status": "string",
+        "body.properties.customer.body": "object",
+        "body.properties.customer.body.accountTitles": "array",
+        "body.properties.customer.body.accountTitles[].accountTitle": "string",
+        "body.properties.customer.body.customers": "array",
+        "body.properties.customer.body.customers[].taxPercentage": "number",
+        "body.properties.customer.body.customers[].customerId": "number",
+        "body.properties.customer.body.customers[].liabilityPercentage": "number",
+        "body.properties.customer.body.customers[].limitAllocactionPercentage": "number",
+        "body.properties.customer.body.customers[].customerRole": "string",
+        "body.properties.customer.body.customers[].deliveryReqd": "string",
+        "body.properties.servicechg": "object",
+        "body.properties.servicechg.header": "object",
+        "body.properties.servicechg.header.transactionStatus": "string",
+        "body.properties.servicechg.header.audit": "object",
+        "body.properties.servicechg.header.id": "string",
+        "body.properties.servicechg.header.status": "string",
+        "body.properties.servicechg.body": "object",
+        "body.properties.servicechg.body.chargeId": "string",
+        "body.properties.servicechg.body.fixedAmount": "string",
+        "body.properties.stmtwithimage": "object",
+        "body.properties.stmtwithimage.header": "object",
+        "body.properties.stmtwithimage.header.transactionStatus": "string",
+        "body.properties.stmtwithimage.header.audit": "object",
+        "body.properties.stmtwithimage.header.id": "string",
+        "body.properties.stmtwithimage.header.status": "string",
+        "body.properties.stmtwithimage.body": "object",
+        "body.properties.stmtwithimage.body.tiers": "array",
+        "body.properties.stmtwithimage.body.tiers[].calculationType": "string",
+        "body.properties.stmtwithimage.body.tiers[].tierType": "string",
+        "body.properties.stmtwithimage.body.tiers[].chgAmount": "string",
+        "body.properties.stmtwithimage.body.chargeId": "string",
+        "body.properties.stmtwithimage.body.tierGroups": "string"
+      },
+      "fields": [
+        "header.transactionStatus",
+        "header.audit.T24_time",
+        "header.audit.responseParse_time",
+        "header.audit.requestParse_time",
+        "header.aaaId",
+        "header.id",
+        "header.status",
+        "body.arrangementActivity.arrangementId",
+        "body.arrangementActivity.activityId",
+        "body.arrangementActivity.productId",
+        "body.arrangementActivity.customerIds[].customerId",
+        "body.arrangementActivity.customerIds[].customerRole",
+        "body.arrangementActivity.overrides[].override",
+        "body.arrangementActivity.currencyId",
+        "body.arrangementActivity.effectiveDate",
+        "body.arrangementActivity.properties[].fields[].fieldName",
+        "body.arrangementActivity.properties[].fields[].fieldValue",
+        "body.arrangementActivity.properties[].propertyId",
+        "body.activities.newAccountArrangement.activity",
+        "body.activities.newAccountArrangement.transactionStatus",
+        "body.activities.newAccountArrangement.id",
+        "body.properties.stopcharge.header.transactionStatus",
+        "body.properties.stopcharge.header.id",
+        "body.properties.stopcharge.header.status",
+        "body.properties.crinterest.header.transactionStatus",
+        "body.properties.crinterest.header.audit.versionNumber",
+        "body.properties.crinterest.header.id",
+        "body.properties.crinterest.header.status",
+        "body.properties.crinterest.body.interest[].effectiveRate",
+        "body.properties.crinterest.body.interest[].fixedRate",
+        "body.properties.crinterest.body.accrualRule",
+        "body.properties.crinterest.body.dayBasis",
+        "body.properties.crinterest.body.rateTierType",
+        "body.properties.eligibility.header.transactionStatus",
+        "body.properties.eligibility.header.id",
+        "body.properties.eligibility.header.status",
+        "body.properties.estmtcheckfrimg.header.transactionStatus",
+        "body.properties.estmtcheckfrimg.header.id",
+        "body.properties.estmtcheckfrimg.header.status",
+        "body.properties.estmtcheckfrimg.body.tiers[].calculationType",
+        "body.properties.estmtcheckfrimg.body.tiers[].tierType",
+        "body.properties.estmtcheckfrimg.body.tiers[].chgAmount",
+        "body.properties.estmtcheckfrimg.body.chargeId",
+        "body.properties.estmtcheckfrimg.body.tierGroups",
+        "body.properties.settlement.header.transactionStatus",
+        "body.properties.settlement.header.id",
+        "body.properties.settlement.header.status",
+        "body.properties.settlement.body.payin[].payinType[].payinPaymentType",
+        "body.properties.settlement.body.payin[].payinSettlement",
+        "body.properties.settlement.body.payin[].payinSettlementActivity",
+        "body.properties.settlement.body.payin[].payinRule",
+        "body.properties.settlement.body.payout[].payoutSettlementActivity",
+        "body.properties.settlement.body.payout[].payoutClass[].payoutPropertyClass",
+        "body.properties.settlement.body.payout[].property[].payoutActivity",
+        "body.properties.settlement.body.payout[].payoutSettlement",
+        "body.properties.balance.header.transactionStatus",
+        "body.properties.balance.header.audit.versionNumber",
+        "body.properties.balance.header.id",
+        "body.properties.balance.header.status",
+        "body.properties.balance.body.accountId",
+        "body.properties.balance.body.alternateIds[].alternateIdType",
+        "body.properties.balance.body.accountType",
+        "body.properties.balance.body.purposeCode",
+        "body.properties.balance.body.fdicOwnershipCode",
+        "body.properties.balance.body.reserveSweepReference",
+        "body.properties.balance.body.anniversary",
+        "body.properties.nsfreversalfees.header.transactionStatus",
+        "body.properties.nsfreversalfees.header.id",
+        "body.properties.nsfreversalfees.header.status",
+        "body.properties.cfedwht.header.transactionStatus",
+        "body.properties.cfedwht.header.id",
+        "body.properties.cfedwht.header.status",
+        "body.properties.activityCharges.header.transactionStatus",
+        "body.properties.activityCharges.header.id",
+        "body.properties.activityCharges.header.status",
+        "body.properties.activityCharges.body.activities[].charges[].applicationMethod",
+        "body.properties.nsffees.header.transactionStatus",
+        "body.properties.nsffees.header.id",
+        "body.properties.nsffees.header.status",
+        "body.properties.nsffees.body.chargeId",
+        "body.properties.nsffees.body.fixedAmount",
+        "body.properties.dormancy.header.transactionStatus",
+        "body.properties.dormancy.header.audit.versionNumber",
+        "body.properties.dormancy.header.id",
+        "body.properties.dormancy.header.status",
+        "body.properties.dormancy.body.dormancies[].period",
+        "body.properties.dormancy.body.dormancies[].status",
+        "body.properties.limit.header.transactionStatus",
+        "body.properties.limit.header.audit.versionNumber",
+        "body.properties.limit.header.id",
+        "body.properties.limit.header.status",
+        "body.properties.limit.body.limitReference",
+        "body.properties.limit.body.limitSerial",
+        "body.properties.statement.header.transactionStatus",
+        "body.properties.statement.header.audit.versionNumber",
+        "body.properties.statement.header.id",
+        "body.properties.statement.header.status",
+        "body.properties.statement.body.taxAdvice",
+        "body.properties.statement.body.printoptions[].printAttributeName",
+        "body.properties.statement.body.interestClosingAdvice",
+        "body.properties.statement.body.ifNoMovement",
+        "body.properties.statement.body.statement[].frequency",
+        "body.properties.statement.body.interestScale",
+        "body.properties.statement.body.descriptiveStatement",
+        "body.properties.closure.header.transactionStatus",
+        "body.properties.closure.header.id",
+        "body.properties.closure.header.status",
+        "body.properties.officers.header.transactionStatus",
+        "body.properties.officers.header.audit.versionNumber",
+        "body.properties.officers.header.id",
+        "body.properties.officers.header.status",
+        "body.properties.officers.body.primaryOfficer",
+        "body.properties.balanceAvailability.header.transactionStatus",
+        "body.properties.balanceAvailability.header.audit.versionNumber",
+        "body.properties.balanceAvailability.header.id",
+        "body.properties.balanceAvailability.header.status",
+        "body.properties.balanceAvailability.body.creditCheck",
+        "body.properties.balanceAvailability.body.updateAvailableBalance",
+        "body.properties.checkretfee.header.transactionStatus",
+        "body.properties.checkretfee.header.id",
+        "body.properties.checkretfee.header.status",
+        "body.properties.payoff.header.transactionStatus",
+        "body.properties.payoff.header.id",
+        "body.properties.payoff.header.status",
+        "body.properties.bfedwht.header.transactionStatus",
+        "body.properties.bfedwht.header.id",
+        "body.properties.bfedwht.header.status",
+        "body.properties.messaging.header.transactionStatus",
+        "body.properties.messaging.header.id",
+        "body.properties.messaging.header.status",
+        "body.properties.messaging.body.advices[].activityId",
+        "body.properties.messaging.body.advices[].sendAdvice",
+        "body.properties.messaging.body.advices[].advice",
+        "body.properties.messaging.body.advices[].messageContent",
+        "body.properties.bstatewht.header.transactionStatus",
+        "body.properties.bstatewht.header.id",
+        "body.properties.bstatewht.header.status",
+        "body.properties.alerts.header.transactionStatus",
+        "body.properties.alerts.header.id",
+        "body.properties.alerts.header.status",
+        "body.properties.alerts.body.events[].event",
+        "body.properties.schedule.header.transactionStatus",
+        "body.properties.schedule.header.audit.versionNumber",
+        "body.properties.schedule.header.id",
+        "body.properties.schedule.header.status",
+        "body.properties.schedule.body.combineBills",
+        "body.properties.schedule.body.payment[].billType",
+        "body.properties.schedule.body.payment[].payments[].startDate",
+        "body.properties.schedule.body.payment[].property[].dueFrequency",
+        "body.properties.schedule.body.payment[].property[].propertyId",
+        "body.properties.schedule.body.payment[].paymentMethod",
+        "body.properties.schedule.body.payment[].paymentFrequency",
+        "body.properties.schedule.body.payment[].paymentType",
+        "body.properties.stmtnoimage.header.transactionStatus",
+        "body.properties.stmtnoimage.header.id",
+        "body.properties.stmtnoimage.header.status",
+        "body.properties.stmtnoimage.body.tiers[].calculationType",
+        "body.properties.stmtnoimage.body.tiers[].tierType",
+        "body.properties.stmtnoimage.body.tiers[].chgAmount",
+        "body.properties.stmtnoimage.body.chargeId",
+        "body.properties.stmtnoimage.body.tierGroups",
+        "body.properties.estmtcheckonly.header.transactionStatus",
+        "body.properties.estmtcheckonly.header.id",
+        "body.properties.estmtcheckonly.header.status",
+        "body.properties.estmtcheckonly.body.tiers[].calculationType",
+        "body.properties.estmtcheckonly.body.tiers[].tierType",
+        "body.properties.estmtcheckonly.body.tiers[].chgAmount",
+        "body.properties.estmtcheckonly.body.chargeId",
+        "body.properties.estmtcheckonly.body.tierGroups",
+        "body.properties.stmtcheckfrimg.header.transactionStatus",
+        "body.properties.stmtcheckfrimg.header.id",
+        "body.properties.stmtcheckfrimg.header.status",
+        "body.properties.stmtcheckfrimg.body.tiers[].calculationType",
+        "body.properties.stmtcheckfrimg.body.tiers[].tierType",
+        "body.properties.stmtcheckfrimg.body.tiers[].chgAmount",
+        "body.properties.stmtcheckfrimg.body.chargeId",
+        "body.properties.stmtcheckfrimg.body.tierGroups",
+        "body.properties.estmtnoimage.header.transactionStatus",
+        "body.properties.estmtnoimage.header.id",
+        "body.properties.estmtnoimage.header.status",
+        "body.properties.estmtnoimage.body.tiers[].calculationType",
+        "body.properties.estmtnoimage.body.tiers[].tierType",
+        "body.properties.estmtnoimage.body.tiers[].chgAmount",
+        "body.properties.estmtnoimage.body.chargeId",
+        "body.properties.estmtnoimage.body.tierGroups",
+        "body.properties.dormancyfees.header.transactionStatus",
+        "body.properties.dormancyfees.header.id",
+        "body.properties.dormancyfees.header.status",
+        "body.properties.dormancyfees.body.chargeId",
+        "body.properties.dormancyfees.body.fixedAmount",
+        "body.properties.estmtwithimage.header.transactionStatus",
+        "body.properties.estmtwithimage.header.id",
+        "body.properties.estmtwithimage.header.status",
+        "body.properties.estmtwithimage.body.tiers[].calculationType",
+        "body.properties.estmtwithimage.body.tiers[].tierType",
+        "body.properties.estmtwithimage.body.tiers[].chgAmount",
+        "body.properties.estmtwithimage.body.chargeId",
+        "body.properties.estmtwithimage.body.tierGroups",
+        "body.properties.stmtcheckonly.header.transactionStatus",
+        "body.properties.stmtcheckonly.header.id",
+        "body.properties.stmtcheckonly.header.status",
+        "body.properties.stmtcheckonly.body.tiers[].calculationType",
+        "body.properties.stmtcheckonly.body.tiers[].tierType",
+        "body.properties.stmtcheckonly.body.tiers[].chgAmount",
+        "body.properties.stmtcheckonly.body.chargeId",
+        "body.properties.stmtcheckonly.body.tierGroups",
+        "body.properties.cstatewht.header.transactionStatus",
+        "body.properties.cstatewht.header.id",
+        "body.properties.cstatewht.header.status",
+        "body.properties.statementcharge.header.transactionStatus",
+        "body.properties.statementcharge.header.id",
+        "body.properties.statementcharge.header.status",
+        "body.properties.statementcharge.body.includeDeferred",
+        "body.properties.statementcharge.body.amount[].charge",
+        "body.properties.facility.header.transactionStatus",
+        "body.properties.facility.header.id",
+        "body.properties.facility.header.status",
+        "body.properties.facility.body.services[].service",
+        "body.properties.facility.body.services[].serviceAvailability",
+        "body.properties.customer.header.transactionStatus",
+        "body.properties.customer.header.audit.versionNumber",
+        "body.properties.customer.header.id",
+        "body.properties.customer.header.status",
+        "body.properties.customer.body.accountTitles[].accountTitle",
+        "body.properties.customer.body.customers[].taxPercentage",
+        "body.properties.customer.body.customers[].customerId",
+        "body.properties.customer.body.customers[].liabilityPercentage",
+        "body.properties.customer.body.customers[].limitAllocactionPercentage",
+        "body.properties.customer.body.customers[].customerRole",
+        "body.properties.customer.body.customers[].deliveryReqd",
+        "body.properties.servicechg.header.transactionStatus",
+        "body.properties.servicechg.header.id",
+        "body.properties.servicechg.header.status",
+        "body.properties.servicechg.body.chargeId",
+        "body.properties.servicechg.body.fixedAmount",
+        "body.properties.stmtwithimage.header.transactionStatus",
+        "body.properties.stmtwithimage.header.id",
+        "body.properties.stmtwithimage.header.status",
+        "body.properties.stmtwithimage.body.tiers[].calculationType",
+        "body.properties.stmtwithimage.body.tiers[].tierType",
+        "body.properties.stmtwithimage.body.tiers[].chgAmount",
+        "body.properties.stmtwithimage.body.chargeId",
+        "body.properties.stmtwithimage.body.tierGroups"
+      ],
+      "sampleData": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 7027,
+            "responseParse_time": 21,
+            "requestParse_time": 9424
+          },
+          "aaaId": "AAACT25107P9MQYF8Z",
+          "id": "AA25107ZNBW7",
+          "status": "success"
+        },
+        "body": {
+          "arrangementActivity": {
+            "arrangementId": "AA25107ZNBW7",
+            "activityId": "ACCOUNTS-NEW-ARRANGEMENT",
+            "productId": "CONS.CHECKING",
+            "customerIds": [
+              {
+                "customerId": "750305",
+                "customerRole": "OWNER"
+              }
+            ],
+            "overrides": [
+              {
+                "override": "AA.INT.SRC.TYP.AND.PAY.MET.MISMATCH}Bucket Override &{O-12549"
+              }
+            ],
+            "currencyId": "USD",
+            "effectiveDate": "2025-04-17",
+            "properties": [
+              {
+                "fields": [
+                  {
+                    "fieldName": "PAYMENT.METHOD:1",
+                    "fieldValue": "DUE"
+                  },
+                  {
+                    "fieldName": "PAYMENT.TYPE:1",
+                    "fieldValue": "INTEREST"
+                  },
+                  {
+                    "fieldName": "PAYMENT.METHOD:2",
+                    "fieldValue": "DUE"
+                  },
+                  {
+                    "fieldName": "PAYMENT.TYPE:2",
+                    "fieldValue": "CHARGE"
+                  },
+                  {
+                    "fieldName": "PAYMENT.METHOD:3",
+                    "fieldValue": "DUE"
+                  },
+                  {
+                    "fieldName": "PAYMENT.TYPE:3",
+                    "fieldValue": "PERIODICCHARGE"
+                  }
+                ],
+                "propertyId": "SCHEDULE"
+              },
+              {
+                "fields": [
+                  {
+                    "fieldName": "PURPOSE.CODE:1:1",
+                    "fieldValue": "5"
+                  },
+                  {
+                    "fieldName": "ACCOUNT.TITLE.1:1:1",
+                    "fieldValue": "CHECKING"
+                  },
+                  {
+                    "fieldName": "OWNERSHIP.CODE:1:1",
+                    "fieldValue": "S"
+                  }
+                ],
+                "propertyId": "BALANCE"
+              },
+              {
+                "fields": [
+                  {
+                    "fieldName": "PRIMARY.OFFICER:1:1",
+                    "fieldValue": "3"
+                  }
+                ],
+                "propertyId": "OFFICERS"
+              }
+            ]
+          },
+          "activities": {
+            "newAccountArrangement": {
+              "activity": "ACCOUNTS-NEW-ARRANGEMENT",
+              "transactionStatus": "Live",
+              "id": "AAACT25107P9MQYF8Z"
+            }
+          },
+          "properties": {
+            "stopcharge": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107ZNBW7-STOPCHARGE-20250417",
+                "status": "success"
+              }
+            },
+            "crinterest": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107ZNBW7-CRINTEREST-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "interest": [
+                  {
+                    "effectiveRate": "0.5",
+                    "fixedRate": 0.5
+                  }
+                ],
+                "accrualRule": "BOTH",
+                "dayBasis": "C",
+                "rateTierType": "SINGLE"
+              }
+            },
+            "eligibility": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107ZNBW7-ELIGIBILITY-20250417",
+                "status": "success"
+              }
+            },
+            "estmtcheckfrimg": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-ESTMTCHECKFRIMG-20250417",
+                "status": "success"
+              },
+              "body": {
+                "tiers": [
+                  {
+                    "calculationType": "UNIT",
+                    "tierType": "LEVEL",
+                    "chgAmount": "0.00"
+                  }
+                ],
+                "chargeId": "CALCULATED",
+                "tierGroups": "LEVELS"
+              }
+            },
+            "settlement": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-SETTLEMENT-20250417",
+                "status": "success"
+              },
+              "body": {
+                "payin": [
+                  {
+                    "payinType": [
+                      {
+                        "payinPaymentType": "PAYOFF$CURRENT"
+                      }
+                    ],
+                    "payinSettlement": "NO",
+                    "payinSettlementActivity": "ACCOUNTS-CREDIT-ARRANGEMENT",
+                    "payinRule": "FULL"
+                  }
+                ],
+                "payout": [
+                  {
+                    "payoutSettlementActivity": "ACCOUNTS-APPLYPAYMENT-ACCOUNTS.PAYOUT",
+                    "payoutClass": [
+                      {
+                        "payoutPropertyClass": "INTEREST"
+                      },
+                      {
+                        "payoutPropertyClass": "PAYOFF"
+                      }
+                    ],
+                    "property": [
+                      {
+                        "payoutActivity": "ACCOUNTS-CREDIT-ARRANGEMENT"
+                      }
+                    ],
+                    "payoutSettlement": "NO"
+                  }
+                ]
+              }
+            },
+            "balance": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107ZNBW7-BALANCE-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "accountId": "30013956",
+                "alternateIds": [
+                  {
+                    "alternateIdType": "LEGACY"
+                  },
+                  {
+                    "alternateIdType": "T24.IBAN"
+                  },
+                  {
+                    "alternateIdType": "PREV.IBAN"
+                  },
+                  {
+                    "alternateIdType": "HOLDER.REF"
+                  },
+                  {
+                    "alternateIdType": "CONN.REF"
+                  },
+                  {
+                    "alternateIdType": "CBU"
+                  },
+                  {
+                    "alternateIdType": "RIB"
+                  },
+                  {
+                    "alternateIdType": "ISIN"
+                  },
+                  {
+                    "alternateIdType": "CUSIP"
+                  },
+                  {
+                    "alternateIdType": "BBAN"
+                  }
+                ],
+                "accountType": "CHECKING",
+                "purposeCode": "5",
+                "fdicOwnershipCode": "S",
+                "reserveSweepReference": "BASICCHK",
+                "anniversary": "0101"
+              }
+            },
+            "nsfreversalfees": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107ZNBW7-NSFREVERSALFEES-20250417",
+                "status": "success"
+              }
+            },
+            "cfedwht": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107ZNBW7-CFEDWHT-20250417",
+                "status": "success"
+              }
+            },
+            "activityCharges": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-ACTIVITY.CHARGES-20250417",
+                "status": "success"
+              },
+              "body": {
+                "activities": [
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  },
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  },
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  },
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  },
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  },
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  },
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  },
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  },
+                  {
+                    "charges": [
+                      {
+                        "applicationMethod": "CAPITALISE"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            "nsffees": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-NSFFEES-20250417",
+                "status": "success"
+              },
+              "body": {
+                "chargeId": "FIXED",
+                "fixedAmount": "40.00"
+              }
+            },
+            "dormancy": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107ZNBW7-DORMANCY-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "dormancies": [
+                  {
+                    "period": "9M",
+                    "status": "INACTIVE"
+                  },
+                  {
+                    "chargeFrequency": "e0Y e1M e0W o31D e0F",
+                    "period": "3M",
+                    "status": "DORMANT"
+                  },
+                  {
+                    "period": "100Y",
+                    "status": "ESCHEAT"
+                  }
+                ]
+              }
+            },
+            "limit": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107ZNBW7-LIMIT-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "limitReference": "100",
+                "limitSerial": "01"
+              }
+            },
+            "statement": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107ZNBW7-STATEMENT-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "taxAdvice": "NO",
+                "printoptions": [
+                  {
+                    "printAttributeName": "Printing.Option"
+                  },
+                  {
+                    "printAttributeName": "Statement.Image"
+                  },
+                  {
+                    "printAttributeName": "Images.Per.Page"
+                  },
+                  {
+                    "printAttributeName": "SplStmtPreAlert",
+                    "printAttributeValue": "1"
+                  },
+                  {
+                    "printAttributeName": "PreAlertFreq"
+                  }
+                ],
+                "interestClosingAdvice": "NO",
+                "ifNoMovement": "NO",
+                "statement": [
+                  {
+                    "frequency": "20250430M0131"
+                  }
+                ],
+                "interestScale": "NO",
+                "descriptiveStatement": "NO"
+              }
+            },
+            "closure": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107ZNBW7-CLOSURE-20250417",
+                "status": "success"
+              }
+            },
+            "officers": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107ZNBW7-OFFICERS-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "primaryOfficer": "3"
+              }
+            },
+            "balanceAvailability": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107ZNBW7-BALANCE.AVAILABILITY-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "creditCheck": "COMPONENT",
+                "updateAvailableBalance": "NONE"
+              }
+            },
+            "checkretfee": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107ZNBW7-CHECKRETFEE-20250417",
+                "status": "success"
+              }
+            },
+            "payoff": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-PAYOFF-20250417",
+                "status": "success"
+              },
+              "body": {}
+            },
+            "bfedwht": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107ZNBW7-BFEDWHT-20250417",
+                "status": "success"
+              }
+            },
+            "messaging": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-MESSAGING-20250417",
+                "status": "success"
+              },
+              "body": {
+                "advices": [
+                  {
+                    "activityId": "ACCOUNTS-DEFER.CAPITALISE-PERIODICCHARGES",
+                    "sendAdvice": "YES",
+                    "advice": "AA-1077",
+                    "messageContent": "ALL"
+                  },
+                  {
+                    "activityId": "ACCOUNTS-STOP.PAY-ONLINE",
+                    "sendAdvice": "YES",
+                    "advice": "AA-TZI",
+                    "messageContent": "ALL"
+                  },
+                  {
+                    "activityId": "REG.D.VIOLATION.CHANGE.PRODUCT",
+                    "sendAdvice": "YES",
+                    "advice": "AA-0902",
+                    "messageContent": "ALL"
+                  },
+                  {
+                    "activityId": "ACCOUNTS-SET-DORMANCY*INACTIVE",
+                    "sendAdvice": "YES",
+                    "advice": "AA-DOM01",
+                    "messageContent": "ALL"
+                  },
+                  {
+                    "activityId": "ACCOUNTS-SET-DORMANCY*PREDORMANT",
+                    "sendAdvice": "YES",
+                    "advice": "AA-DOM01",
+                    "messageContent": "ALL"
+                  },
+                  {
+                    "activityId": "ACCOUNTS-ESCHEAT.ADVICE-ARRANGEMENT",
+                    "sendAdvice": "YES",
+                    "advice": "AA-DOM02",
+                    "messageContent": "ALL"
+                  }
+                ]
+              }
+            },
+            "bstatewht": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107ZNBW7-BSTATEWHT-20250417",
+                "status": "success"
+              }
+            },
+            "alerts": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-ALERTS-20250417",
+                "status": "success"
+              },
+              "body": {
+                "events": [
+                  {
+                    "event": "AR.ACCOUNT.CLOSURE.REQUEST"
+                  },
+                  {
+                    "event": "ACCOUNT.CREDITED"
+                  },
+                  {
+                    "event": "SALARY.CREDIT"
+                  },
+                  {
+                    "event": "ACCOUNT.DEBITED"
+                  },
+                  {
+                    "event": "AR.ACCOUNT.PRODUCT.CHANGED"
+                  }
+                ]
+              }
+            },
+            "schedule": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107ZNBW7-SCHEDULE-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "combineBills": "YES",
+                "payment": [
+                  {
+                    "billType": "PAYMENT",
+                    "payments": [
+                      {
+                        "startDate": false
+                      }
+                    ],
+                    "property": [
+                      {
+                        "dueFrequency": "e0Y e1M e0W e0D e0F",
+                        "propertyId": "CRINTEREST"
+                      }
+                    ],
+                    "paymentMethod": "DUE",
+                    "paymentFrequency": "e0Y e1M e0W e0D e0F",
+                    "paymentType": "INTEREST"
+                  },
+                  {
+                    "billType": "PAYMENT",
+                    "payments": [
+                      {
+                        "startDate": false
+                      }
+                    ],
+                    "property": [
+                      {
+                        "dueFrequency": "e0Y e1M e0W e0D e0F",
+                        "propertyId": "SERVICECHG"
+                      }
+                    ],
+                    "paymentMethod": "DUE",
+                    "paymentFrequency": "e0Y e1M e0W e0D e0F",
+                    "paymentType": "CHARGE"
+                  },
+                  {
+                    "billType": "PAYMENT",
+                    "payments": [
+                      {
+                        "startDate": false
+                      }
+                    ],
+                    "property": [
+                      {
+                        "dueFrequency": "e0Y e1M e0W e0D e0F",
+                        "propertyId": "STATEMENTCHARGE"
+                      }
+                    ],
+                    "paymentMethod": "DUE",
+                    "paymentFrequency": "e0Y e1M e0W e0D e0F",
+                    "paymentType": "PERIODICCHARGE"
+                  }
+                ]
+              }
+            },
+            "stmtnoimage": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-STMTNOIMAGE-20250417",
+                "status": "success"
+              },
+              "body": {
+                "tiers": [
+                  {
+                    "calculationType": "UNIT",
+                    "tierType": "LEVEL",
+                    "chgAmount": "2.00"
+                  }
+                ],
+                "chargeId": "CALCULATED",
+                "tierGroups": "LEVELS"
+              }
+            },
+            "estmtcheckonly": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-ESTMTCHECKONLY-20250417",
+                "status": "success"
+              },
+              "body": {
+                "tiers": [
+                  {
+                    "calculationType": "UNIT",
+                    "tierType": "LEVEL",
+                    "chgAmount": "0.00"
+                  }
+                ],
+                "chargeId": "CALCULATED",
+                "tierGroups": "LEVELS"
+              }
+            },
+            "stmtcheckfrimg": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-STMTCHECKFRIMG-20250417",
+                "status": "success"
+              },
+              "body": {
+                "tiers": [
+                  {
+                    "calculationType": "UNIT",
+                    "tierType": "LEVEL",
+                    "chgAmount": "2.75"
+                  }
+                ],
+                "chargeId": "CALCULATED",
+                "tierGroups": "LEVELS"
+              }
+            },
+            "estmtnoimage": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-ESTMTNOIMAGE-20250417",
+                "status": "success"
+              },
+              "body": {
+                "tiers": [
+                  {
+                    "calculationType": "UNIT",
+                    "tierType": "LEVEL",
+                    "chgAmount": "0.00"
+                  }
+                ],
+                "chargeId": "CALCULATED",
+                "tierGroups": "LEVELS"
+              }
+            },
+            "dormancyfees": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-DORMANCYFEES-20250417",
+                "status": "success"
+              },
+              "body": {
+                "chargeId": "FIXED",
+                "fixedAmount": "8.00"
+              }
+            },
+            "estmtwithimage": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-ESTMTWITHIMAGE-20250417",
+                "status": "success"
+              },
+              "body": {
+                "tiers": [
+                  {
+                    "calculationType": "UNIT",
+                    "tierType": "LEVEL",
+                    "chgAmount": "0.00"
+                  }
+                ],
+                "chargeId": "CALCULATED",
+                "tierGroups": "LEVELS"
+              }
+            },
+            "stmtcheckonly": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-STMTCHECKONLY-20250417",
+                "status": "success"
+              },
+              "body": {
+                "tiers": [
+                  {
+                    "calculationType": "UNIT",
+                    "tierType": "LEVEL",
+                    "chgAmount": "2.50"
+                  }
+                ],
+                "chargeId": "CALCULATED",
+                "tierGroups": "LEVELS"
+              }
+            },
+            "cstatewht": {
+              "header": {
+                "transactionStatus": "Live",
+                "id": "AA25107ZNBW7-CSTATEWHT-20250417",
+                "status": "success"
+              }
+            },
+            "statementcharge": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-STATEMENTCHARGE-20250417",
+                "status": "success"
+              },
+              "body": {
+                "includeDeferred": "YES",
+                "amount": [
+                  {
+                    "charge": "ESTMTCHECKONLY"
+                  },
+                  {
+                    "charge": "ESTMTNOIMAGE"
+                  },
+                  {
+                    "charge": "ESTMTWITHIMAGE"
+                  },
+                  {
+                    "charge": "ESTMTCHECKFRIMG"
+                  },
+                  {
+                    "charge": "STMTCHECKONLY"
+                  },
+                  {
+                    "charge": "STMTNOIMAGE"
+                  },
+                  {
+                    "charge": "STMTWITHIMAGE"
+                  },
+                  {
+                    "charge": "STMTCHECKFRIMG"
+                  }
+                ]
+              }
+            },
+            "facility": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-FACILITY-20250417",
+                "status": "success"
+              },
+              "body": {
+                "services": [
+                  {
+                    "service": "CARD.ISSUE",
+                    "serviceAvailability": "OPTIONAL"
+                  },
+                  {
+                    "service": "TZ.STOP",
+                    "serviceAvailability": "OPTIONAL",
+                    "customerOption": "OPT-IN"
+                  },
+                  {
+                    "service": "OD.COVERAGE",
+                    "serviceAvailability": "OPTIONAL"
+                  },
+                  {
+                    "service": "REGE.OD.COVGE",
+                    "serviceAvailability": "OPTIONAL"
+                  }
+                ]
+              }
+            },
+            "customer": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {
+                  "versionNumber": "1"
+                },
+                "id": "AA25107ZNBW7-CUSTOMER-20250417.1",
+                "status": "success"
+              },
+              "body": {
+                "accountTitles": [
+                  {
+                    "accountTitle": "Coty A Smith"
+                  }
+                ],
+                "customers": [
+                  {
+                    "taxPercentage": 100,
+                    "customerId": 750305,
+                    "liabilityPercentage": 100,
+                    "limitAllocactionPercentage": 100,
+                    "customerRole": "OWNER",
+                    "deliveryReqd": "YES"
+                  }
+                ]
+              }
+            },
+            "servicechg": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-SERVICECHG-20250417",
+                "status": "success"
+              },
+              "body": {
+                "chargeId": "FIXED",
+                "fixedAmount": "5.00"
+              }
+            },
+            "stmtwithimage": {
+              "header": {
+                "transactionStatus": "Live",
+                "audit": {},
+                "id": "AA25107ZNBW7-STMTWITHIMAGE-20250417",
+                "status": "success"
+              },
+              "body": {
+                "tiers": [
+                  {
+                    "calculationType": "UNIT",
+                    "tierType": "LEVEL",
+                    "chgAmount": "3.00"
+                  }
+                ],
+                "chargeId": "CALCULATED",
+                "tierGroups": "LEVELS"
+              }
+            }
+          }
+        }
+      }
+    },
+    "createdAt": "2026-01-30T18:24:16.132Z",
+    "updatedAt": "2026-02-02T22:40:54.129Z",
+    "defaultHeaders": {
+      "companyId": "US0010001"
+    },
+    "responseCapture": [
+      {
+        "variableName": "accountArrangement",
+        "responsePath": "header.id"
+      },
+      {
+        "variableName": "accountId",
+        "responsePath": "body.properties.balance.body.accountId"
+      }
+    ]
+  },
+  {
+    "id": "352afb12-6fe6-4ffd-a49b-d1c58e1263de",
+    "name": "Fund Transfer",
+    "endpoint": "https://americasbsgbnpl.temenos.com/irf-provider-container/api/v1.0.0/order/transfers/inwards",
+    "method": "POST",
+    "defaultHeaders": {
+      "companyId": "US0010001"
+    },
+    "responseCapture": [
+      {
+        "variableName": "FundsTransferId",
+        "responsePath": "header.id"
+      }
+    ],
+    "request": {
+      "fileName": "352afb12-6fe6-4ffd-a49b-d1c58e1263de-request.json",
+      "schema": {
+        "header": "object",
+        "body": "object",
+        "body.paymentDetails": "array",
+        "body.paymentDetails[].paymentDetail": "string",
+        "body.debitAccountId": "string",
+        "body.debitCurrency": "string",
+        "body.debitAmount": "string",
+        "body.creditAccountId": "string",
+        "body.creditCurrencyId": "string",
+        "body.transactionType": "string",
+        "body.orderingBank": "string",
+        "body.orderingCustomerId": "string"
+      },
+      "fields": [
+        "body.paymentDetails[].paymentDetail",
+        "body.debitAccountId",
+        "body.debitCurrency",
+        "body.debitAmount",
+        "body.creditAccountId",
+        "body.creditCurrencyId",
+        "body.transactionType",
+        "body.orderingBank",
+        "body.orderingCustomerId"
+      ],
+      "sampleData": {
+        "header": {},
+        "body": {
+          "paymentDetails": [
+            {
+              "paymentDetail": "Fund Account"
+            }
+          ],
+          "debitAccountId": "{{DebitAcctId}}",
+          "debitCurrency": "USD",
+          "debitAmount": "10000",
+          "creditAccountId": "{{CreditAcctId}}",
+          "creditCurrencyId": "USD",
+          "transactionType": "AC",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY"
+        }
+      }
+    },
+    "response": {
+      "fileName": "352afb12-6fe6-4ffd-a49b-d1c58e1263de-response.json",
+      "schema": {
+        "header": "object",
+        "header.transactionStatus": "string",
+        "header.audit": "object",
+        "header.audit.T24_time": "number",
+        "header.audit.responseParse_time": "number",
+        "header.audit.requestParse_time": "number",
+        "header.audit.versionNumber": "string",
+        "header.id": "string",
+        "header.status": "string",
+        "body": "object",
+        "body.transactionType": "string",
+        "body.debitValueDate": "string",
+        "body.orderingBank": "string",
+        "body.orderingCustomerId": "string",
+        "body.debitCurrency": "string",
+        "body.creditCurrencyId": "string",
+        "body.creditValueDate": "string",
+        "body.debitAccountId": "string",
+        "body.debitAmount": "number",
+        "body.creditAccountId": "string"
+      },
+      "fields": [
+        "header.transactionStatus",
+        "header.audit.T24_time",
+        "header.audit.responseParse_time",
+        "header.audit.requestParse_time",
+        "header.audit.versionNumber",
+        "header.id",
+        "header.status",
+        "body.transactionType",
+        "body.debitValueDate",
+        "body.orderingBank",
+        "body.orderingCustomerId",
+        "body.debitCurrency",
+        "body.creditCurrencyId",
+        "body.creditValueDate",
+        "body.debitAccountId",
+        "body.debitAmount",
+        "body.creditAccountId"
+      ],
+      "sampleData": {
+        "header": {
+          "transactionStatus": "Live",
+          "audit": {
+            "T24_time": 10101,
+            "responseParse_time": 14,
+            "requestParse_time": 472,
+            "versionNumber": "1"
+          },
+          "id": "FT251078666Z",
+          "status": "success"
+        },
+        "body": {
+          "transactionType": "AC",
+          "debitValueDate": "2025-04-17",
+          "orderingBank": "PE1",
+          "orderingCustomerId": "PRIMARY",
+          "debitCurrency": "USD",
+          "creditCurrencyId": "USD",
+          "creditValueDate": "2025-04-17",
+          "debitAccountId": "USD140250001",
+          "debitAmount": 10000,
+          "creditAccountId": "30013964"
+        }
+      }
+    },
+    "createdAt": "2026-02-03T22:24:02.500Z",
+    "updatedAt": "2026-02-03T22:24:02.500Z"
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "header": {
+    "override": {
+      "overrideDetails": [
+        {
+          "code": "O-12284",
+          "description": "Bucket Override O-12284",
+          "id": "EB-TIN.BLANK.W8",
+          "type": "Override"
+        }
+      ]
+    }
+  },
+  "body": {
+    "extensions": {
+      "cusRoom2": "10"
+    },
+    "givenName": "{{FirstName}}",
+    "middleName": "{{MiddleName}}",
+    "lastName": "{{LastName}}",
+    "nationalityId": "US",
+    "dateOfBirth": "1983-05-01",
+    "sectorId": 1001,
+    "communicationDevices": [
+      {
+        "emailId": "test@test.com",
+        "mobilePhoneNumber": "9876543210"
+      }
+    ],
+    "languageId": 1,
+    "addressLine1": "asasa"
+  }
+}

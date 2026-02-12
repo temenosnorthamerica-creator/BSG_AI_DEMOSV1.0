@@ -15,8 +15,7 @@ $NpmProjects = @(
     @{ Name = "CRM Banking Simulator"; Path = "alwin\crm-banking-simulator_v2\crm-banking-simulator_v2" },
     @{ Name = "BSG Demo Platform - Frontend"; Path = "migarcia\DALLASAI 1\DALLASAI\frontend" },
     @{ Name = "Debit Cards - Frontend"; Path = "sweekruth.somaraju\debitcards\debitcards\frontend" },
-    @{ Name = "LMS Applicant Portal"; Path = "mmoore\lms-applicant-portal\lms-applicant-portal" },
-    @{ Name = "Middleware Integration"; Path = "m.mahaboobhussain\MIDDLEWARE\TEST_NEW_APP" }
+    @{ Name = "LMS Applicant Portal"; Path = "mmoore\lms-applicant-portal\lms-applicant-portal" }
 )
 
 # Project paths for pip install

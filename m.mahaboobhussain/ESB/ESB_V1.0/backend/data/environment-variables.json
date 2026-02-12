@@ -1,0 +1,47 @@
+{
+  "variables": {
+    "companyId": {
+      "value": "US0010001",
+      "description": "Company Id",
+      "updatedAt": "2026-02-02T15:05:34.593Z"
+    },
+    "FirstName": {
+      "value": "FirstName",
+      "description": "First Name",
+      "updatedAt": "2026-02-02T22:28:00.029Z"
+    },
+    "MiddleName": {
+      "value": "MiddleName",
+      "description": "Middle Name",
+      "updatedAt": "2026-02-02T22:28:09.424Z"
+    },
+    "LastName": {
+      "value": "LastName",
+      "description": "Last Name",
+      "updatedAt": "2026-02-02T22:28:21.100Z"
+    },
+    "CustomerId": {
+      "value": "750326",
+      "description": "Captured from header.id",
+      "updatedAt": "2026-02-10T23:52:47.264Z"
+    },
+    "accountArrangement": {
+      "value": "AA25107Y1LNL",
+      "description": "Captured from header.id",
+      "updatedAt": "2026-02-11T23:16:01.912Z"
+    },
+    "accountId": {
+      "value": "30014057",
+      "description": "Captured from body.properties.balance.body.accountId",
+      "updatedAt": "2026-02-11T23:16:01.916Z"
+    },
+    "FundsTransferId": {
+      "value": "FT25107PPQF5",
+      "description": "Captured from header.id",
+      "updatedAt": "2026-02-04T17:53:41.720Z"
+    }
+  },
+  "metadata": {
+    "updatedAt": "2026-02-11T23:16:01.916Z"
+  }
+}

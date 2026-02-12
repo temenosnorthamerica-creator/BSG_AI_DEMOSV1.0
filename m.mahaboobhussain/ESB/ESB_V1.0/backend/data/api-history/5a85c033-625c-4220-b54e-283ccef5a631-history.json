@@ -1,0 +1,392 @@
+[
+  {
+    "id": "5ea27a98-d2d2-4867-a007-bf25c07c799f",
+    "apiSampleId": "5a85c033-625c-4220-b54e-283ccef5a631",
+    "apiSampleName": "Create Customer",
+    "endpoint": "https://americasbsgbnpl.temenos.com/irf-provider-container/api/v4.1.0/party/us/customers/individuals",
+    "method": "POST",
+    "requestHeaders": {
+      "Content-Type": "application/json",
+      "companyId": "US0010001"
+    },
+    "requestBody": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "10"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "US",
+        "dateOfBirth": "1983-05-01",
+        "sectorId": 1001,
+        "communicationDevices": [
+          {
+            "emailId": "test@test.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "responseStatus": 200,
+    "responseStatusText": "OK",
+    "responseBody": {
+      "header": {
+        "transactionStatus": "Live",
+        "audit": {
+          "T24_time": 845,
+          "responseParse_time": 4,
+          "requestParse_time": 5,
+          "versionNumber": "1"
+        },
+        "id": "750324",
+        "status": "success"
+      },
+      "body": {
+        "dateTime": [
+          {
+            "dateTime": "2602021800"
+          }
+        ],
+        "country": "US",
+        "lastName": "LastName",
+        "taxWithholding": "NO",
+        "currNo": 1,
+        "displayName": "LastName FirstName MiddleName",
+        "isInternetBankingService": "NULL",
+        "privacyStatus": "OPT-IN",
+        "communicationDevices": [
+          {
+            "mobilePhoneNumber": "9876543210",
+            "emailId": "test@test.com"
+          }
+        ],
+        "customerStatus": "61",
+        "statusChangeDate": "2025-04-17",
+        "escheat": "NO",
+        "overrideDetails": [
+          {
+            "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750323"
+          },
+          {
+            "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+          }
+        ],
+        "accountOfficerId": "2",
+        "mnemonic": "C-750324",
+        "addressLine1": "asasa",
+        "customerCompany": "US0010001",
+        "inputter": [
+          {
+            "inputter": "25972_INPUTTER__OFS_IRISINTERNAL"
+          }
+        ],
+        "amlResult": "NULL",
+        "addressStatus": "M",
+        "companyCode": "US0010001",
+        "affiliateMarketingStatusDate": "2025-04-17",
+        "affiliateMarketingExpirationDate": "2030-04-17",
+        "sectorId": 1001,
+        "isMobileBankingService": "NULL",
+        "nationalityId": "US",
+        "givenName": "FirstName",
+        "languageId": "1",
+        "dateOfBirth": "1983-05-01",
+        "amlCheck": "NULL",
+        "customerName": "FirstName MiddleName LastName",
+        "ctrExempt": "NO",
+        "authoriser": "25972_INPUTTER_OFS_IRISINTERNAL",
+        "target": "9000",
+        "customerSince": "2009-12-23",
+        "extensions": {
+          "cusRoom2": "10"
+        },
+        "affiliateMarketingStatus": "OPT-OUT",
+        "middleName": "MiddleName"
+      }
+    },
+    "capturedVariables": [
+      {
+        "variableName": "CustomerId",
+        "value": "750324",
+        "responsePath": "header.id"
+      }
+    ],
+    "duration": "1549ms",
+    "success": true,
+    "executedAt": "2026-02-02T23:00:34.771Z"
+  },
+  {
+    "id": "022c6d80-1c9b-4613-9b7d-267617a57a79",
+    "apiSampleId": "5a85c033-625c-4220-b54e-283ccef5a631",
+    "apiSampleName": "Create Customer",
+    "endpoint": "https://americasbsgbnpl.temenos.com/irf-provider-container/api/v4.1.0/party/us/customers/individuals",
+    "method": "POST",
+    "requestHeaders": {
+      "Content-Type": "application/json",
+      "companyId": "US0010001"
+    },
+    "requestBody": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "10"
+        },
+        "givenName": "FirstName001",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "US",
+        "dateOfBirth": "1983-05-01",
+        "sectorId": 1001,
+        "communicationDevices": [
+          {
+            "emailId": "test@test.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "responseStatus": 200,
+    "responseStatusText": "OK",
+    "responseBody": {
+      "header": {
+        "transactionStatus": "Live",
+        "audit": {
+          "T24_time": 1703,
+          "responseParse_time": 1,
+          "requestParse_time": 7,
+          "versionNumber": "1"
+        },
+        "id": "750325",
+        "status": "success"
+      },
+      "body": {
+        "dateTime": [
+          {
+            "dateTime": "2602041122"
+          }
+        ],
+        "country": "US",
+        "lastName": "LastName",
+        "taxWithholding": "NO",
+        "currNo": 1,
+        "displayName": "LastName FirstName001 MiddleName",
+        "isInternetBankingService": "NULL",
+        "privacyStatus": "OPT-IN",
+        "communicationDevices": [
+          {
+            "mobilePhoneNumber": "9876543210",
+            "emailId": "test@test.com"
+          }
+        ],
+        "customerStatus": "61",
+        "statusChangeDate": "2025-04-17",
+        "escheat": "NO",
+        "overrideDetails": [
+          {
+            "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+          }
+        ],
+        "accountOfficerId": "2",
+        "mnemonic": "C-750325",
+        "addressLine1": "asasa",
+        "customerCompany": "US0010001",
+        "inputter": [
+          {
+            "inputter": "8824_INPUTTER__OFS_IRISINTERNAL"
+          }
+        ],
+        "amlResult": "NULL",
+        "addressStatus": "M",
+        "companyCode": "US0010001",
+        "affiliateMarketingStatusDate": "2025-04-17",
+        "affiliateMarketingExpirationDate": "2030-04-17",
+        "sectorId": 1001,
+        "isMobileBankingService": "NULL",
+        "nationalityId": "US",
+        "givenName": "FirstName001",
+        "languageId": "1",
+        "dateOfBirth": "1983-05-01",
+        "amlCheck": "NULL",
+        "customerName": "FirstName001 MiddleName LastName",
+        "ctrExempt": "NO",
+        "authoriser": "8824_INPUTTER_OFS_IRISINTERNAL",
+        "target": "9000",
+        "customerSince": "2009-12-23",
+        "extensions": {
+          "cusRoom2": "10"
+        },
+        "affiliateMarketingStatus": "OPT-OUT",
+        "middleName": "MiddleName"
+      }
+    },
+    "capturedVariables": [
+      {
+        "variableName": "CustomerId",
+        "value": "750325",
+        "responsePath": "header.id"
+      }
+    ],
+    "duration": "2414ms",
+    "success": true,
+    "executedAt": "2026-02-04T16:22:23.765Z"
+  },
+  {
+    "id": "7f7f2899-55b3-4a01-b897-142e30812536",
+    "apiSampleId": "5a85c033-625c-4220-b54e-283ccef5a631",
+    "apiSampleName": "Create Customer",
+    "endpoint": "https://americasbsgbnpl.temenos.com/irf-provider-container/api/v4.1.0/party/us/customers/individuals",
+    "method": "POST",
+    "requestHeaders": {
+      "Content-Type": "application/json",
+      "companyId": "US0010001"
+    },
+    "requestBody": {
+      "header": {
+        "override": {
+          "overrideDetails": [
+            {
+              "code": "O-12284",
+              "description": "Bucket Override O-12284",
+              "id": "EB-TIN.BLANK.W8",
+              "type": "Override"
+            }
+          ]
+        }
+      },
+      "body": {
+        "extensions": {
+          "cusRoom2": "10"
+        },
+        "givenName": "FirstName",
+        "middleName": "MiddleName",
+        "lastName": "LastName",
+        "nationalityId": "US",
+        "dateOfBirth": "1983-05-01",
+        "sectorId": 1001,
+        "communicationDevices": [
+          {
+            "emailId": "test@test.com",
+            "mobilePhoneNumber": "9876543210"
+          }
+        ],
+        "languageId": 1,
+        "addressLine1": "asasa"
+      }
+    },
+    "responseStatus": 200,
+    "responseStatusText": "OK",
+    "responseBody": {
+      "header": {
+        "transactionStatus": "Live",
+        "audit": {
+          "T24_time": 1756,
+          "responseParse_time": 2,
+          "requestParse_time": 10,
+          "versionNumber": "1"
+        },
+        "id": "750326",
+        "status": "success"
+      },
+      "body": {
+        "dateTime": [
+          {
+            "dateTime": "2602101852"
+          }
+        ],
+        "country": "US",
+        "lastName": "LastName",
+        "taxWithholding": "NO",
+        "currNo": 1,
+        "displayName": "LastName FirstName MiddleName",
+        "isInternetBankingService": "NULL",
+        "privacyStatus": "OPT-IN",
+        "communicationDevices": [
+          {
+            "mobilePhoneNumber": "9876543210",
+            "emailId": "test@test.com"
+          }
+        ],
+        "customerStatus": "61",
+        "statusChangeDate": "2025-04-17",
+        "escheat": "NO",
+        "overrideDetails": [
+          {
+            "override": "DUP.CONTRACT}Auto:POSSIBLE DUPLICATE CONTRACT &{750324"
+          },
+          {
+            "override": "EB-TIN.BLANK.W8}Bucket Override &{O-12284"
+          }
+        ],
+        "accountOfficerId": "2",
+        "mnemonic": "C-750326",
+        "addressLine1": "asasa",
+        "customerCompany": "US0010001",
+        "inputter": [
+          {
+            "inputter": "92199_INPUTTER__OFS_IRISINTERNAL"
+          }
+        ],
+        "amlResult": "NULL",
+        "addressStatus": "M",
+        "companyCode": "US0010001",
+        "affiliateMarketingStatusDate": "2025-04-17",
+        "affiliateMarketingExpirationDate": "2030-04-17",
+        "sectorId": 1001,
+        "isMobileBankingService": "NULL",
+        "nationalityId": "US",
+        "givenName": "FirstName",
+        "languageId": "1",
+        "dateOfBirth": "1983-05-01",
+        "amlCheck": "NULL",
+        "customerName": "FirstName MiddleName LastName",
+        "ctrExempt": "NO",
+        "authoriser": "92199_INPUTTER_OFS_IRISINTERNAL",
+        "target": "9000",
+        "customerSince": "2009-12-23",
+        "extensions": {
+          "cusRoom2": "10"
+        },
+        "affiliateMarketingStatus": "OPT-OUT",
+        "middleName": "MiddleName"
+      }
+    },
+    "capturedVariables": [
+      {
+        "variableName": "CustomerId",
+        "value": "750326",
+        "responsePath": "header.id"
+      }
+    ],
+    "duration": "2551ms",
+    "success": true,
+    "executedAt": "2026-02-10T23:52:47.271Z"
+  }
+]

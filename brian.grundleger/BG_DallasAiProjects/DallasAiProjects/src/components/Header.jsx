@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
-import { Clock, User, Cog } from 'lucide-react'
-import { clsx } from 'clsx'
+import { Clock, User } from 'lucide-react'
 
-export function Header({ onConfigClick, clientConfig }) {
+export function Header({ clientConfig }) {
   const [userName, setUserName] = useState('USER')
 
   useEffect(() => {
@@ -51,21 +50,6 @@ export function Header({ onConfigClick, clientConfig }) {
             </p>
           </div>
         </div>
-
-        {/* Config Button */}
-        <button
-          onClick={onConfigClick}
-          className={clsx(
-            "flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-200",
-            "bg-slate-800/60 border border-slate-700/50",
-            "text-slate-400 hover:text-white hover:bg-slate-700/50 hover:border-slate-600/50",
-            "group"
-          )}
-          title="Client Environment Variables"
-        >
-          <Cog className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
-          <span className="text-sm font-medium">Configure</span>
-        </button>
       </div>
     </header>
   )

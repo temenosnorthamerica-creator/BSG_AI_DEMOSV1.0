@@ -4,7 +4,7 @@ A unified platform showcasing Temenos banking integration capabilities through m
 
 ## Project Overview
 
-This monorepo contains 6 interconnected applications demonstrating various aspects of banking ecosystem integration with Temenos products.
+This monorepo contains 5 interconnected applications demonstrating various aspects of banking ecosystem integration with Temenos products, plus 1 embedded demo (Creditos).
 
 ---
 
@@ -26,6 +26,7 @@ This monorepo contains 6 interconnected applications demonstrating various aspec
 - **Add New Components** - You MAY create new reusable components within each app
 - **Enhance Styling** - You MAY improve UI/UX as long as navigation structure is preserved
 - **Add New Event Types** - You MAY add new CloudEvent types for middleware integration
+- **Add New Demo Cards** - You MAY add new demo applications to the Landing Page
 
 ### Examples:
 ```
@@ -34,7 +35,8 @@ ALLOWED:
   - Creating a new /reports page in BSG Demo Platform
   - Adding transaction filters to Debit Cards Dashboard
   - Creating new loan product types in LMS Portal
-  - Adding new event handlers in Middleware
+  - Adding new event handlers in ESB
+  - Adding new demo cards to Landing Page (like Creditos)
 
 NOT ALLOWED:
   - Removing the /api-reference route from CRM Simulator
@@ -43,6 +45,18 @@ NOT ALLOWED:
   - Changing /login to /signin in LMS Portal
   - Removing sidebar navigation from any application
 ```
+
+---
+
+## Page Names Reference
+
+| Page Name | Location | File(s) | Description |
+|-----------|----------|---------|-------------|
+| **Home Page** | Landing Page (3000) | `HomePage.jsx` | Main dashboard with Team Demo Applications cards |
+| **App Landing Page** | Click on demo card | `AppLandingPage.jsx`, `AppLandingTemplate.jsx` | Sub-page with Overview, Components, Architecture, API Docs tabs |
+| **Demo View** | Click "Show Demo" | Inside `AppLandingTemplate.jsx` | iframe showing the actual demo application |
+| **System Page** | Click on Banking System | `SystemPage.jsx` | Banking system detail view with APIs |
+| **Client Config** | Sidebar → Client Environment | `ClientConfigPage.jsx` | Client branding configuration |
 
 ---
 
@@ -55,7 +69,8 @@ NOT ALLOWED:
 | BSG Demo Platform | 3002 | 8002 | migarcia@temenos.com |
 | Debit Cards Demo | 3003 | 8003 | sweekruth.somaraju@temenos.com |
 | LMS Applicant Portal | 3004 | - | mmoore@temenos.com |
-| Middleware Integration | 3005 | 8005 | m.mahaboobhussain@temenos.com |
+| Creditos (embedded) | 3002 | 8002 | migarcia@temenos.com |
+| ESB | 3016 | 8006 | m.mahaboobhussain@temenos.com |
 
 ---
 
@@ -70,70 +85,80 @@ NOT ALLOWED:
 | Build Tool | Vite 6.0 |
 | Styling | Tailwind CSS 3.4 |
 | Icons | Lucide React |
-| Routing | React Router DOM 6.28 |
+| Navigation | useState (state-based) |
 | Utilities | clsx |
 
 ### Sitemap
 ```
 http://localhost:3000/
 │
-├── HOME PAGE (Default)
-│   ├── Team Demo Applications Section
-│   │   ├── CRM Banking Simulator Card → App Landing Page
-│   │   ├── BSG Demo Platform Card → App Landing Page
-│   │   ├── Debit Cards Demo Card → App Landing Page
-│   │   ├── LMS Applicant Portal Card → App Landing Page
-│   │   └── Middleware Integration Card → App Landing Page
+├── HOME PAGE (Default) - accessible via Sidebar → Home
 │   │
-│   └── Banking Systems Section (Filter: All | Temenos | 3rd Party)
-│       ├── Card Services → System Detail Page
-│       ├── Item Processing → System Detail Page
-│       ├── Digital → System Detail Page
-│       ├── Lending → System Detail Page
-│       ├── Core → System Detail Page
-│       ├── Backoffice & Reporting → System Detail Page
-│       ├── Branch & Teller → System Detail Page
-│       └── Compliance → System Detail Page
+│   ├── Header Section
+│   │   └── Client Logo/Name (customizable via Client Config)
+│   │
+│   └── Team Demo Applications Section (5 cards + embedded demos)
+│       ├── CRM Banking Simulator Card → App Landing Page (port 3001)
+│       ├── BSG Demo Platform Card → App Landing Page (port 3002)
+│       ├── Debit Cards Demo Card → App Landing Page (port 3003)
+│       ├── LMS Applicant Portal Card → App Landing Page (port 3004)
+│       ├── Creditos Card → App Landing Page (embedded BSG port 3002)
+│       └── ESB Card → App Landing Page (port 3016)
 │
-├── APP LANDING PAGE (per demo app)
-│   ├── Top Navigation (30% height)
-│   │   └── Overview | Features | Integration | Configuration tabs
-│   └── Bottom Section (70% height)
-│       ├── Left Panel (65%) - Content + "Show Demo" button
-│       └── Right Panel (35%) - Animated Integration Diagram
+├── APP LANDING PAGE (Full-screen, no sidebar/header)
+│   ├── Top Section
+│   │   ├── Back to Home button
+│   │   ├── App icon, name, owner, port badges
+│   │   └── Navigation Tabs (demo-specific)
+│   │
+│   ├── Bottom Section (70% height, 2-panel layout)
+│   │   ├── Left Panel (65%) - Tab content + "Show Demo" button
+│   │   └── Right Panel (35%) - Integration Flow diagram
+│   │
+│   └── Demo View (iframe) - shown after clicking "Show Demo"
 │
-├── SYSTEM DETAIL PAGE
-│   ├── Overview Section
-│   ├── APIs & Developer Portal (filterable by type)
+│   Navigation tabs per demo:
+│   ├── CRM Banking Simulator: Overview | Features | Integration | Configuration
+│   ├── BSG Demo Platform: Overview | Components | Architecture | API Docs
+│   ├── Debit Cards Demo: Overview | Features | Events | API
+│   ├── LMS Applicant Portal: Overview | Workflow | Integration | Products
+│   ├── Creditos: Overview | Components | Architecture | API Docs
+│   └── ESB: Overview | Features | Mapping | API Flow
+│
+├── SYSTEM PAGE (Banking System Detail)
+│   ├── System Overview (name, description, icon)
+│   ├── APIs Section (filterable: All | Temenos | 3rd Party)
 │   ├── Documentation Links
 │   └── Demo Environment Links
 │
-├── SOLUTION MAP PAGE
-│   └── Visual map of enabled banking systems
-│
-└── CLIENT ENVIRONMENT PAGE
-    ├── Client Name Configuration
-    ├── Client Logo Upload
-    ├── Theme Colors (Primary/Secondary)
-    └── System Enable/Disable Toggles
+└── CLIENT CONFIG PAGE - accessible via context/ClientConfigContext
+    ├── Client Name input
+    ├── Client Logo upload
+    ├── Primary/Secondary Color pickers
+    └── System Enable/Disable toggles
 
-SIDEBAR NAVIGATION:
-├── Home
-├── Solution Map
-├── Banking Systems (8 categories)
-├── Client Environment
-├── Settings (placeholder)
-└── Logout (placeholder)
+SIDEBAR (Collapsible via toggle button, expanded by default):
+├── Logo/Client branding
+├── Home button
+├── Solution Diagram button
+└── Health Check button
 ```
 
 ### Key Files
 - `src/App.jsx` - Main routing and state management
 - `src/components/Sidebar.jsx` - Navigation sidebar
-- `src/pages/HomePage.jsx` - Main dashboard
+- `src/pages/HomePage.jsx` - Main dashboard with demo cards
 - `src/pages/AppLandingPage/AppLandingPage.jsx` - Demo app landing template
+- `src/components/AppLandingTemplate/AppLandingTemplate.jsx` - Template for app landing pages
 - `src/pages/SystemPage.jsx` - Banking system detail view
-- `src/data/systems.json` - Banking systems and APIs data
-- `src/data/appLandingData.jsx` - Demo app configurations
+- `src/data/systems.json` - Banking systems, APIs, and demo apps data
+- `src/data/appLandingData.jsx` - Demo app tab configurations (Overview, Components, etc.)
+
+### Adding a New Demo Card
+1. Add entry to `src/data/systems.json` under `teamDemos` array
+2. Add configuration to `src/data/appLandingData.jsx` with navItems
+3. Add icon mapping in `src/pages/HomePage.jsx` (systemIcons, systemColors)
+4. Add icon mapping in `src/pages/AppLandingPage/AppLandingPage.jsx` (appIcons, integrationDiagrams)
 
 ---
 
@@ -150,7 +175,6 @@ SIDEBAR NAVIGATION:
 | Styling | Tailwind CSS 3.4 |
 | Routing | React Router DOM 6.21 |
 | HTTP Client | Axios 1.6 |
-| Animation | Framer Motion 12.23 |
 | Icons | Lucide React |
 
 ### Sitemap
@@ -219,6 +243,22 @@ API Proxy: /api/temenos → americasbsgprd.temenos.com
 | Monitoring | Prometheus, OpenTelemetry |
 | Azure SDK | azure-identity, azure-mgmt-* |
 
+### Embed Mode (for Landing Page integration)
+BSG Demo Platform supports embed mode for displaying specific components in an iframe:
+
+**URL Parameters:**
+- `?component=<component-id>` - Navigate directly to a component (e.g., `branch-loans`)
+- `?embed=true` - Enable embed mode (removes sidebar, header, watermark, margin)
+
+**Example:** `http://localhost:3002?component=branch-loans&embed=true`
+
+**Embed mode behavior:**
+- Sidebar is removed
+- Header is hidden
+- Background watermark is removed
+- `data-sidebar` attribute removed from body (prevents margin-left CSS)
+- Content uses full width with minimal padding
+
 ### Sitemap
 ```
 http://localhost:3002/
@@ -233,7 +273,7 @@ http://localhost:3002/
 │   │   ├── Security
 │   │   ├── Observability
 │   │   ├── Design Time
-│   │   ├── Branch Loans
+│   │   ├── Sucursal - Creditos (Branch Loans)
 │   │   └── Settings
 │   │
 │   └── Component Cards Grid
@@ -247,8 +287,12 @@ http://localhost:3002/
 │   ├── Observability
 │   └── Design Time
 │
-├── BRANCH LOANS PAGE
-│   └── Loan origination workflow
+├── BRANCH LOANS PAGE (Sucursal - Creditos)
+│   ├── Header with Navigation (Solicitar Credito | Consultar Pagos)
+│   ├── Customer Search (Por Identificacion | Por Nombre | Por Telefono)
+│   ├── Loan Application Workflow (3 steps)
+│   ├── Payment Schedule Viewer
+│   └── Loan Confirmation
 │
 └── SETTINGS MODAL
     └── Theme Toggle (Light/Dark)
@@ -264,11 +308,13 @@ BACKEND API: http://localhost:8002
 ```
 
 ### Key Files - Frontend
-- `frontend/src/App.tsx` - Main app with state-based routing
+- `frontend/src/App.tsx` - Main app with state-based routing and embed mode support
 - `frontend/src/pages/HomePage.tsx` - Component grid
 - `frontend/src/pages/ComponentPage.tsx` - Dynamic component viewer
-- `frontend/src/components/Sidebar.tsx` - Navigation
+- `frontend/src/components/Sidebar.tsx` - Navigation (sets data-sidebar attribute)
+- `frontend/src/components/loans/BranchLoanPage.tsx` - Sucursal - Creditos (loan management)
 - `frontend/src/types/index.ts` - TypeScript definitions
+- `frontend/src/index.css` - Global styles including sidebar margin rules
 
 ### Key Files - Backend
 - `backend/app/main.py` - FastAPI application
@@ -421,94 +467,27 @@ API Integration: lmsdemo1.temenos.com/LendingAPI
 
 ---
 
-## 6. Middleware Integration (Ports 3005/8005)
+## 6. Creditos (Embedded Demo)
 
-**Path:** `m.mahaboobhussain/MIDDLEWARE/TEST_NEW_APP`
+**Path:** Uses BSG Demo Platform (`migarcia/DALLASAI 1/DALLASAI`)
 
-### Tech Stack
-| Layer | Technology |
-|-------|------------|
-| Frontend | React 18.2 |
-| Language | TypeScript 5.2 |
-| Build Tool | Vite 5.0 |
-| Styling | Tailwind CSS 3.4 |
-| Routing | React Router DOM 6.20 |
-| Backend | Express.js 5.2 |
-| Events | Azure Event Hubs SDK 6.0 |
-| Icons | Lucide React |
-| Concurrent | concurrently 8.2 |
+### Description
+Creditos is an embedded demo that displays the "Sucursal - Creditos" (Branch Loans) page from BSG Demo Platform directly in the Landing Page's demo iframe.
 
-### Sitemap
-```
-http://localhost:3005/
-│
-├── / (Home Page - Default)
-│   └── Demo Application Selector
-│       ├── Cards Integration
-│       ├── CRM Integration
-│       ├── Digital Banking
-│       ├── Payments
-│       └── Middleware Demo
-│
-├── /cards
-│   └── Cards Page
-│       └── Card event creation & viewing
-│
-├── /crm
-│   └── CRM Page
-│       └── Customer event management
-│
-├── /digital
-│   └── Digital Page
-│       └── Digital banking events
-│
-├── /payments
-│   └── Payments Page
-│       └── Payment event processing
-│
-└── /middleware
-    └── Middleware Page
-        ├── Event Hub Connection Status
-        ├── Customer Event Creator
-        │   ├── Customer Data Form
-        │   └── Send to Event Hub
-        ├── Account Event Creator
-        │   ├── Account Data Form
-        │   └── Send to Event Hub
-        ├── Event Viewer
-        │   └── Recent Events List
-        └── Field Mapping Visualizer
-            └── Source → Target Mapping
+### URL
+`http://localhost:3002?component=branch-loans&embed=true`
 
-BACKEND API: http://localhost:8005
-├── /api/events/send - Send events to Event Hub
-├── /api/events/customer - Customer events
-├── /api/events/account - Account events
-└── /api/events/list - List recent events
+### Features
+- Loan application submission (Solicitar Credito)
+- Payment consultation and tracking (Consultar Pagos)
+- Customer search by ID, name, or phone
+- Payment status overview (Pagados, Pendientes, Vencidos)
+- 3-step loan workflow (Cliente → Tipo de Prestamo → Solicitud)
 
-CloudEvents Format:
-├── com.bank.customer.created
-├── com.bank.account.created
-└── com.bank.transaction.processed
-
-Event Flow: PULL → MAP → SEND
-├── Pull event from Event Hub
-├── Map fields to Transact API format
-├── Send to Temenos Transact API
-└── Handle response/errors
-```
-
-### Key Files
-- `src/App.tsx` - Main routing
-- `src/pages/HomePage.tsx` - Demo selector
-- `src/pages/MiddlewarePage.tsx` - Main middleware demo
-- `src/pages/CardsPage.tsx` - Cards integration
-- `src/pages/CrmPage.tsx` - CRM integration
-- `src/pages/DigitalPage.tsx` - Digital banking
-- `src/pages/PaymentsPage.tsx` - Payments
-- `backend/server.js` - Express.js server
-- `backend/eventHubService.js` - Azure Event Hub client
-- `send-event.js` - Standalone event sender script
+### Configuration Files
+- Landing Page: `src/data/systems.json` (teamDemos array)
+- Landing Page: `src/data/appLandingData.jsx` (creditos config with Overview, Components, Architecture, API Docs)
+- BSG Platform: `frontend/src/components/loans/BranchLoanPage.tsx`
 
 ---
 
@@ -573,10 +552,15 @@ cd mmoore/lms-applicant-portal/lms-applicant-portal
 npm run dev
 ```
 
-**Middleware Integration (Ports 3005/8005):**
+**ESB (Ports 3016/8006):**
 ```bash
-cd m.mahaboobhussain/MIDDLEWARE/TEST_NEW_APP
-npm run start  # Starts both frontend and backend
+# Frontend
+cd m.mahaboobhussain/ESB/ESB_V1.0/frontend
+npm run dev
+
+# Backend
+cd m.mahaboobhussain/ESB/ESB_V1.0/backend
+npm run dev
 ```
 
 ---
@@ -597,7 +581,7 @@ REDIS_URL=<redis-connection-url>
 AZURE_EVENTHUB_CONNECTION_STRING=<event-hub-connection-string>
 ```
 
-### Middleware Integration
+### ESB Backend
 ```env
 AZURE_EVENTHUB_CONNECTION_STRING=<event-hub-connection-string>
 EVENTHUB_NAME=test
@@ -611,6 +595,7 @@ EVENTHUB_NAME=test
 ┌─────────────────────────────────────────────────────────────────────┐
 │                        Landing Page (3000)                          │
 │                    Central Navigation Hub                           │
+│         (Home Page, App Landing Pages, System Pages)                │
 └───────────────────────────────┬─────────────────────────────────────┘
                                 │
         ┌───────────────────────┼───────────────────────┐
@@ -628,6 +613,12 @@ EVENTHUB_NAME=test
         │      │ Cosmos DB   │         │               │
         │      │ (MongoDB)   │         │               │
         │      └─────────────┘         │               │
+        │              │               │               │
+        │              ▼               │               │
+        │      ┌─────────────┐         │               │
+        │      │  Creditos   │         │               │
+        │      │ (embedded)  │         │               │
+        │      └─────────────┘         │               │
         │                              │               │
         ▼                              ▼               ▼
 ┌───────────────────────────────────────────────────────────────────┐
@@ -637,8 +628,8 @@ EVENTHUB_NAME=test
         ▲                              ▲               ▲
         │                              │               │
 ┌───────┴───────┐           ┌──────────┴──────────┐   │
-│ LMS Portal    │           │ Middleware Demo      │   │
-│   (3004)      │           │   (3005/8005)        │───┘
+│ LMS Portal    │           │  ESB Demo           │   │
+│   (3004)      │           │   (3016/8006)       │───┘
 └───────────────┘           └──────────┬──────────┘
         │                              │
         ▼                              ▼

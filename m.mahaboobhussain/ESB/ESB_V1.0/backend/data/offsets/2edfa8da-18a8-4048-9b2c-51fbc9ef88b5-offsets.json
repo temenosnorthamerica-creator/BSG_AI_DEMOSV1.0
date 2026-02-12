@@ -1,0 +1,13 @@
+{
+  "configId": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+  "partitions": {
+    "0": {
+      "offset": "18240",
+      "sequenceNumber": 24,
+      "lastProcessedAt": "2026-02-12T03:40:52.145Z"
+    }
+  },
+  "lastUpdated": "2026-02-12T03:40:52.145Z",
+  "totalProcessed": 23,
+  "configName": "cloudevent-createcustomer_to_api-createcustomer"
+}

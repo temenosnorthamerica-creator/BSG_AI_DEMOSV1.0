@@ -1,0 +1,25 @@
+{
+  "header": {
+    "transactionStatus": "Live",
+    "audit": {
+      "T24_time": 10101,
+      "responseParse_time": 14,
+      "requestParse_time": 472,
+      "versionNumber": "1"
+    },
+    "id": "FT251078666Z",
+    "status": "success"
+  },
+  "body": {
+    "transactionType": "AC",
+    "debitValueDate": "2025-04-17",
+    "orderingBank": "PE1",
+    "orderingCustomerId": "PRIMARY",
+    "debitCurrency": "USD",
+    "creditCurrencyId": "USD",
+    "creditValueDate": "2025-04-17",
+    "debitAccountId": "USD140250001",
+    "debitAmount": 10000,
+    "creditAccountId": "30013964"
+  }
+}

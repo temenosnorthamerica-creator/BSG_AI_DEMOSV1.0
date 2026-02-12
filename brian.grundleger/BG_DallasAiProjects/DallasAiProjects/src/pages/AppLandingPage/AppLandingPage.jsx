@@ -12,7 +12,8 @@ import {
   Server,
   CreditCard,
   Landmark,
-  Cpu
+  Banknote,
+  GitBranch
 } from 'lucide-react'
 
 // Map app IDs to their integration diagrams
@@ -21,7 +22,8 @@ const integrationDiagrams = {
   'bsg-demo-platform': BSGPlatformDiagram,
   'debitcards-demo': DebitCardsDiagram,
   'lms-applicant-portal': LMSDiagram,
-  'middleware-demo': MiddlewareDiagram
+  'creditos': BSGPlatformDiagram, // Uses same diagram as BSG Platform (it's part of BSG)
+  'esb-demo': MiddlewareDiagram // Uses Middleware diagram (similar event-driven architecture)
 }
 
 // Map app IDs to their icons
@@ -30,7 +32,8 @@ const appIcons = {
   'bsg-demo-platform': Server,
   'debitcards-demo': CreditCard,
   'lms-applicant-portal': Landmark,
-  'middleware-demo': Cpu
+  'creditos': Banknote,
+  'esb-demo': GitBranch
 }
 
 export function AppLandingPage({ appId, appData, onBack }) {

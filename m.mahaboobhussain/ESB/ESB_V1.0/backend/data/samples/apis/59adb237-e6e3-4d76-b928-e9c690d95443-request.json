@@ -1,0 +1,57 @@
+{
+  "header": {
+    "override": {
+      "overrideDetails": [
+        {
+          "code": "O-12549",
+          "description": "Bucket Override O-12549",
+          "id": "AA.INT.SRC.TYP.AND.PAY.MET.MISMATCH",
+          "type": "Override"
+        }
+      ]
+    }
+  },
+  "body": {
+    "customerIds": [
+      {
+        "customerId": "{{CustomerId}}"
+      }
+    ],
+    "activityId": "ACCOUNTS-NEW-ARRANGEMENT",
+    "currencyId": "USD",
+    "productId": "CONS.CHECKING",
+    "officers": {
+      "primaryOfficer": 3
+    },
+    "balance": {
+      "shortTitle": "Investor Checking Account",
+      "fdicClassCode": 3,
+      "fdicOwnershipCode": "S",
+      "purposeCode": 5,
+      "accountType": "CHECKING"
+    },
+    "statement": {
+      "statement1Frequency": "M0131",
+      "attributeNamevalue": "Print.Option",
+      "fqu1PrintAttrValue1": "ESTATEMENT"
+    },
+    "schedule": [
+      {
+        "payment": [
+          {
+            "paymentType": "INTEREST",
+            "paymentMethod": "DUE"
+          },
+          {
+            "paymentType": "CHARGE",
+            "paymentMethod": "DUE"
+          },
+          {
+            "paymentType": "PERIODICCHARGE",
+            "paymentMethod": "DUE"
+          }
+        ]
+      }
+    ]
+  }
+}

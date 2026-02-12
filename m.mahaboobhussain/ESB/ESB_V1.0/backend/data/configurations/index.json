@@ -1,0 +1,62 @@
+[
+  {
+    "id": "2edfa8da-18a8-4048-9b2c-51fbc9ef88b5",
+    "name": "cloudevent-createcustomer_to_api-createcustomer",
+    "source": {
+      "type": "event",
+      "eventSampleId": "61e7d7c6-fcad-4732-ad74-0d82e781be81",
+      "fileData": null
+    },
+    "destination": {
+      "apiSampleId": "5a85c033-625c-4220-b54e-283ccef5a631"
+    },
+    "mapping": {
+      "data.personalDetails.firstName": "body.givenName",
+      "data.personalDetails.middleName": "body.middleName",
+      "data.personalDetails.lastName": "body.lastName",
+      "data.personalDetails.nationality": "body.nationalityId",
+      "data.personalDetails.dateOfBirth": "body.dateOfBirth",
+      "data.personalDetails.sectorId": "body.sectorId",
+      "data.contactDetails.email": "body.communicationDevices[].emailId",
+      "data.contactDetails.mobile": "body.communicationDevices[].mobilePhoneNumber",
+      "data.personalDetails.languageId": "body.languageId",
+      "data.personalDetails.addressLine1": "body.addressLine1",
+      "data.extensions.customField": "body.extensions.cusRoom2"
+    },
+    "createdAt": "2026-01-29T22:14:53.796Z",
+    "updatedAt": "2026-01-30T20:27:05.021Z",
+    "eventType": "com.bank.customer.created"
+  },
+  {
+    "id": "155a83fa-4bd6-4aa2-834f-b039e64b8010",
+    "name": "cloudevent-createaccount_to_api-createaccount",
+    "source": {
+      "type": "event",
+      "eventSampleId": "6ae7e93e-1876-4005-a223-93d1c2eb2854",
+      "fileData": null
+    },
+    "destination": {
+      "apiSampleId": "59adb237-e6e3-4d76-b928-e9c690d95443"
+    },
+    "mapping": {
+      "data.customerIds[].customerId": "body.customerIds[].customerId",
+      "data.activityId": "body.activityId",
+      "data.currencyId": "body.currencyId",
+      "data.productId": "body.productId",
+      "data.officers.primaryOfficer": "body.officers.primaryOfficer",
+      "data.balance.shortTitle": "body.balance.shortTitle",
+      "data.balance.fdicClassCode": "body.balance.fdicClassCode",
+      "data.balance.fdicOwnershipCode": "body.balance.fdicOwnershipCode",
+      "data.balance.purposeCode": "body.balance.purposeCode",
+      "data.balance.accountType": "body.balance.accountType",
+      "data.statement.statement1Frequency": "body.statement.statement1Frequency",
+      "data.statement.attributeNamevalue": "body.statement.attributeNamevalue",
+      "data.statement.fqu1PrintAttrValue1": "body.statement.fqu1PrintAttrValue1",
+      "data.schedule[].payment[].paymentType": "body.schedule[].payment[].paymentType",
+      "data.schedule[].payment[].paymentMethod": "body.schedule[].payment[].paymentMethod"
+    },
+    "eventType": "com.bank.checking-account.created",
+    "createdAt": "2026-01-30T18:28:09.774Z",
+    "updatedAt": "2026-01-30T18:28:09.774Z"
+  }
+]

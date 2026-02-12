@@ -1,0 +1,207 @@
+[
+  {
+    "id": "61e7d7c6-fcad-4732-ad74-0d82e781be81",
+    "name": "Create Customer",
+    "fileName": "61e7d7c6-fcad-4732-ad74-0d82e781be81.json",
+    "schema": {
+      "specversion": "string",
+      "id": "string",
+      "type": "string",
+      "source": "string",
+      "subject": "string",
+      "time": "string",
+      "datacontenttype": "string",
+      "headers": "object",
+      "headers.companyId": "string",
+      "data": "object",
+      "data.personalDetails": "object",
+      "data.personalDetails.firstName": "string",
+      "data.personalDetails.middleName": "string",
+      "data.personalDetails.lastName": "string",
+      "data.personalDetails.dateOfBirth": "string",
+      "data.personalDetails.nationality": "string",
+      "data.personalDetails.sectorId": "string",
+      "data.personalDetails.languageId": "number",
+      "data.personalDetails.addressLine1": "string",
+      "data.contactDetails": "object",
+      "data.contactDetails.email": "string",
+      "data.contactDetails.mobile": "string",
+      "data.extensions": "object",
+      "data.extensions.customField": "string"
+    },
+    "fields": [
+      "specversion",
+      "id",
+      "type",
+      "source",
+      "subject",
+      "time",
+      "datacontenttype",
+      "headers.companyId",
+      "data.personalDetails.firstName",
+      "data.personalDetails.middleName",
+      "data.personalDetails.lastName",
+      "data.personalDetails.dateOfBirth",
+      "data.personalDetails.nationality",
+      "data.personalDetails.sectorId",
+      "data.personalDetails.languageId",
+      "data.personalDetails.addressLine1",
+      "data.contactDetails.email",
+      "data.contactDetails.mobile",
+      "data.extensions.customField"
+    ],
+    "sampleData": {
+      "specversion": "1.0",
+      "id": "9f1c2b7e-3e44-4c3a-9c7e-5c8e6d7f12ab",
+      "type": "com.bank.customer.created",
+      "source": "/core-banking/customer-service",
+      "subject": "customer/123456789",
+      "time": "2026-01-15T14:32:10Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "{{companyId}}"
+      },
+      "data": {
+        "personalDetails": {
+          "firstName": "{{FirstName}}",
+          "middleName": "{{MiddleName}}",
+          "lastName": "{{LastName}}",
+          "dateOfBirth": "1990-05-10",
+          "nationality": "IN",
+          "sectorId": "1001",
+          "languageId": 1,
+          "addressLine1": "asasa"
+        },
+        "contactDetails": {
+          "email": "mahaboob.hussain@example.com",
+          "mobile": "9876543210"
+        },
+        "extensions": {
+          "customField": "12"
+        }
+      }
+    },
+    "createdAt": "2026-01-29T22:11:56.142Z",
+    "updatedAt": "2026-02-02T22:28:46.585Z"
+  },
+  {
+    "id": "6ae7e93e-1876-4005-a223-93d1c2eb2854",
+    "name": "Create Account",
+    "fileName": "6ae7e93e-1876-4005-a223-93d1c2eb2854.json",
+    "schema": {
+      "specversion": "string",
+      "id": "string",
+      "type": "string",
+      "source": "string",
+      "subject": "string",
+      "time": "string",
+      "datacontenttype": "string",
+      "headers": "object",
+      "headers.companyId": "string",
+      "data": "object",
+      "data.customerIds": "array",
+      "data.customerIds[].customerId": "string",
+      "data.activityId": "string",
+      "data.currencyId": "string",
+      "data.productId": "string",
+      "data.officers": "object",
+      "data.officers.primaryOfficer": "number",
+      "data.balance": "object",
+      "data.balance.shortTitle": "string",
+      "data.balance.fdicClassCode": "number",
+      "data.balance.fdicOwnershipCode": "string",
+      "data.balance.purposeCode": "number",
+      "data.balance.accountType": "string",
+      "data.statement": "object",
+      "data.statement.statement1Frequency": "string",
+      "data.statement.attributeNamevalue": "string",
+      "data.statement.fqu1PrintAttrValue1": "string",
+      "data.schedule": "array",
+      "data.schedule[].payment": "array",
+      "data.schedule[].payment[].paymentType": "string",
+      "data.schedule[].payment[].paymentMethod": "string"
+    },
+    "fields": [
+      "specversion",
+      "id",
+      "type",
+      "source",
+      "subject",
+      "time",
+      "datacontenttype",
+      "headers.companyId",
+      "data.customerIds[].customerId",
+      "data.activityId",
+      "data.currencyId",
+      "data.productId",
+      "data.officers.primaryOfficer",
+      "data.balance.shortTitle",
+      "data.balance.fdicClassCode",
+      "data.balance.fdicOwnershipCode",
+      "data.balance.purposeCode",
+      "data.balance.accountType",
+      "data.statement.statement1Frequency",
+      "data.statement.attributeNamevalue",
+      "data.statement.fqu1PrintAttrValue1",
+      "data.schedule[].payment[].paymentType",
+      "data.schedule[].payment[].paymentMethod"
+    ],
+    "sampleData": {
+      "specversion": "1.0",
+      "id": "6c7c8a3f-5e9b-4a6d-8d8e-92c4b3f1a9d1",
+      "type": "com.bank.checking-account.created",
+      "source": "/core-banking/account-service",
+      "subject": "account/ACC-987654321",
+      "time": "2026-01-15T15:05:42Z",
+      "datacontenttype": "application/json",
+      "headers": {
+        "companyId": "{{companyId}}"
+      },
+      "data": {
+        "customerIds": [
+          {
+            "customerId": "{{CustomerId}}"
+          }
+        ],
+        "activityId": "ACCOUNTS-NEW-ARRANGEMENT",
+        "currencyId": "USD",
+        "productId": "CONS.CHECKING",
+        "officers": {
+          "primaryOfficer": 3
+        },
+        "balance": {
+          "shortTitle": "Investor Checking Account",
+          "fdicClassCode": 3,
+          "fdicOwnershipCode": "S",
+          "purposeCode": 5,
+          "accountType": "CHECKING"
+        },
+        "statement": {
+          "statement1Frequency": "M0131",
+          "attributeNamevalue": "Print.Option",
+          "fqu1PrintAttrValue1": "ESTATEMENT"
+        },
+        "schedule": [
+          {
+            "payment": [
+              {
+                "paymentType": "INTEREST",
+                "paymentMethod": "DUE"
+              },
+              {
+                "paymentType": "CHARGE",
+                "paymentMethod": "DUE"
+              },
+              {
+                "paymentType": "PERIODICCHARGE",
+                "paymentMethod": "DUE"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "createdAt": "2026-01-30T18:21:26.492Z",
+    "updatedAt": "2026-02-02T20:52:12.457Z"
+  }
+]

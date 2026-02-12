@@ -15,6 +15,10 @@ export default defineConfig({
     port: 3002,
     host: true,
     strictPort: false,
+    headers: {
+      'X-Frame-Options': 'ALLOWALL',
+      'Content-Security-Policy': "frame-ancestors *"
+    },
     proxy: {
       '/api': {
         target: 'http://localhost:8002',
