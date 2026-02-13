@@ -14,6 +14,7 @@ export default defineConfig({
   server: {
     port: 3002,
     host: true,
+    allowedHosts: true,
     strictPort: false,
     headers: {
       'X-Frame-Options': 'ALLOWALL',

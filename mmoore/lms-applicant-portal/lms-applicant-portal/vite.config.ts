@@ -8,6 +8,7 @@ export default defineConfig({
   server: {
     port: 3004,
     host: true,
+    allowedHosts: true,
     headers: {
       'X-Frame-Options': 'ALLOWALL',
       'Content-Security-Policy': "frame-ancestors *"
