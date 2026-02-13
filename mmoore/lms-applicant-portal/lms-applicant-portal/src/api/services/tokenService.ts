@@ -51,8 +51,15 @@ const tokenClient = axios.create({
   },
 });
 
-// Helper to build versioned API path
-const getLoginPath = () => `/api/v${API_CONFIG.API_VERSION}/login`;
+// Helper to build versioned API path with base path support
+const getLoginPath = () => {
+  const path = `/api/v${API_CONFIG.API_VERSION}/login`;
+  const basePath = import.meta.env.BASE_URL;
+  if (basePath && basePath !== '/') {
+    return `${basePath.replace(/\/$/, '')}${path}`;
+  }
+  return path;
+};
 
 export const tokenService = {
   /**

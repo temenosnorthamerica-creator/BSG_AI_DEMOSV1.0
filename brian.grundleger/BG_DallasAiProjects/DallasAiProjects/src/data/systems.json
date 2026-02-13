@@ -12,18 +12,6 @@
       "type": "frontend"
     },
     {
-      "id": "bsg-demo-platform",
-      "name": "BSG Demo Platform",
-      "description": "Full-stack BSG demo platform with React frontend and FastAPI backend for banking ecosystem integration",
-      "icon": "platform",
-      "color": "#6366F1",
-      "owner": "migarcia@temenos.com",
-      "port": 3002,
-      "backendPort": 8002,
-      "url": "http://localhost:3002",
-      "type": "fullstack"
-    },
-    {
       "id": "debitcards-demo",
       "name": "Debit Cards Demo",
       "description": "Debit card management and transaction demonstration application",
@@ -68,6 +56,19 @@
       "port": 3016,
       "backendPort": 8006,
       "url": "http://localhost:3016",
+      "type": "fullstack"
+    },
+    {
+      "id": "bsg-demo-platform",
+      "name": "BSG Demo Platform",
+      "description": "Full-stack BSG demo platform with React frontend and FastAPI backend for banking ecosystem integration",
+      "icon": "platform",
+      "color": "#6366F1",
+      "owner": "migarcia@temenos.com",
+      "port": 3002,
+      "backendPort": 8002,
+      "url": "http://localhost:3002",
+      "externalUrl": "https://kind-beach-01c0a990f.3.azurestaticapps.net/",
       "type": "fullstack"
     }
   ],

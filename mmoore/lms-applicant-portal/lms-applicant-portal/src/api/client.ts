@@ -13,6 +13,16 @@ export const apiClient: AxiosInstance = axios.create({
 // Request interceptor to add auth token
 apiClient.interceptors.request.use(
   async (config: InternalAxiosRequestConfig) => {
+    // Replace version placeholder and prepend base path for ALL requests
+    if (config.url) {
+      config.url = config.url.replace('{version}', API_CONFIG.API_VERSION);
+      // Prepend Vite base path for Nginx path-based routing support
+      const basePath = import.meta.env.BASE_URL;
+      if (basePath && basePath !== '/' && config.url.startsWith('/')) {
+        config.url = `${basePath.replace(/\/$/, '')}${config.url}`;
+      }
+    }
+
     // Skip token for login endpoint
     if (config.url?.includes('/login')) {
       return config;
@@ -28,15 +38,6 @@ apiClient.interceptors.request.use(
       console.error('Failed to get valid token:', error);
     }
 
-    // Replace version placeholder in URL
-    if (config.url) {
-      config.url = config.url.replace('{version}', API_CONFIG.API_VERSION);
-      // Prepend Vite base path for Nginx path-based routing support
-      const basePath = import.meta.env.BASE_URL;
-      if (basePath && basePath !== '/' && config.url.startsWith('/')) {
-        config.url = `${basePath.replace(/\/$/, '')}${config.url}`;
-      }
-    }
     return config;
   },
   (error) => {

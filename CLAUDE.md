@@ -2,6 +2,8 @@
 
 A unified platform showcasing Temenos banking integration capabilities through multiple demo applications.
 
+**Public URL:** https://amrbsgsysintdemo.temenos.com (Azure VM + Nginx SSL on port 3452)
+
 ## Project Overview
 
 This monorepo contains 5 interconnected applications demonstrating various aspects of banking ecosystem integration with Temenos products, plus 1 embedded demo (Creditos).
@@ -52,11 +54,12 @@ NOT ALLOWED:
 
 | Page Name | Location | File(s) | Description |
 |-----------|----------|---------|-------------|
-| **Home Page** | Landing Page (3000) | `HomePage.jsx` | Main dashboard with Team Demo Applications cards |
+| **Home Page** | Landing Page (3000) | `HomePage.jsx` | Main dashboard with Americas BSG Demo Applications cards |
 | **App Landing Page** | Click on demo card | `AppLandingPage.jsx`, `AppLandingTemplate.jsx` | Sub-page with Overview, Components, Architecture, API Docs tabs |
 | **Demo View** | Click "Show Demo" | Inside `AppLandingTemplate.jsx` | iframe showing the actual demo application |
 | **System Page** | Click on Banking System | `SystemPage.jsx` | Banking system detail view with APIs |
 | **Client Config** | Sidebar → Client Environment | `ClientConfigPage.jsx` | Client branding configuration |
+| **Solution Diagram** | Sidebar → Solution Diagram | `SolutionDiagramPage.jsx` | Interactive integration diagram with draggable nodes |
 
 ---
 
@@ -97,9 +100,9 @@ http://localhost:3000/
 │   ├── Header Section
 │   │   └── Client Logo/Name (customizable via Client Config)
 │   │
-│   └── Team Demo Applications Section (5 cards + embedded demos)
+│   └── Americas BSG Demo Applications Section (5 cards + embedded demos)
 │       ├── CRM Banking Simulator Card → App Landing Page (port 3001)
-│       ├── BSG Demo Platform Card → App Landing Page (port 3002)
+│       ├── BSG Demo Platform Card → External URL (https://kind-beach-01c0a990f.3.azurestaticapps.net/)
 │       ├── Debit Cards Demo Card → App Landing Page (port 3003)
 │       ├── LMS Applicant Portal Card → App Landing Page (port 3004)
 │       ├── Creditos Card → App Landing Page (embedded BSG port 3002)
@@ -151,14 +154,36 @@ SIDEBAR (Collapsible via toggle button, expanded by default):
 - `src/pages/AppLandingPage/AppLandingPage.jsx` - Demo app landing template
 - `src/components/AppLandingTemplate/AppLandingTemplate.jsx` - Template for app landing pages
 - `src/pages/SystemPage.jsx` - Banking system detail view
+- `src/pages/HealthCheckPage.jsx` - Health check page (uses urlResolver for service URLs)
+- `src/components/ConfigEditorModal.jsx` - Config editor (uses urlResolver for config API)
 - `src/data/systems.json` - Banking systems, APIs, and demo apps data
 - `src/data/appLandingData.jsx` - Demo app tab configurations (Overview, Components, etc.)
+- `src/utils/urlResolver.js` - URL resolver for local vs public environment auto-detection
 
 ### Adding a New Demo Card
 1. Add entry to `src/data/systems.json` under `teamDemos` array
 2. Add configuration to `src/data/appLandingData.jsx` with navItems
 3. Add icon mapping in `src/pages/HomePage.jsx` (systemIcons, systemColors)
 4. Add icon mapping in `src/pages/AppLandingPage/AppLandingPage.jsx` (appIcons, integrationDiagrams)
+
+### External URL Support
+Demo cards can link to external sites instead of internal app landing pages by adding `"externalUrl"` to the entry in `systems.json`. Currently used by BSG Demo Platform to link to its Azure Static Web App.
+
+### Solution Diagram (Integration Data)
+
+The Solution Diagram visualizes app-to-app integration flows. Data is auto-generated from a text file.
+
+**Data flow:**
+1. `apps_integration_info.txt` (root) — plain text format: `Source:Target|Pattern1,Pattern2`
+2. `scripts/generateIntegrationData.js` — parses text file, assigns colors, generates JS
+3. `src/data/integrationData.js` — **AUTO-GENERATED, do not edit manually** — contains `integrationConnections`, `systemColors`, `patternColors`
+4. `src/pages/SolutionDiagramPage.jsx` — renders the interactive diagram
+
+**Key customization points:**
+- **Node colors:** `systemColors` in `integrationData.js` (auto-generated from palette in `generateIntegrationData.js`)
+- **Pattern colors:** `patternColors` in `integrationData.js` (Events=green, APIs=blue, Files=amber)
+- **Valid patterns:** `VALID_PATTERNS` in `src/components/ConfigEditorModal.jsx` — currently `['Events', 'APIs', 'Files']`
+- **Diagram background:** `SolutionDiagramPage.jsx` line ~853 — Tailwind gradient class `bg-gradient-to-br from-slate-800/40 to-slate-900/60`
 
 ---
 
@@ -216,6 +241,7 @@ API Proxy: /api/temenos → americasbsgprd.temenos.com
 ## 3. BSG Demo Platform (Ports 3002/8002)
 
 **Path:** `migarcia/DALLASAI 1/DALLASAI`
+**External URL:** https://kind-beach-01c0a990f.3.azurestaticapps.net/ (Azure Static Web App — opened from Landing Page card)
 
 ### Tech Stack - Frontend
 | Layer | Technology |
@@ -565,9 +591,86 @@ npm run dev
 
 ---
 
+## Public Access (Azure VM + Nginx)
+
+All apps are publicly accessible at `https://amrbsgsysintdemo.temenos.com` through a single Nginx reverse proxy on SSL port 3452.
+
+### How It Works (Dual-Environment)
+The codebase works **both locally** (direct `localhost:PORT`) and **on Azure** (single Nginx port with path-based routing) without code changes — only `.env` files differ.
+
+**Local development:** No `.env` files needed. `VITE_BASE_PATH` defaults to `/`. Apps accessed directly at `localhost:PORT`.
+
+**Azure VM:** Each frontend has a `.env` file with `VITE_BASE_PATH=/subpath/`. Nginx routes by path prefix to internal ports.
+
+### Key Architecture Decisions
+
+1. **URL Resolver (`src/utils/urlResolver.js`)** — Auto-detects local vs public using `window.location.hostname`. Used by Landing Page for inter-app navigation, health checks, and config API.
+
+2. **Vite `loadEnv`** — All vite.config files use `loadEnv(mode, process.cwd(), '')` to read `.env` files (NOT `process.env` which doesn't load `.env` during config evaluation).
+
+3. **Dynamic Vite Proxy Rules** — Each sub-app's vite.config adds a second proxy rule for the base-prefixed API path (e.g., `/esb/api` → rewrite to `/api` → forward to backend). This handles API calls through Nginx.
+
+4. **BrowserRouter basename** — CRM, LMS, and ESB set `<BrowserRouter basename={import.meta.env.BASE_URL}>` for correct client-side routing under subpaths.
+
+5. **API Base Path Prepending** — Sub-app API services prefix requests with `import.meta.env.BASE_URL` so API calls route through the correct Nginx location block.
+
+### Nginx Configuration (Windows: `F:/Installables/nginx-1.28.2/conf/nginx.conf`)
+
+```nginx
+server {
+    listen 3452 ssl;
+    server_name temenos.com;
+
+    # Landing Page
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_set_header Host $host;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+
+    # Sub-app frontends — NO trailing slash (preserves path prefix for Vite base path)
+    location /crm/        { proxy_pass http://localhost:3001; ... }
+    location /bsg/        { proxy_pass http://localhost:3002; ... }
+    location /debitcards/  { proxy_pass http://localhost:3003; ... }
+    location /lms/        { proxy_pass http://localhost:3004; ... }
+    location /esb/        { proxy_pass http://localhost:3016; ... }
+
+    # Backend APIs — WITH trailing slash (strips prefix, backends expect /api/...)
+    location /bsg-api/       { proxy_pass http://localhost:8002/; ... }
+    location /debitcards-api/ { proxy_pass http://localhost:8003/; ... }
+    location /esb-api/       { proxy_pass http://localhost:8006/; ... }
+}
+```
+
+**IMPORTANT:** Frontend location blocks must NOT have a trailing slash on `proxy_pass` (preserves the path prefix so Vite's `base` path matches). Backend location blocks SHOULD have a trailing slash (strips the prefix since backends expect `/api/...`).
+
+### After Nginx Config Changes
+```powershell
+nginx -t          # Validate config
+nginx -s reload   # Reload without restart
+```
+
+---
+
 ## Environment Variables
 
 Create `.env` files in respective application directories:
+
+### Frontend `.env` Files (Azure VM only — NOT needed locally)
+
+Each frontend needs a `.env` file with `VITE_BASE_PATH` matching the Nginx location prefix:
+
+| App | `.env` Location | Content |
+|-----|----------------|---------|
+| Landing Page | `brian.grundleger/.../DallasAiProjects/.env` | `VITE_BASE_PATH=/` |
+| CRM | `alwin/.../crm-banking-simulator_v2/.env` | `VITE_BASE_PATH=/crm/` |
+| BSG | `migarcia/.../DALLASAI/frontend/.env` | `VITE_BASE_PATH=/bsg/` |
+| Debit Cards | `sweekruth.somaraju/.../frontend/.env` | `VITE_BASE_PATH=/debitcards/` |
+| LMS | `mmoore/.../lms-applicant-portal/.env` | `VITE_BASE_PATH=/lms/` |
+| ESB | `m.mahaboobhussain/.../frontend/.env` | `VITE_BASE_PATH=/esb/` |
+
+**Restart Vite dev servers after creating/changing `.env` files.**
 
 ### BSG Demo Platform Backend
 ```env
@@ -644,4 +747,7 @@ EVENTHUB_NAME=test
 ## GitHub Repository
 
 **Repository:** https://github.com/temenosnorthamerica-creator/BSG_AI_DEMOSV1.0
-**Branch:** baseV1.0
+**Branches:**
+- `baseV1.0` — Original base
+- `baseV2.0` — Ecosystem enhancements
+- `baseV3.0` — Public access (Nginx + URL resolver + Vite base path support)

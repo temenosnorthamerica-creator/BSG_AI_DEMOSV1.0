@@ -2,7 +2,7 @@
  * AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
  *
  * Generated from: apps_integration_info.txt
- * Generated at: 2026-02-12T00:57:30.345Z
+ * Generated at: 2026-02-13T21:17:08.902Z
  *
  * To update this file, modify apps_integration_info.txt and run:
  *   npm run generate-data
@@ -92,13 +92,13 @@ export const getUniqueSystems = () => {
 
 // System colors for visual distinction
 export const systemColors = {
-  "CRM Banking Simulator": "#10B981",
-  "ESB - Enterprise Service Bus": "#06B6D4",
-  "Debit Cards Demo": "#3B82F6",
-  "LMS Applicant Portal": "#8B5CF6",
-  "Creditos - Sistema de Solicitudes": "#F59E0B",
-  "Core": "#EF4444",
-  "Azure Event Hub": "#0EA5E9"
+  "CRM Banking Simulator": "#8246AF",
+  "ESB - Enterprise Service Bus": "#5CB8B2",
+  "Debit Cards Demo": "#8246AF",
+  "LMS Applicant Portal": "#5CB8B2",
+  "Creditos - Sistema de Solicitudes": "#8246AF",
+  "Transact": "#283275",
+  "Azure Event Hub": "#283275"
 }
 
 // Pattern colors

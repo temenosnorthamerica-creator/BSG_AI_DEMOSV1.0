@@ -34,7 +34,9 @@ export function HomePage({ teamDemos = [], onDemoAppClick }) {
   const [hoveredDemo, setHoveredDemo] = useState(null)
 
   const handleDemoClick = (demo) => {
-    if (onDemoAppClick) {
+    if (demo.externalUrl) {
+      window.open(demo.externalUrl, '_blank')
+    } else if (onDemoAppClick) {
       onDemoAppClick(demo)
     } else {
       window.open(getAppUrl(demo), '_blank')
@@ -58,7 +60,7 @@ export function HomePage({ teamDemos = [], onDemoAppClick }) {
         <div className="mb-10">
           <h2 className="text-2xl font-bold mb-4 text-white tracking-tight flex items-center gap-2">
             <Server className="w-6 h-6 text-blue-400" />
-            Team Demo Applications
+            Americas BSG Demo Applications
           </h2>
           <p className="text-sm text-slate-400 mb-6">Click on a card to launch the demo application in a new window</p>
 
