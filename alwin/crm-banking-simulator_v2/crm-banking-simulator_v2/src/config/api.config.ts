@@ -22,7 +22,7 @@ export interface APIConfig {
 
 // Use proxy in development to avoid CORS issues
 const isDev = import.meta.env.DEV;
-const proxyBaseUrl = '/api/temenos';
+const proxyBaseUrl = `${import.meta.env.BASE_URL}api/temenos`.replace(/\/\//g, '/');
 const directBaseUrl = import.meta.env.VITE_API_BASE_URL || 'https://americasbsgprd.temenos.com';
 
 // Default configuration - can be overridden by environment variables

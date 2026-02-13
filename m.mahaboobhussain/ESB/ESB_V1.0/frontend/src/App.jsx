@@ -24,7 +24,7 @@ function App() {
   }, [sidebarCollapsed]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className={`app ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
         <nav className={`sidebar ${sidebarCollapsed ? 'collapsed' : ''}`}>
           <div className="logo">

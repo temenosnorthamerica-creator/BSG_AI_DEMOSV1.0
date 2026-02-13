@@ -91,21 +91,9 @@ const getApiBaseUrl = async (): Promise<string> => {
     return config.apiUrl
   }
   
-  // Fallback: Environment detection for Azure Static Web Apps
-  if (typeof window !== 'undefined') {
-    const hostname = window.location.hostname
-    // If on Azure Static Web Apps domain, construct backend URL
-    if (hostname.includes('azurestaticapps.net')) {
-      // Use the same origin for API if backend is proxied, or construct from hostname
-      // For now, default to relative path which works if backend is proxied
-      const defaultUrl = '/api/v1'
-      console.log('[API] Detected Azure Static Web Apps, using relative URL:', defaultUrl)
-      return defaultUrl
-    }
-  }
-  
-  // Default to relative path (for local development or when backend is proxied)
-  const defaultUrl = '/api/v1'
+  // Default to relative path with base URL support (for Nginx path-based routing)
+  const baseUrl = typeof import.meta !== 'undefined' ? import.meta.env.BASE_URL : '/'
+  const defaultUrl = `${baseUrl}api/v1`.replace(/\/\//g, '/')
   console.log('[API] Using default relative URL:', defaultUrl)
   return defaultUrl
 }
@@ -115,8 +103,8 @@ class ApiService {
   private baseUrl: string
 
   constructor() {
-    // Initialize with default, will be updated when config loads
-    this.baseUrl = '/api/v1'
+    // Initialize with default (supports base path for Nginx routing), will be updated when config loads
+    this.baseUrl = `${import.meta.env.BASE_URL}api/v1`.replace(/\/\//g, '/')
     this.client = axios.create({
       baseURL: this.baseUrl,
       headers: {

@@ -1,4 +1,4 @@
-const API_BASE = '/api';
+const API_BASE = `${import.meta.env.BASE_URL}api`.replace(/\/\//g, '/');
 
 // Generic fetch wrapper
 async function fetchApi(endpoint, options = {}) {

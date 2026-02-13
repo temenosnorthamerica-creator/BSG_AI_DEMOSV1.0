@@ -31,6 +31,11 @@ apiClient.interceptors.request.use(
     // Replace version placeholder in URL
     if (config.url) {
       config.url = config.url.replace('{version}', API_CONFIG.API_VERSION);
+      // Prepend Vite base path for Nginx path-based routing support
+      const basePath = import.meta.env.BASE_URL;
+      if (basePath && basePath !== '/' && config.url.startsWith('/')) {
+        config.url = `${basePath.replace(/\/$/, '')}${config.url}`;
+      }
     }
     return config;
   },
@@ -62,7 +67,7 @@ apiClient.interceptors.response.use(
           localStorage.removeItem(STORAGE_KEYS.USER_DATA);
           localStorage.removeItem(STORAGE_KEYS.USER_SSN);
           localStorage.removeItem(STORAGE_KEYS.USER_APPLICATIONS);
-          window.location.href = '/login';
+          window.location.href = `${import.meta.env.BASE_URL}login`.replace(/\/\//g, '/');
         }
       }
     }

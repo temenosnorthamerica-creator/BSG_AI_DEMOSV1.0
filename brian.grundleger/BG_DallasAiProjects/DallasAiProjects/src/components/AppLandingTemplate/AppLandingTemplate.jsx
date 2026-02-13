@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ArrowLeft, ExternalLink } from 'lucide-react'
 import { clsx } from 'clsx'
+import { getAppUrl } from '../../utils/urlResolver'
 
 export function AppLandingTemplate({
   app,
@@ -84,7 +85,7 @@ export function AppLandingTemplate({
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-white">{activeContent?.title || 'Overview'}</h2>
               <a
-                href={app.url}
+                href={getAppUrl(app)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 rounded-lg text-white transition-all duration-300 hover:scale-105"

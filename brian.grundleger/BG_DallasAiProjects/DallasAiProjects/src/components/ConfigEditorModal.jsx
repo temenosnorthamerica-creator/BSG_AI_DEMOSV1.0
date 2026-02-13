@@ -14,8 +14,7 @@ import {
   RefreshCw
 } from 'lucide-react'
 import { clsx } from 'clsx'
-
-const CONFIG_API_URL = 'http://localhost:3010'
+import { getConfigApiUrl } from '../utils/urlResolver'
 
 // Valid patterns
 const VALID_PATTERNS = ['Events', 'APIs', 'Files']
@@ -108,7 +107,7 @@ export function ConfigEditorModal({ isOpen, onClose, onSaved }) {
     setIsLoading(true)
     setError(null)
     try {
-      const response = await fetch(`${CONFIG_API_URL}/api/config`)
+      const response = await fetch(`${getConfigApiUrl()}/api/config`)
       if (!response.ok) {
         throw new Error(`Failed to load config: ${response.statusText}`)
       }
@@ -132,7 +131,7 @@ export function ConfigEditorModal({ isOpen, onClose, onSaved }) {
     setIsSaving(true)
     setError(null)
     try {
-      const response = await fetch(`${CONFIG_API_URL}/api/config`, {
+      const response = await fetch(`${getConfigApiUrl()}/api/config`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ content })

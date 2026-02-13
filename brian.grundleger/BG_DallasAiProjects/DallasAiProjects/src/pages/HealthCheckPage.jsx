@@ -24,8 +24,7 @@ import {
 } from 'lucide-react'
 import { clsx } from 'clsx'
 import { services, integrations, getBackends, getFrontends } from '../data/services'
-
-const CONFIG_API_URL = 'http://localhost:3010'
+import { getConfigApiUrl, getServiceUrl } from '../utils/urlResolver'
 
 // Status types
 const STATUS = {
@@ -38,7 +37,7 @@ const STATUS = {
 // Check single service health
 async function checkServiceHealth(service) {
   const startTime = Date.now()
-  const url = `http://localhost:${service.port}${service.healthEndpoint || ''}`
+  const url = getServiceUrl(service.port, service.healthEndpoint || '')
 
   try {
     const controller = new AbortController()
@@ -80,7 +79,7 @@ async function checkConfigApi() {
   const startTime = Date.now()
 
   try {
-    const response = await fetch(`${CONFIG_API_URL}/health`, {
+    const response = await fetch(`${getConfigApiUrl()}/health`, {
       method: 'GET'
     })
 
@@ -119,7 +118,7 @@ function LogViewerModal({ service, onClose }) {
 
   const fetchLogs = useCallback(async () => {
     try {
-      const response = await fetch(`${CONFIG_API_URL}/api/services/${service.id}/logs?lines=200`)
+      const response = await fetch(`${getConfigApiUrl()}/api/services/${service.id}/logs?lines=200`)
       const data = await response.json()
       if (data.exists) {
         setLogs(data.content)
@@ -136,7 +135,7 @@ function LogViewerModal({ service, onClose }) {
 
   const clearLogs = async () => {
     try {
-      await fetch(`${CONFIG_API_URL}/api/services/${service.id}/logs`, { method: 'DELETE' })
+      await fetch(`${getConfigApiUrl()}/api/services/${service.id}/logs`, { method: 'DELETE' })
       fetchLogs()
     } catch (err) {
       setError(err.message)
@@ -478,7 +477,7 @@ export function HealthCheckPage() {
   const handleServiceAction = useCallback(async (serviceId, action) => {
     setActionLoading(serviceId)
     try {
-      const response = await fetch(`${CONFIG_API_URL}/api/services/${serviceId}/${action}`, {
+      const response = await fetch(`${getConfigApiUrl()}/api/services/${serviceId}/${action}`, {
         method: 'POST'
       })
       const data = await response.json()
@@ -501,7 +500,7 @@ export function HealthCheckPage() {
   const handleBulkAction = useCallback(async (action) => {
     setBulkActionLoading(action)
     try {
-      const response = await fetch(`${CONFIG_API_URL}/api/services/${action}`, {
+      const response = await fetch(`${getConfigApiUrl()}/api/services/${action}`, {
         method: 'POST'
       })
       const data = await response.json()
@@ -578,7 +577,7 @@ export function HealthCheckPage() {
 
   // Open service in new tab
   const handleOpenService = (service) => {
-    window.open(`http://localhost:${service.port}`, '_blank')
+    window.open(getServiceUrl(service.port), '_blank')
   }
 
   return (

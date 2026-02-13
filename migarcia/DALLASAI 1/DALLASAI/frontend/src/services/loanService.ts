@@ -17,17 +17,10 @@ import type {
   ValidationResult,
 } from '../types/loans';
 
-// Get API base URL from config or default
+// Get API base URL with base path support for Nginx routing
 const getApiBaseUrl = (): string => {
-  // Check if running on Azure Static Web Apps
-  if (typeof window !== 'undefined') {
-    const hostname = window.location.hostname;
-    if (hostname.includes('azurestaticapps.net')) {
-      return 'https://bsg-demo-platform-app.azurewebsites.net/api/v1';
-    }
-  }
-  // Default to relative path for local development
-  return '/api/v1';
+  const baseUrl = typeof import.meta !== 'undefined' ? import.meta.env.BASE_URL : '/';
+  return `${baseUrl}api/v1`.replace(/\/\//g, '/');
 };
 
 // Create axios instance for loan service

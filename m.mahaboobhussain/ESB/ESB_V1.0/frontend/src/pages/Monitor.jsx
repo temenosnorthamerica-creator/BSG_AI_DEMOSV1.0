@@ -96,7 +96,8 @@ function Monitor() {
       eventSourceRef.current.close();
     }
 
-    const eventSource = new EventSource('/api/monitor/events');
+    const sseUrl = `${import.meta.env.BASE_URL}api/monitor/events`.replace(/\/\//g, '/');
+    const eventSource = new EventSource(sseUrl);
     eventSourceRef.current = eventSource;
 
     eventSource.onmessage = (event) => {

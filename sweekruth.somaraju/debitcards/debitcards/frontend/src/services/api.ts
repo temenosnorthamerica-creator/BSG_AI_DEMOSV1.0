@@ -13,7 +13,7 @@ class ApiService {
 
   constructor() {
     this.client = axios.create({
-      baseURL: '/api/v1',
+      baseURL: `${import.meta.env.BASE_URL}api/v1`.replace(/\/\//g, '/'),
       headers: {
         'Content-Type': 'application/json',
       },

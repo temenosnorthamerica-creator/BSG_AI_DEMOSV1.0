@@ -13,6 +13,7 @@ import {
   GitBranch,
   Workflow
 } from 'lucide-react'
+import { getBackendUrl } from '../utils/urlResolver'
 
 export const appLandingConfigs = {
   'crm-banking-simulator': {
@@ -234,7 +235,7 @@ export const appLandingConfigs = {
             </p>
             <div className="bg-slate-700/30 rounded-lg p-4 mt-4">
               <p className="text-sm font-mono text-slate-300">
-                API Docs: http://localhost:8002/docs
+                API Docs: {getBackendUrl(8002, '/docs')}
               </p>
             </div>
           </div>
@@ -589,7 +590,7 @@ export const appLandingConfigs = {
             </p>
             <div className="bg-slate-700/30 rounded-lg p-4 mt-4">
               <p className="text-sm font-mono text-slate-300">
-                API Docs: http://localhost:8002/docs
+                API Docs: {getBackendUrl(8002, '/docs')}
               </p>
             </div>
           </div>
@@ -603,7 +604,7 @@ export const appLandingConfigs = {
           'Export generation API'
         ],
         technicalDetails: [
-          { label: 'Base URL', value: 'localhost:8002/api/v1' },
+          { label: 'Base URL', value: getBackendUrl(8002, '/api/v1') },
           { label: 'Format', value: 'JSON' },
           { label: 'Auth', value: 'Bearer Token' },
           { label: 'Docs', value: 'OpenAPI/Swagger' }

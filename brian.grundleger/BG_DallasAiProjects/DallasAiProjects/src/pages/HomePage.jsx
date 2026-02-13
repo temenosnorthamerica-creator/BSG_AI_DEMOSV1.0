@@ -10,6 +10,7 @@ import {
   GitBranch
 } from 'lucide-react'
 import { clsx } from 'clsx'
+import { getAppUrl } from '../utils/urlResolver'
 
 const systemIcons = {
   'crm': Users,
@@ -36,7 +37,7 @@ export function HomePage({ teamDemos = [], onDemoAppClick }) {
     if (onDemoAppClick) {
       onDemoAppClick(demo)
     } else {
-      window.open(demo.url, '_blank')
+      window.open(getAppUrl(demo), '_blank')
     }
   }
 
